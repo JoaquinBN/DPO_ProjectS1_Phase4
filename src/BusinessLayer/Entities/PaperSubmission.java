@@ -1,4 +1,4 @@
-package BusinessLayer.Trials;
+package BusinessLayer.Entities;
 
 import java.util.Random;
 

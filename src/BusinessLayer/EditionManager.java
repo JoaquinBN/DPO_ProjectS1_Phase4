@@ -1,5 +1,6 @@
-package BusinessLayer.Edition;
+package BusinessLayer;
 
+import BusinessLayer.Entities.Edition;
 import PersistenceLayer.EditionFileManager;
 import PersistenceLayer.ExecutionFileManager;
 import com.opencsv.exceptions.CsvException;

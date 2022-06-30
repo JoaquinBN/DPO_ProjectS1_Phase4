@@ -1,8 +1,7 @@
 package BusinessLayer;
 
-import BusinessLayer.Edition.Edition;
-import BusinessLayer.Trials.TrialManager;
-import BusinessLayer.Trials.Trials;
+import BusinessLayer.Entities.Edition;
+import BusinessLayer.Entities.Trials;
 import PersistenceLayer.EditionFileManager;
 import PersistenceLayer.ExecutionFileManager;
 import PersistenceLayer.TrialsFileManager;

@@ -1,7 +1,7 @@
 package PresentationLayer.Controllers;
 
-import BusinessLayer.Edition.EditionManager;
-import BusinessLayer.Trials.TrialManager;
+import BusinessLayer.EditionManager;
+import BusinessLayer.TrialManager;
 import PresentationLayer.Views.ComposerView;
 import com.opencsv.exceptions.CsvException;
 

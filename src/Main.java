@@ -1,7 +1,7 @@
 import BusinessLayer.ConductorManager;
-import BusinessLayer.Edition.EditionManager;
-import BusinessLayer.Players.PlayerManager;
-import BusinessLayer.Trials.TrialManager;
+import BusinessLayer.EditionManager;
+import BusinessLayer.PlayerManager;
+import BusinessLayer.TrialManager;
 import PersistenceLayer.EditionFileManager;
 import PersistenceLayer.ExecutionFileManager;
 import PersistenceLayer.TrialsFileManager;

@@ -1,5 +1,6 @@
-package BusinessLayer.Players;
+package BusinessLayer;
 
+import BusinessLayer.Entities.Player;
 import PersistenceLayer.ExecutionFileManager;
 import com.opencsv.exceptions.CsvException;
 
