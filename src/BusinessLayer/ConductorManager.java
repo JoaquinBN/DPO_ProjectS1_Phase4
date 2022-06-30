@@ -36,7 +36,7 @@ public class ConductorManager {
     /**
      * Increment the investigation points of a player
      * @param indexTrial the index of the trial
-     * @return
+     * @return the amount of investigation points the player has
      */
     public int incrementInvestigationPoints(int indexTrial){
         int investigationPoints = 0;

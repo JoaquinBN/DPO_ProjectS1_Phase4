@@ -1,5 +1,8 @@
 package BusinessLayer;
 
+import BusinessLayer.Entities.Doctor;
+import BusinessLayer.Entities.Engineer;
+import BusinessLayer.Entities.Master;
 import BusinessLayer.Entities.Player;
 import PersistenceLayer.ExecutionFileManager;
 import com.opencsv.exceptions.CsvException;
@@ -9,12 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerManager {
-    private final ArrayList<Player> players;
+    private ArrayList<Player> players;
     private final ExecutionFileManager executionFileManager;
 
     /**
      * Constructor for PlayerManager
-     * @param executionFileManager the execution file man1ager
+     * @param executionFileManager the execution file manager
      */
     public PlayerManager(ExecutionFileManager executionFileManager) {
         players = new ArrayList<>();
@@ -26,7 +29,7 @@ public class PlayerManager {
      * @param playerName the name of the player
      */
     public void addPlayer(String playerName) {
-        players.add(new Player(playerName));
+        players.add(new Engineer(playerName));
     }
 
     /**
@@ -34,8 +37,12 @@ public class PlayerManager {
      * @param playerName the name of the player
      * @param investigationPoints the amount of investigation points the player has
      */
-    public void retrievePlayer(String playerName, int investigationPoints) {
-        players.add(new Player(playerName, investigationPoints));
+    public void retrievePlayer(String playerName, int investigationPoints, String playerType) {
+        switch (playerType) {
+            case "Engineer" -> players.add(new Engineer(playerName, investigationPoints));
+            case "Master" -> players.add(new Master(playerName, investigationPoints));
+            case "Doctor" -> players.add(new Doctor(playerName, investigationPoints));
+        }
     }
 
     /**
@@ -61,6 +68,21 @@ public class PlayerManager {
         return null;
     }
 
+    public ArrayList<String> formEvolution() {
+        ArrayList<String> playersToEvolve = new ArrayList<>();
+        for(Player player : players) {
+            if(player.getInvestigationPoints() >= 10) {
+                playersToEvolve.add(player.getName());
+                if (player.getForm().equals("master")) {
+                    players.set(players.indexOf(player), new Doctor(player.getName()));
+                }else if (player.getForm().equals("engineer")) {
+                    players.set(players.indexOf(player), new Master(player.getName()));
+                }
+            }
+        }
+        return playersToEvolve;
+    }
+
     /**
      * Get the number of players in the system
      * @return the amount of players in the system
@@ -82,7 +104,7 @@ public class PlayerManager {
      * Check if any player is alive
      * @return false if any player is alive, true otherwise
      */
-    public boolean allPlayersareDead(){
+    public boolean allPlayersAreDead(){
         for(Player player: players){
             if(!player.getStatus()){
                 return false;
@@ -99,7 +121,7 @@ public class PlayerManager {
     public void loadPlayersData() throws IOException, CsvException {
         List<String[]> playersData = executionFileManager.readPlayersData().subList(1, executionFileManager.readPlayersData().size());
         for (String[] playerData : playersData) {
-            retrievePlayer(playerData[0], Integer.parseInt(playerData[1]));
+            retrievePlayer(playerData[0], Integer.parseInt(playerData[1]), playerData[2]);
         }
     }
 

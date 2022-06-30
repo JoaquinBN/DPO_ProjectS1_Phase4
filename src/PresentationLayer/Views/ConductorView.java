@@ -46,7 +46,7 @@ public class ConductorView {
     public boolean showContinueMessage(){
         String answer;
         while(true){
-            System.out.print("\n\nContinue the execution? [yes/no]: ");
+            System.out.print("Continue the execution? [yes/no]: ");
             answer = sc.nextLine();
             if(answer.equals("yes")){
                 return true;
@@ -79,5 +79,9 @@ public class ConductorView {
         if(investigationPoints == 0){
             System.out.print(" - Disqualified!");
         }
+    }
+
+    public void displayEvolution(String playerName, String playerForm) {
+        System.out.print(playerName + " is now a " + playerForm + " (with 5 PI). ");
     }
 }

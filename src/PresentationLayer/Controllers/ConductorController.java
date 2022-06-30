@@ -6,18 +6,19 @@ import PresentationLayer.Views.ConductorView;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ConductorController {
-    private final ConductorManager conductorManager;
+    private final ConductorManager  conductorManager;
     private final ConductorView conductorView;
     private final PlayerManager playerManager;
     private int startIndex;
 
     /**
      * Constructor for the ConductorController.
-     * @param conductorManager
-     * @param conductorView
-     * @param playerManager
+     * @param conductorManager the conductor manager
+     * @param conductorView the conductor view
+     * @param playerManager the player manager
      */
     public ConductorController(ConductorManager conductorManager, ConductorView conductorView, PlayerManager playerManager) {
         this.conductorManager = conductorManager;
@@ -75,8 +76,13 @@ public class ConductorController {
                     conductorView.displayPlayerCondition(playerManager.getPlayerByIndex(j).getName(), k, result, playerManager.getPlayerByIndex(j).getInvestigationPoints());
                 }
             }
+            conductorView.showMessage("\n\n");
+            ArrayList<String> namesToDisplay = playerManager.formEvolution();
+            for(String playerName : namesToDisplay){
+                conductorView.displayEvolution(playerName, playerManager.getPlayerByName(playerName).getForm());
+            }
             startIndex++;
-            if (playerManager.allPlayersareDead())
+            if (playerManager.allPlayersAreDead())
                 break;
             else if (i != conductorManager.getNumTrials() - 1 && !conductorView.showContinueMessage()) {
                 i++;
@@ -84,7 +90,7 @@ public class ConductorController {
             }
         }
 
-        if (playerManager.allPlayersareDead()) {
+        if (playerManager.allPlayersAreDead()) {
             conductorView.showMessage("\n\nTHE TRIALS " + conductorManager.getCurrentEdition().getYear() + " HAVE ENDED - PLAYERS LOST \n\n");
             try{
                 conductorManager.eraseInformationExecutionFile();

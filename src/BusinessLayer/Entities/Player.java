@@ -1,8 +1,9 @@
 package BusinessLayer.Entities;
 
-public class Player {
-    private String name;
+public abstract class Player {
+    private final String name;
     private int investigationPoints;
+    private String form;
     private boolean isDead;
 
     /**
@@ -62,14 +63,29 @@ public class Player {
         return isDead;
     }
 
+
+    public String getForm(){
+        return form;
+    }
+
     /**
-     * Get informartion from the player
+     * Get information from the player
      * @return the information of the player
      */
     public String[] getInfo(){
-        String[] info = new String[2];
+        String[] info = new String[3];
         info[0] = name;
         info[1] = Integer.toString(investigationPoints);
+        if(this instanceof Engineer)
+            info[2] = "Engineer";
+        if(this instanceof Master)
+            info[2] = "Master";
+        if(this instanceof Doctor)
+            info[2] = "Doctor";
         return info;
+    }
+
+    public void setForm(String form) {
+        this.form = form;
     }
 }
