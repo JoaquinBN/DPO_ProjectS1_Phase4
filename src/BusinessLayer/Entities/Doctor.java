@@ -4,16 +4,10 @@ public class Doctor extends Master{
 
     public Doctor(String name) {
         super(name);
-        setForm("doctor");
-        setPrintByForm(name + ", PhD");
-        setHasEvolved(true);
     }
 
     public Doctor(String name, int investigationPoints) {
         super(name, investigationPoints);
-        setForm("doctor");
-        setPrintByForm(name + ", PhD");
-        setHasEvolved(false);
     }
 
     public void addInvestigationPoints(int investigationPoints) {
@@ -22,5 +16,10 @@ public class Doctor extends Master{
         }else {
             super.addInvestigationPoints(investigationPoints);
         }
+    }
+
+    @Override
+    public String getType() {
+        return "doctor";
     }
 }

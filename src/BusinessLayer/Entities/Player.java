@@ -3,10 +3,7 @@ package BusinessLayer.Entities;
 public abstract class Player {
     private final String name;
     private int investigationPoints;
-    private String form;
-    private String printByForm;
     private boolean isDead;
-    private boolean hasEvolved;
 
     /**
      * Constructor for Player
@@ -37,6 +34,7 @@ public abstract class Player {
         return name;
     }
 
+    public abstract String getType();
     /**
      * Get the number of investigation points
      * @return the number of investigation points
@@ -66,10 +64,6 @@ public abstract class Player {
     }
 
 
-    public String getForm(){
-        return form;
-    }
-
     /**
      * Get information from the player
      * @return the information of the player
@@ -78,32 +72,16 @@ public abstract class Player {
         String[] info = new String[3];
         info[0] = name;
         info[1] = Integer.toString(investigationPoints);
-        if(this instanceof Engineer)
-            info[2] = "Engineer";
-        if(this instanceof Master)
-            info[2] = "Master";
-        if(this instanceof Doctor)
-            info[2] = "Doctor";
+        info[2] = getType();
         return info;
     }
 
-    public void setForm(String form) {
-        this.form = form;
-    }
-
-    public void setPrintByForm(String printByForm) {
-        this.printByForm = printByForm;
-    }
-
     public String getPrintByForm() {
-        return printByForm;
+        if(this instanceof Doctor)
+            return name + ", PhD";
+        if(this instanceof Master)
+            return "Master " + name;
+        return name;
     }
 
-    public void setHasEvolved(boolean hasEvolved) {
-        this.hasEvolved = hasEvolved;
-    }
-
-    public boolean getHasEvolved() {
-        return hasEvolved;
-    }
 }

@@ -41,8 +41,11 @@ public class BudgetRequest extends Trials{
         return "\n" + playerName + ".";
     }
 
-    public boolean budgetAcquired(){
-        return getDataNeeded() > Math.log(budgetAmount) / Math.log(2);
+    public String budgetAcquired(){
+        if (getDataNeeded() > Math.log(budgetAmount) / Math.log(2))
+            return "\nThe research group got the budget!";
+        else
+            return "\nThe research group did not get the budget!";
 
 
     }

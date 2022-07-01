@@ -2,6 +2,7 @@ package PresentationLayer.Controllers;
 
 import BusinessLayer.ConductorManager;
 import BusinessLayer.Entities.BudgetRequest;
+import BusinessLayer.Entities.Player;
 import BusinessLayer.PlayerManager;
 import PresentationLayer.Views.ConductorView;
 import com.opencsv.exceptions.CsvException;
@@ -39,7 +40,7 @@ public class ConductorController {
                 if(conductorManager.loadDataForCurrentEdition()){
                     conductorView.showMessage("\n---The Trials 2022---\n\n");
                     for(int i = 0; i < conductorManager.getTotalPlayer(); i++){
-                        playerManager.addPlayer(conductorView.askForPlayerName(i+1, conductorManager.getCurrentEdition().getNumberOfPlayers()));
+                        playerManager.addPlayer(conductorView.askForPlayerName(i+1, conductorManager.getNumberOfPlayers()));
                     }
                     startIndex = 0;
                     executeEdition();
@@ -64,30 +65,28 @@ public class ConductorController {
      */
     private void executeEdition() {
         int i;
+        ArrayList<Player> playersEvolved;
         for (i = 0; i < conductorManager.getNumTrials(); i++) {
-            conductorView.showMessage("\nTrial #" + (startIndex + 1) + " - " + conductorManager.getCurrentEdition().getTrials()[i] + "\n");
+            playersEvolved = new ArrayList<>();
+            conductorView.showMessage("\nTrial #" + (startIndex + 1) + " - " + conductorManager.getTypeOfTrial(i) + "\n");
 
-            if(conductorManager.getTrialByIndex(i).getTypeOfTrial().equals("Budget request")){
-                conductorManager.getTrialByIndex(i).setDataNeeded(playerManager.getSumIPs());
-                if(((BudgetRequest)conductorManager.getTrialByIndex(i)).budgetAcquired())
-                    conductorView.showMessage("\nThe research group got the budget!");
-                else
-                    conductorView.showMessage("\nThe research group did not get the budget...");
+            if(conductorManager.isBudgetRequested(i)){
+                conductorView.showMessage(conductorManager.isBudgetAcquired(i, playerManager.getSumIPs()));
             }
 
-            for (int j = 0; j < playerManager.getTotalPlayers(); j++) {
-                if (!playerManager.playerIsDead(j)) {
-                    conductorManager.getTrialByIndex(i).setDataNeeded(playerManager.getPlayerByIndex(j).getInvestigationPoints());
-                    conductorView.showMessage(conductorManager.getTrialByIndex(i).printTrialOutput(playerManager.getPlayerByIndex(j).getPrintByForm()));
-                    playerManager.getPlayerByIndex(j).addInvestigationPoints(conductorManager.incrementInvestigationPoints(i));
-                    conductorView.displayIPCount(playerManager.getPlayerByIndex(j).getInvestigationPoints());
-                    playerManager.evolveIfNecessary(playerManager.getPlayerByIndex(j), conductorManager.getTrialByIndex(i).getPassed(), conductorManager.getTrialByIndex(i).getTypeOfTrial());
+            for (Player player: playerManager.getPlayers()) {
+                if (!player.getStatus()) {
+                    conductorManager.setTrialExtraData(i, player.getInvestigationPoints());
+                    conductorView.showMessage(conductorManager.getTrialPrintOutput(i, player.getPrintByForm()));
+                    player.addInvestigationPoints(conductorManager.incrementInvestigationPoints(i));
+                    conductorView.displayIPCount(player.getInvestigationPoints());
+                    playersEvolved.add(playerManager.evolvePlayer(player, conductorManager.isPassed(i), conductorManager.getTypeOfTrial(i)));
                 }
             }
             conductorView.showMessage("\n\n");
-            ArrayList<String> namesToDisplay = playerManager.formEvolution();
-            for(String playerName : namesToDisplay){
-                conductorView.displayEvolution(playerName, playerManager.getPlayerByName(playerName).getForm());
+            for(Player player : playersEvolved){
+                if(player != null)
+                    conductorView.displayEvolution(player.getName(), player.getType());
             }
             startIndex++;
             if (playerManager.allPlayersAreDead())
@@ -98,14 +97,14 @@ public class ConductorController {
             }
         }
         if (playerManager.allPlayersAreDead()) {
-            conductorView.showMessage("\nTHE TRIALS " + conductorManager.getCurrentEdition().getYear() + " HAVE ENDED - PLAYERS LOST \n\n");
+            conductorView.showMessage("\nTHE TRIALS 2022 HAVE ENDED - PLAYERS LOST \n\n");
             try{
                 conductorManager.eraseInformationExecutionFile();
             } catch (IOException e) {
                 conductorView.showError("\nError erasing data.\n");
             }
         } else if (i == conductorManager.getNumTrials()){
-            conductorView.showMessage("\nTHE TRIALS " + conductorManager.getCurrentEdition().getYear() + " HAVE ENDED - PLAYERS WON \n\n");
+            conductorView.showMessage("\nTHE TRIALS 2022 HAVE ENDED - PLAYERS WON \n\n");
             try{
                 conductorManager.eraseInformationExecutionFile();
             } catch (IOException e) {

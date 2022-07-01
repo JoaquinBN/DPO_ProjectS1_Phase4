@@ -1,6 +1,5 @@
 try...catch within persistence or business layers
 managing prints of trials
-Joaquin
-Pau
-Albert
-Pol
+PERSISTENCE: Saving data in JSON files as Strings and not as classes
+BUSINESS: Trials print of data (budget request different data)
+conductor controller 0i

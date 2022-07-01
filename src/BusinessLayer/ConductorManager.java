@@ -1,5 +1,6 @@
 package BusinessLayer;
 
+import BusinessLayer.Entities.BudgetRequest;
 import BusinessLayer.Entities.Edition;
 import BusinessLayer.Entities.Trials;
 import PersistenceLayer.*;
@@ -40,12 +41,13 @@ public class ConductorManager {
     public Trials getTrialByIndex(int index){
         return trials[index];
     }
+
     /**
      * Get the current edition
      * @return the current edition
      */
-    public Edition getCurrentEdition(){
-        return currentEdition;
+    public int getNumberOfPlayers(){
+        return currentEdition.getNumberOfPlayers();
     }
 
     /**
@@ -64,6 +66,30 @@ public class ConductorManager {
         return currentEdition.getNumberOfPlayers();
     }
 
+    public String getTypeOfTrial(int index){
+        return trials[index].getTypeOfTrial();
+    }
+
+    public void setTrialExtraData(int index, int dataNeeded){
+        this.trials[index].setDataNeeded(dataNeeded);
+    }
+
+    public String getTrialPrintOutput(int index, String playerName){
+        return this.trials[index].printTrialOutput(playerName);
+    }
+
+    public String isBudgetAcquired(int index, int sumIPs){
+        trials[index].setDataNeeded(sumIPs);
+        return ((BudgetRequest) trials[index]).budgetAcquired();
+    }
+
+    public boolean isBudgetRequested(int index){
+        return trials[index] instanceof BudgetRequest;
+    }
+
+    public boolean isPassed(int index){
+        return trials[index].getPassed();
+    }
     /**
      * Load data for the trials
      * @throws IOException if the file is not found
@@ -98,6 +124,7 @@ public class ConductorManager {
         }
         return currentEditionExists;
     }
+
 
     /**
      * Load data for the execution

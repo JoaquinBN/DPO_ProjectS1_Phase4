@@ -17,7 +17,6 @@ public class PlayerManager {
 
     /**
      * Constructor for PlayerManager
-     * @param executionFileManager the execution file manager
      */
     public PlayerManager() {
         players = new ArrayList<>();
@@ -67,33 +66,24 @@ public class PlayerManager {
         return null;
     }
 
-    public ArrayList<String> formEvolution() {
-        ArrayList<String> playersToEvolve = new ArrayList<>();
-        for(Player player : players) {
-            if(player.getHasEvolved()){
-                player.setHasEvolved(false);
-                playersToEvolve.add(player.getName());
-            }
-        }
-        return playersToEvolve;
-    }
-
-    public void evolveIfNecessary(Player player, boolean hasPassed, String trialType){
-        if(player.getForm().equals("master") && trialType.equals("Doctoral thesis defense") && hasPassed){
-            players.set(players.indexOf(player), new Doctor(player.getName()));
-        }else if(player.getForm().equals("master") && player.getInvestigationPoints() >= 10) {
-            players.set(players.indexOf(player), new Doctor(player.getName()));
+    public Player evolvePlayer(Player player, boolean hasPassed, String trialType){
+        int indexPlayer = players.indexOf(player);
+        if(player.getType().equals("master") && trialType.equals("Doctoral thesis defense") && hasPassed){
+            players.set(indexPlayer, new Doctor(players.get(indexPlayer).getName()));
+            return players.get(indexPlayer);
+        }else if(player.getType().equals("master") && player.getInvestigationPoints() >= 10) {
+            players.set(indexPlayer, new Doctor(players.get(indexPlayer).getName()));
+            return getPlayerByName(player.getName());
         }
 
-        if(player.getForm().equals("engineer") && trialType.equals("Master studies") && hasPassed){
-            players.set(players.indexOf(player), new Master(player.getName()));
-        }else if(player.getForm().equals("engineer") && player.getInvestigationPoints() >= 10){
-            players.set(players.indexOf(player), new Master(player.getName()));
+        if(player.getType().equals("engineer") && trialType.equals("Master studies") && hasPassed){
+            players.set(indexPlayer, new Master(players.get(indexPlayer).getName()));
+            return getPlayerByName(players.get(indexPlayer).getName());
+        }else if(player.getType().equals("engineer") && player.getInvestigationPoints() >= 10){
+            players.set(indexPlayer, new Master(players.get(indexPlayer).getName()));
+            return getPlayerByName(players.get(indexPlayer).getName());
         }
-    }
-
-    public void changeForm(Player player){
-
+        return null;
     }
 
     public int getSumIPs() {
@@ -162,5 +152,9 @@ public class PlayerManager {
 
     public void setExecutionFileManager(ExecutionFileManager executionFileManager) {
         this.executionFileManager = executionFileManager;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
     }
 }

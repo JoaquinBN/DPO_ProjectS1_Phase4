@@ -75,21 +75,37 @@ public class ComposerController {
         }
     }
 
+
+    /**
+     * Starts the editions management mode of the composer view.
+     */
+    private void manageEditions(){
+        if (trialManager.getNumberOfTrials() == 0) {
+            composerView.showError("\nThere are no trials available.");
+            managementMode();
+        } else {
+            String option;
+            option = composerView.manageEditionsMenu();
+            switch (option) {
+                case "a" -> this.createEdition();
+                case "b" -> this.listEditions();
+                case "c" -> this.duplicateEdition();
+                case "d" -> this.deleteEdition();
+                case "e" -> this.managementMode();
+                default -> {
+                    composerView.showError("\nWrong option. Please try again:");
+                    manageEditions();
+                }
+            }
+        }
+    }
+
     /**
      * Get the trials attributes depending on the type.
      *
-     * @param trialType the attribute type to be used in the edition management.
      * @return the attribute type.
      */
 
-    private int getNumberOfAttributes(int trialType){
-        switch(trialType){
-            case 1 -> { return 7; }
-            case 2 -> { return 5; }
-            case 3, 4 -> { return 4;}
-            default -> { return -1; }
-        }
-    }
     private String getTrialName(){
         String attribute;
         attribute = composerView.readName("trial's name");
@@ -101,6 +117,15 @@ public class ComposerController {
             attribute = "";
         }
         return attribute;
+    }
+
+    private int getNumberOfAttributes(int trialType){
+        switch(trialType){
+            case 1 -> { return 7; }
+            case 2 -> { return 5; }
+            case 3, 4 -> { return 4;}
+            default -> { return -1; }
+        }
     }
 
     private String getPaperPublicationAttributes(int attributeType){
@@ -146,7 +171,7 @@ public class ComposerController {
             case 2 -> {
                 attribute = composerView.readName("master's name");
                 if (trialManager.checkEmptyString(attribute)) {
-                    composerView.showError("\nName of the publication cannot be empty.");
+                    composerView.showError("\nThe name of the master cannot be empty.");
                     attribute = "";
                 }
             }
@@ -227,24 +252,30 @@ public class ComposerController {
             attributes = new String[getNumberOfAttributes(trialType)];
             attributes[0] = getTrialName();
             attributes[1] = String.valueOf(trialType);
-            for (int i = 2; i < attributes.length; i++) {
-                switch (trialType) {
-                    case 1 -> {
-                        attributes[i] = getPaperPublicationAttributes(i);
-                        if (i == 5 && trialManager.checkLimitProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]))) {
-                            composerView.showError("\nThe acceptance and revision probabilities sum cannot be greater than 100.");
-                            errorInput = true;
-                        } else if (i == 6 && !trialManager.checkSumProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]) + Integer.parseInt(attributes[6]))) {
-                            composerView.showError("\nThe acceptance, revision and rejection probabilities sum cannot be greater than 100.");
-                            errorInput = true;
+            if(attributes[0].equals("")){
+                errorInput = true;
+            }
+            if(!errorInput) {
+                for (int i = 2; i < attributes.length; i++) {
+                    switch (trialType) {
+                        case 1 -> {
+                            attributes[i] = getPaperPublicationAttributes(i);
+                            if (i == 5 && trialManager.checkLimitProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]))) {
+                                composerView.showError("\nThe acceptance and revision probabilities sum cannot be greater than 100.");
+                                errorInput = true;
+                            } else if (i == 6 && !trialManager.checkSumProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]) + Integer.parseInt(attributes[6]))) {
+                                composerView.showError("\nThe acceptance, revision and rejection probabilities sum cannot be greater than 100.");
+                                errorInput = true;
+                            }
                         }
+                        case 2 -> attributes[i] = getMasterStudiesAttributes(i);
+                        case 3 -> attributes[i] = getPhDAttributes(i);
+                        case 4 -> attributes[i] = getBudgetRequestAttributes(i);
                     }
-                    case 2 -> attributes[i] = getMasterStudiesAttributes(i);
-                    case 3 -> attributes[i] = getPhDAttributes(i);
-                    case 4 -> attributes[i] = getBudgetRequestAttributes(i);
-                }
-                if (attributes[i].equals("") || attributes[i].equals("-1") || errorInput) {
-                    break;
+
+                    if (attributes[i].equals("") || attributes[i].equals("-1") || errorInput) {
+                        break;
+                    }
                 }
             }
         }
@@ -331,30 +362,6 @@ public class ComposerController {
             composerView.listTrials(i + 1, trialManager.getTrial(i).getTrialName());
         }
         composerView.showMessage("\n");
-    }
-
-    /**
-     * Starts the editions management mode of the composer view.
-     */
-    private void manageEditions(){
-        if (trialManager.getNumberOfTrials() == 0) {
-            composerView.showError("\nThere are no trials available.");
-            managementMode();
-        } else {
-            String option;
-            option = composerView.manageEditionsMenu();
-            switch (option) {
-                case "a" -> this.createEdition();
-                case "b" -> this.listEditions();
-                case "c" -> this.duplicateEdition();
-                case "d" -> this.deleteEdition();
-                case "e" -> this.managementMode();
-                default -> {
-                    composerView.showError("\nWrong option. Please try again:");
-                    manageEditions();
-                }
-            }
-        }
     }
 
     /**
