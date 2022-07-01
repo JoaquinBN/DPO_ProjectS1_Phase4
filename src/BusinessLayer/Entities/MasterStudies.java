@@ -21,6 +21,16 @@ public class MasterStudies extends Trials{
     }
 
     @Override
+    public int getRewardIP() {
+        return 3;
+    }
+
+    @Override
+    public int getPenalizationIP() {
+        return 3;
+    }
+
+    @Override
     public String getTrialInfo() {
         return  "Master: " + masterName + "\n" +
                 "ECTS: " + numberOfCredits + ", with a " + probabilityOfPassing + "% chance to pass each one\n\n";
@@ -38,13 +48,28 @@ public class MasterStudies extends Trials{
     }
 
     @Override
-    public int hasWonTrial() {
+    public String printTrialOutput(String playerName) {
+        int creditsPassed = getNumberOfCreditsPassed();
+        String output = playerName + " passed " + getNumberOfCreditsPassed() + "/" + numberOfCredits + " ECTS. ";
+        if(creditsPassed > numberOfCredits - creditsPassed){
+            output += "Congrats!";
+            setPassed(true);
+        }
+        else{
+            output += "Sorry...";
+            setPassed(false);
+        }
+        return output;
+    }
+
+    private int getNumberOfCreditsPassed() {
         int creditsPassed = 0;
         for(int i = 0; i < numberOfCredits; i++){
             if(Math.random() * 100 < probabilityOfPassing){
-                creditsPassed = i + 1;
+                creditsPassed++;
             }
         }
         return creditsPassed;
     }
+
 }

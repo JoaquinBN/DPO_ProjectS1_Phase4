@@ -5,11 +5,13 @@ public class Master extends Engineer{
     public Master(String name){
         super(name);
         setForm("master");
+        setPrintByForm("Master " + name);
     }
 
     public Master(String name, int investigationPoints) {
         super(name, investigationPoints);
         setForm("master");
+        setPrintByForm("Master " + name);
     }
 
     public void addInvestigationPoints(int investigationPoints) {

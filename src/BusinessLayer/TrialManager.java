@@ -1,7 +1,6 @@
 package BusinessLayer;
 
-import BusinessLayer.Entities.PaperSubmission;
-import BusinessLayer.Entities.Trials;
+import BusinessLayer.Entities.*;
 import PersistenceLayer.TrialsFileManager;
 import com.opencsv.exceptions.CsvException;
 
@@ -29,6 +28,9 @@ public class TrialManager {
     public void addTrial(String[] trialInfo){
         switch(trialInfo[1]) {
             case "1" -> trials.add(new PaperSubmission(trialInfo[0], trialInfo[2], trialInfo[3], Integer.parseInt(trialInfo[4]), Integer.parseInt(trialInfo[5]), Integer.parseInt(trialInfo[6])));
+            case "2" -> trials.add(new MasterStudies(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3]), Integer.parseInt(trialInfo[4])));
+            case "3" -> trials.add(new DoctoralThesis(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3])));
+            case "4" -> trials.add(new BudgetRequest(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3])));
         }
     }
 
@@ -105,7 +107,7 @@ public class TrialManager {
      * @return true if the string is empty, false otherwise
      */
     public boolean checkEmptyString(String trialType) {
-        return !trialType.equals("");
+        return trialType.equals("");
     }
 
     /**
@@ -114,7 +116,7 @@ public class TrialManager {
      * @return true if the quartile is valid, false otherwise
      */
     public boolean checkQuartile(String quartile) {
-        return quartile.equals("Q1") || quartile.equals("Q2") || quartile.equals("Q3") || quartile.equals("Q4");
+        return !quartile.equals("Q1") && !quartile.equals("Q2") && !quartile.equals("Q3") && !quartile.equals("Q4");
     }
 
     /**
@@ -123,7 +125,7 @@ public class TrialManager {
      * @return true if the probability is valid, false otherwise
      */
     public boolean checkProbability(int probability) {
-        return probability >= 0 && probability <= 100;
+        return probability < 0 || probability > 100;
     }
 
     /**
@@ -144,6 +146,17 @@ public class TrialManager {
         return limitProbabilities > 100;
     }
 
+    public boolean checkMasterECTS(String masterECTS) {
+        return !(60 <= Integer.parseInt(masterECTS) && Integer.parseInt(masterECTS) <= 120);
+    }
+
+    public boolean checkPhDDifficulty(String PhDifficulty) {
+        return !(1 <= Integer.parseInt(PhDifficulty) && Integer.parseInt(PhDifficulty) <= 10);
+    }
+
+    public boolean checkBudgetAmount(String budgetAmount) {
+        return !(1000 <= Integer.parseInt(budgetAmount) && Integer.parseInt(budgetAmount) <= 2000000000);
+    }
     /**
      * Write the trials to the file
      * @throws IOException if the file cannot be written

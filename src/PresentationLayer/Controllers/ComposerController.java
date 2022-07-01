@@ -78,10 +78,32 @@ public class ComposerController {
     /**
      * Get the trials attributes depending on the type.
      *
-     * @param attributeType the attribute type to be used in the edition management.
+     * @param trialType the attribute type to be used in the edition management.
      * @return the attribute type.
      */
-    private String getTrialAttribute(int attributeType){
+
+    private int getNumberOfAttributes(int trialType){
+        switch(trialType){
+            case 1 -> { return 7; }
+            case 2 -> { return 5; }
+            case 3, 4 -> { return 3;}
+            default -> { return -1; }
+        }
+    }
+    private String getTrialName(){
+        String attribute;
+        attribute = composerView.readName("trial's name");
+        if (!trialManager.checkUniqueName(attribute)) {
+            composerView.showError("\nTrial name already exists.");
+            attribute = "";
+        } else if (trialManager.checkEmptyString(attribute)) {
+            composerView.showError("\nTrial name cannot be empty.");
+            attribute = "";
+        }
+        return attribute;
+    }
+
+    private String getPaperPublicationAttributes(int attributeType){
         String probability, attribute;
 
         switch(attributeType){
@@ -92,40 +114,23 @@ public class ComposerController {
         }
 
         switch (attributeType) {
-            case 0 -> {
-                attribute = composerView.getTrialTypeInput();
-                if (!attribute.equals("1") && !attribute.equals("-1")) {
-                    composerView.showError("\nThe trial has to be an existing type.");
-                    attribute = "";
-                }
-            }
-            case 1 -> {
-                attribute = composerView.readTrialName();
-                if (!trialManager.checkUniqueName(attribute)) {
-                    composerView.showError("\nTrial name already exists.");
-                    attribute = "";
-                } else if (!trialManager.checkEmptyString(attribute)) {
-                    composerView.showError("\nTrial name cannot be empty.");
-                    attribute = "";
-                }
-            }
             case 2 -> {
-                attribute = composerView.readPaperName();
-                if (!trialManager.checkEmptyString(attribute)) {
+                attribute = composerView.readName("journal's name");
+                if (trialManager.checkEmptyString(attribute)) {
                     composerView.showError("\nName of the publication cannot be empty.");
                     attribute = "";
                 }
             }
             case 3 -> {
-                attribute = composerView.readQuartile();
-                if (!trialManager.checkQuartile(attribute)) {
-                    composerView.showError("\nWrong quartile.");
+                attribute = composerView.readName("journal's quartile");
+                if (trialManager.checkQuartile(attribute)) {
+                    composerView.showError("\nThe quartile must be one of the following values: Q1, Q2, Q3, Q4.");
                     attribute = "";
                 }
             }
             case 4, 5, 6 -> {
                 attribute = composerView.readProbability(probability);
-                if (!trialManager.checkProbability(Integer.parseInt(attribute)) && !attribute.equals("-1")) {
+                if (trialManager.checkProbability(Integer.parseInt(attribute)) && !attribute.equals("-1")) {
                     composerView.showError("\nThe " + probability + " probability must be between 0 and 100.");
                     attribute = "";
                 }
@@ -135,29 +140,115 @@ public class ComposerController {
         return attribute;
     }
 
+    private String getMasterStudiesAttributes(int attributeType){
+        String attribute = "";
+        switch (attributeType) {
+            case 2 -> {
+                attribute = composerView.readName("master's name");
+                if (trialManager.checkEmptyString(attribute)) {
+                    composerView.showError("\nName of the publication cannot be empty.");
+                    attribute = "";
+                }
+            }
+            case 3 -> {
+                attribute = String.valueOf(composerView.readIntegerValue("master's ECTS number"));
+                if (trialManager.checkMasterECTS(attribute)) {
+                    composerView.showError("\nThe master's ECTS must be an integer between 60 and 120.");
+                    attribute = "";
+                }
+            }
+            case 4 -> {
+                attribute = composerView.readProbability("credit pass");
+                if (trialManager.checkProbability(Integer.parseInt(attribute)) && !attribute.equals("-1")) {
+                    composerView.showError("\nThe credit pass probability must be between 0 and 100.");
+                    attribute = "";
+                }
+            }
+        }
+        return attribute;
+    }
+
+    private String getPhDAttributes(int attributeType){
+        String attribute = "";
+        switch (attributeType) {
+            case 2 -> {
+                attribute = composerView.readName("thesis field of study");
+                if (trialManager.checkEmptyString(attribute)) {
+                    composerView.showError("\nThe thesis field of study cannot be empty.");
+                    attribute = "";
+                }
+            }
+            case 3 -> {
+                attribute = String.valueOf(composerView.readIntegerValue("defense difficulty"));
+                if (trialManager.checkPhDDifficulty(attribute)) {
+                    composerView.showError("\nThe defense difficulty must be an integer between 1 and 10.");
+                    attribute = "";
+                }
+            }
+        }
+        return attribute;
+    }
+
+    private String getBudgetRequestAttributes(int attributeType){
+        String attribute = "";
+        switch (attributeType) {
+            case 2 -> {
+                attribute = composerView.readName("entity's name");
+                if (trialManager.checkEmptyString(attribute)) {
+                    composerView.showError("\nThe entity's name cannot be empty.");
+                    attribute = "";
+                }
+            }
+            case 3 -> {
+                attribute = String.valueOf(composerView.readIntegerValue("budget amount"));
+                if (trialManager.checkPhDDifficulty(attribute)) {
+                    composerView.showError("\nThe budget amount must be an integer between 1000 and 2000000000.");
+                    attribute = "";
+                }
+            }
+        }
+        return attribute;
+    }
+
     /**
      * Creates a trial.
      */
-    private void createTrial(){
-        String[] attributes = new String[7];
+    private void createTrial() {
+        String[] attributes;
         boolean errorInput = false;
-        int i;
+        int trialType;
         composerView.showTrialTypes();
-        i = 0;
-        while(!errorInput && i < 7) {
-            attributes[i] = getTrialAttribute(i);
-            if (attributes[i].equals("") || attributes[i].equals("-1"))
-                errorInput = true;
-            else if (i == 5 && trialManager.checkLimitProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]))){
-                composerView.showError("\nThe acceptance and revision probabilities sum cannot be greater than 100.");
-                errorInput = true;
-            }else if(i == 6 && !trialManager.checkSumProbabilities(Integer.parseInt(attributes[4])  + Integer.parseInt(attributes[5])  + Integer.parseInt(attributes[6]))) {
-                composerView.showError("\nThe acceptance, revision and rejection probabilities sum cannot be greater than 100.");
-                errorInput = true;
-            }
-            i++;
+        trialType = composerView.getTrialTypeInput();
+        if (trialType < 1 || trialType > 4) {
+            composerView.showError("\nThe index entered must be between 1 and 4.");
+            errorInput = true;
         }
+        attributes = new String[getNumberOfAttributes(trialType)];
         if(!errorInput) {
+            attributes[0] = getTrialName();
+            attributes[1] = String.valueOf(trialType);
+            for (int i = 2; i < attributes.length; i++) {
+                switch (trialType) {
+                    case 1 -> {
+                        attributes[i] = getPaperPublicationAttributes(i);
+                        if (i == 5 && trialManager.checkLimitProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]))) {
+                            composerView.showError("\nThe acceptance and revision probabilities sum cannot be greater than 100.");
+                            errorInput = true;
+                        } else if (i == 6 && !trialManager.checkSumProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]) + Integer.parseInt(attributes[6]))) {
+                            composerView.showError("\nThe acceptance, revision and rejection probabilities sum cannot be greater than 100.");
+                            errorInput = true;
+                        }
+                    }
+                    case 2 -> attributes[i] = getMasterStudiesAttributes(i);
+                    case 3 -> attributes[i] = getPhDAttributes(i);
+                    case 4 -> attributes[i] = getBudgetRequestAttributes(i);
+                }
+                if (attributes[i].equals("") || attributes[i].equals("-1") || errorInput) {
+                    break;
+                }
+            }
+        }
+        if (!errorInput) {
             Collections.swap(Arrays.asList(attributes), 0, 1);
             trialManager.addTrial(attributes);
             composerView.createSuccess("Trial");
@@ -274,7 +365,7 @@ public class ComposerController {
         int year, numberOfPlayers = -1, numberOfTrials = 1;
         boolean errorDisplay = false;
 
-        year = composerView.readEditionYear();
+        year = composerView.readIntegerValue("edition's year");
         if (editionManager.checkUniqueYear(year)){
             composerView.showError("\nThis edition already exists.");
             errorDisplay = true;
@@ -284,7 +375,7 @@ public class ComposerController {
         }
 
         if(!errorDisplay) {
-            numberOfPlayers = composerView.readEditionPlayer();
+            numberOfPlayers = composerView.readIntegerValue("initial number of players");
             if(editionManager.checkPlayersRange(numberOfPlayers)){
                 composerView.showError("\nThe number of players must be between 1 and 5.");
                 errorDisplay = true;
@@ -292,7 +383,7 @@ public class ComposerController {
         }
 
         if (!errorDisplay) {
-            numberOfTrials = composerView.readEditionTrials();
+            numberOfTrials = composerView.readIntegerValue("number of trials");
             if(!editionManager.checkTrialsRange(numberOfTrials)){
                 composerView.showError("\nThe number of trials must be between 3 and 12.");
                 errorDisplay = true;
@@ -364,7 +455,7 @@ public class ComposerController {
             }
             if(editionIndex != editionManager.getNumberOfEditions() && !errorDisplay) {
                 composerView.showMessage("\n");
-                year = composerView.readNewEditionYear();
+                year = composerView.readIntegerValue("new edition's year");
                 if (editionManager.checkUniqueYear(year)){
                     composerView.showError("\nThis edition already exists.");
                     errorDisplay = true;
@@ -374,7 +465,7 @@ public class ComposerController {
                 }
 
                 if(!errorDisplay) {
-                    numberOfPlayers = composerView.readNewEditionPlayer();
+                    numberOfPlayers = composerView.readIntegerValue("new edition's initial number of players");
                     if(editionManager.checkPlayersRange(numberOfPlayers)){
                         composerView.showError("\nThe number of players must be between 1 and 5.");
                         errorDisplay = true;

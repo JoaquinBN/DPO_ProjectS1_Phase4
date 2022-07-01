@@ -83,6 +83,10 @@ public class PlayerManager {
         return playersToEvolve;
     }
 
+    public void changeForm(Player player){
+
+    }
+
     /**
      * Get the number of players in the system
      * @return the amount of players in the system

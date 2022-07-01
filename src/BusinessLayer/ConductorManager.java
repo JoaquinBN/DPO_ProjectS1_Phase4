@@ -39,15 +39,15 @@ public class ConductorManager {
      * @return the amount of investigation points the player has
      */
     public int incrementInvestigationPoints(int indexTrial){
-        int investigationPoints = 0;
-        switch(trials[indexTrial].hasWonTrial()) {
-            case 0 -> investigationPoints = trials[indexTrial].getPenalizationIP();
-            case 1 -> investigationPoints =  trials[indexTrial].getRewardIP();
-            case 2 -> investigationPoints = -1;
-        }
-        return investigationPoints;
+        if(trials[indexTrial].getPassed())
+            return trials[indexTrial].getPenalizationIP();
+        else
+            return trials[indexTrial].getRewardIP();
     }
 
+    public Trials getTrialByIndex(int index){
+        return trials[index];
+    }
     /**
      * Get the current edition
      * @return the current edition

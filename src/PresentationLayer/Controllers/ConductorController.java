@@ -62,18 +62,13 @@ public class ConductorController {
      * Executes the current edition.
      */
     private void executeEdition() {
-        int i, k, result;
+        int i;
         for (i = 0; i < conductorManager.getNumTrials(); i++) {
             conductorView.showMessage("\nTrial #" + (startIndex + 1) + " - " + conductorManager.getCurrentEdition().getTrials()[i] + "\n");
             for (int j = 0; j < playerManager.getTotalPlayers(); j++) {
                 if (!playerManager.playerIsDead(j)) {
-                    k = -1;
-                    do {
-                        result = conductorManager.incrementInvestigationPoints(i);
-                        k++;
-                    } while (result == -1);
-                    playerManager.getPlayerByIndex(j).addInvestigationPoints(result);
-                    conductorView.displayPlayerCondition(playerManager.getPlayerByIndex(j).getName(), k, result, playerManager.getPlayerByIndex(j).getInvestigationPoints());
+                    conductorView.showMessage(conductorManager.getTrialByIndex(i).printTrialOutput(playerManager.getPlayerByIndex(j).getName()));
+                    playerManager.getPlayerByIndex(j).addInvestigationPoints(i);
                 }
             }
             conductorView.showMessage("\n\n");
@@ -89,7 +84,6 @@ public class ConductorController {
                 break;
             }
         }
-
         if (playerManager.allPlayersAreDead()) {
             conductorView.showMessage("\n\nTHE TRIALS " + conductorManager.getCurrentEdition().getYear() + " HAVE ENDED - PLAYERS LOST \n\n");
             try{

@@ -1,0 +1,2 @@
+try...catch within persistence or business layers
+managing prints of trials

@@ -42,26 +42,8 @@ public class ComposerView {
      * Reads the name of the trial to be created.
      * @return The name of the trial.
      */
-    public String readTrialName() {
-        System.out.print("\nEnter the trial's name: ");
-        return sc.nextLine();
-    }
-
-    /**
-     * Reads the name of the paper to be created.
-     * @return The name of the paper.
-     */
-    public String readPaperName() {
-        System.out.print("Enter the journal's name: ");
-        return sc.nextLine();
-    }
-
-    /**
-     * Reads the name of the quartile to be created.
-     * @return The name of the quartile.
-     */
-    public String readQuartile() {
-        System.out.print("Enter the journal's quartile: ");
+    public String readName(String message) {
+        System.out.print("\nEnter the " + message + ": ");
         return sc.nextLine();
     }
 
@@ -115,24 +97,8 @@ public class ComposerView {
      * Reads the edition yar to be created.
      * @return The year of the edition.
      */
-    public int readEditionYear() {
-        return checkForExceptions("\nEnter the edition's year: ", "\nThe edition's year must be a number.\n");
-    }
-
-    /**
-     * Reads the edition number of players to be in the edition.
-     * @return The number of players in the edition.
-     */
-    public int readEditionPlayer() {
-        return checkForExceptions("Enter the initial number of players: ", "\nThe number of players must be an integer.\n");
-    }
-
-    /**
-     * Reads the edition number of trials to be in the edition.
-     * @return The number of trials in the edition.
-     */
-    public int readEditionTrials() {
-        return checkForExceptions("Enter the number of trials: ", "\nThe number of trials must be an integer.\n");
+    public int readIntegerValue(String dataType) {
+        return checkForExceptions("\nEnter the " + dataType + ":", "\nThe " + dataType + " must be an integer.\n");
     }
 
     /**
@@ -172,13 +138,6 @@ public class ComposerView {
         return -1;
     }
 
-    /**
-     * Displays message if edition or trial is created successfully.
-     * @param type edition or trial.
-     */
-    public void createSuccess(String type) {
-        System.out.println("\nThe " + type + " was created successfully!");
-    }
 
     /**
      * Displays edition info.
@@ -202,19 +161,11 @@ public class ComposerView {
     }
 
     /**
-     * Read the year of the new edition crated when duplicating.
-     * @return The year of the new edition.
+     * Displays message if edition or trial is created successfully.
+     * @param type edition or trial.
      */
-    public int readNewEditionYear() {
-        return checkForExceptions("Enter the new edition's year: ", "\nThe edition's year must be an integer.\n");
-    }
-
-    /**
-     * Read the number of players of the new edition crated when duplicating.
-     * @return The number of players of the new edition.
-     */
-    public int readNewEditionPlayer() {
-        return checkForExceptions("Enter the new edition's initial number of players: ", "\nThe number of players must be an integer.\n");
+    public void createSuccess(String type) {
+        System.out.println("\nThe " + type + " was created successfully!");
     }
 
     /**
@@ -268,8 +219,8 @@ public class ComposerView {
      * Get trial type.
      * @return The type of the trial.
      */
-    public String getTrialTypeInput() {
-        return String.valueOf(checkForExceptions("Enter the trial's type: ", "\nThe trial's type must be an integer. Please try again:\n"));
+    public int getTrialTypeInput() {
+        return checkForExceptions("Enter the trial's type: ", "\nThe trial's type must be an integer. Please try again:\n");
     }
 
     /**
@@ -278,6 +229,7 @@ public class ComposerView {
     public void showTrialTypes() {
         System.out.println("\n\t--- Trial types ---");
         System.out.println("\n\t1) Paper publication\n");
+        System.out.println("\n\t2) Master studies\n");
     }
 
     /**

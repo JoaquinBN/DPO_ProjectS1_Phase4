@@ -4,6 +4,7 @@ public abstract class Player {
     private final String name;
     private int investigationPoints;
     private String form;
+    private String printByForm;
     private boolean isDead;
 
     /**
@@ -87,5 +88,13 @@ public abstract class Player {
 
     public void setForm(String form) {
         this.form = form;
+    }
+
+    public void setPrintByForm(String printByForm) {
+        this.printByForm = printByForm;
+    }
+
+    public String getPrintByForm() {
+        return printByForm;
     }
 }

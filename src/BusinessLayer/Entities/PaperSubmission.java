@@ -22,8 +22,6 @@ public class PaperSubmission extends Trials {
         super(trialName, "Paper publication");
         this.publicationName = paperName;
         this.quartile = quartile;
-        this.setRewardIP(calculateRewardIP());
-        this.setPenalizationIP(calculatePenalizationIP());
         this.acceptProbability = acceptProbability;
         this.revisionProbability = revisionProbability;
         this.rejectProbability = rejectProbability;
@@ -73,7 +71,8 @@ public class PaperSubmission extends Trials {
      * Calculate the reward IP
      * @return the reward IP
      */
-    private int calculateRewardIP() {
+    @Override
+    public int getRewardIP() {
         return switch (quartile) {
             case "Q1" -> 4;
             case "Q2" -> 3;
@@ -88,7 +87,8 @@ public class PaperSubmission extends Trials {
      * Calculate the penalization IP
      * @return the penalization IP
      */
-    private int calculatePenalizationIP() {
+    @Override
+    public int getPenalizationIP() {
         return switch (quartile) {
             case "Q1" -> -5;
             case "Q2" -> -4;
@@ -126,11 +126,10 @@ public class PaperSubmission extends Trials {
     }
 
     /**
-     * Check if the trial is finished
-     * @return true if the trial is finished, false otherwise
+     * Calculate if the trial has been won
+     * @return 2 if the trial is in revision, 1 if the trial has been accepted, 0 if the trial has been rejected
      */
-    @Override
-    public int hasWonTrial() {
+    private int checkIfPassed() {
         Random random = new Random();
         int randomNumber = random.nextInt(100);
         if (randomNumber <= acceptProbability) {
@@ -140,5 +139,23 @@ public class PaperSubmission extends Trials {
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public String printTrialOutput(String playerName) {
+        int result = checkIfPassed();
+        String output = ("\n\t" + playerName + " is submitting... ");
+        while(result == 2) {
+            output += "Revisions... ";
+            result = checkIfPassed();
+        }
+        if(result == 0){
+            output += "Rejected.";
+            setPassed(false);
+        }else{
+            output += "Accepted!";
+            setPassed(true);
+        }
+        return output;
     }
 }
