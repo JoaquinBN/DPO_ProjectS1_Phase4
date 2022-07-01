@@ -172,8 +172,10 @@ public class TrialManager {
      */
     public void readTrials() throws IOException, CsvException {
         List<String[]> allTrials = trialsFileManager.readTrials();
-        for(String[] trial : allTrials){
-            addTrial(trial);
+        if (allTrials != null) {
+            for (String[] trial : allTrials) {
+                addTrial(trial);
+            }
         }
     }
 

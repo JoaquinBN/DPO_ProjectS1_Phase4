@@ -11,19 +11,8 @@ import java.util.List;
 
 public class ExecutionCSVManager implements ExecutionFileManager {
     private static final String filename = "files/Execution.csv";
-    private CSVWriter writer;
-    private CSVReader reader;
     
-    public ExecutionCSVManager() {
-        try{
-            this.reader = new CSVReader(new FileReader(filename));
-            this.writer = new CSVWriter(new FileWriter(filename, false),
-                    CSVWriter.DEFAULT_SEPARATOR,
-                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
-        } catch (IOException e) {
-            // handle exception
-        }
-    }
+    public ExecutionCSVManager() {}
 
     /**
      * Write players data to the csv file.
@@ -32,6 +21,9 @@ public class ExecutionCSVManager implements ExecutionFileManager {
     @Override
     public void writePlayersData(List<String[]> playersData){
         try {
+            CSVWriter writer= new CSVWriter(new FileWriter(filename, false),
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
             for (String[] player : playersData) {
                 writer.writeNext(player);
             }
@@ -48,6 +40,9 @@ public class ExecutionCSVManager implements ExecutionFileManager {
     @Override
     public void writeTrials(String[] allTrials){
         try {
+            CSVWriter writer= new CSVWriter(new FileWriter(filename, false),
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
             writer.writeNext(allTrials);
             writer.close();
         } catch (IOException e) {
@@ -62,6 +57,7 @@ public class ExecutionCSVManager implements ExecutionFileManager {
     @Override
     public List<String[]> readPlayersData(){
         try {
+            CSVReader reader = new CSVReader(new FileReader(filename));
             List<String[]> playersData = reader.readAll();
             reader.close();
             return playersData;
@@ -78,6 +74,7 @@ public class ExecutionCSVManager implements ExecutionFileManager {
     @Override
     public String[] readTrials(){
         try {
+            CSVReader reader = new CSVReader(new FileReader(filename));
             String[] allTrials = reader.readNext();
             reader.close();
             return allTrials;
@@ -94,6 +91,7 @@ public class ExecutionCSVManager implements ExecutionFileManager {
     @Override
     public boolean fileIsEmpty(){
         try {
+            CSVReader reader = new CSVReader(new FileReader(filename));
             String[] allTrials = reader.readNext();
             return allTrials == null;
         } catch (IOException | CsvException e) {
@@ -108,6 +106,10 @@ public class ExecutionCSVManager implements ExecutionFileManager {
     @Override
     public void deleteFile(){
         try {
+            CSVWriter writer = new CSVWriter(new FileWriter(filename, false),
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
+            CSVReader reader = new CSVReader(new FileReader(filename));
             writer.close();
         } catch (IOException e) {
             //handle exception
