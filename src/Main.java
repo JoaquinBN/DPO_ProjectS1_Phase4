@@ -2,9 +2,9 @@ import BusinessLayer.ConductorManager;
 import BusinessLayer.EditionManager;
 import BusinessLayer.PlayerManager;
 import BusinessLayer.TrialManager;
-import PersistenceLayer.EditionFileManager;
-import PersistenceLayer.ExecutionFileManager;
-import PersistenceLayer.TrialsFileManager;
+import PersistenceLayer.EditionCSVManager;
+import PersistenceLayer.ExecutionCSVManager;
+import PersistenceLayer.TrialsCSVManager;
 import PresentationLayer.Controllers.ComposerController;
 import PresentationLayer.Controllers.ConductorController;
 import PresentationLayer.Controllers.MainMenuController;
@@ -18,9 +18,9 @@ public class Main {
      * @param args command line arguments
      */
     public static void main(String[] args) {
-        ExecutionFileManager executionFileManager = new ExecutionFileManager();
-        EditionFileManager editionFileManager = new EditionFileManager();
-        TrialsFileManager trialsFileManager = new TrialsFileManager();
+        ExecutionCSVManager executionFileManager = new ExecutionCSVManager();
+        EditionCSVManager editionFileManager = new EditionCSVManager();
+        TrialsCSVManager trialsFileManager = new TrialsCSVManager();
         PlayerManager playerManager = new PlayerManager(executionFileManager);
         TrialManager trialManager = new TrialManager(trialsFileManager);
         EditionManager editionManager = new EditionManager(editionFileManager, executionFileManager);

@@ -1,8 +1,8 @@
 package BusinessLayer;
 
 import BusinessLayer.Entities.Edition;
-import PersistenceLayer.EditionFileManager;
-import PersistenceLayer.ExecutionFileManager;
+import PersistenceLayer.EditionCSVManager;
+import PersistenceLayer.ExecutionCSVManager;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
@@ -12,15 +12,15 @@ import java.util.List;
 
 public class EditionManager {
     private final ArrayList<Edition> editions;
-    private final EditionFileManager editionFileManager;
-    private final ExecutionFileManager executionFileManager;
+    private final EditionCSVManager editionFileManager;
+    private final ExecutionCSVManager executionFileManager;
 
     /**
      * Constructor for EditionManager
      * @param editionFileManager the edition file manager
      * @param executionFileManager the execution file manager
      */
-    public EditionManager(EditionFileManager editionFileManager, ExecutionFileManager executionFileManager) {
+    public EditionManager(EditionCSVManager editionFileManager, ExecutionCSVManager executionFileManager) {
         editions = new ArrayList<>();
         this.editionFileManager = editionFileManager;
         this.executionFileManager = executionFileManager;

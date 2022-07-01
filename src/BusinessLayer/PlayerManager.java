@@ -4,7 +4,7 @@ import BusinessLayer.Entities.Doctor;
 import BusinessLayer.Entities.Engineer;
 import BusinessLayer.Entities.Master;
 import BusinessLayer.Entities.Player;
-import PersistenceLayer.ExecutionFileManager;
+import PersistenceLayer.ExecutionCSVManager;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
@@ -13,13 +13,13 @@ import java.util.List;
 
 public class PlayerManager {
     private ArrayList<Player> players;
-    private final ExecutionFileManager executionFileManager;
+    private final ExecutionCSVManager executionFileManager;
 
     /**
      * Constructor for PlayerManager
      * @param executionFileManager the execution file manager
      */
-    public PlayerManager(ExecutionFileManager executionFileManager) {
+    public PlayerManager(ExecutionCSVManager executionFileManager) {
         players = new ArrayList<>();
         this.executionFileManager = executionFileManager;
     }

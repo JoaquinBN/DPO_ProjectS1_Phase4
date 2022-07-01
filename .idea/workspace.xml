@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="008d7068-8fd0-4a5a-91f1-c0138b574c8a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Doctor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Engineer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Master.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PersistenceLayer/EditionCSVManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PersistenceLayer/EditionJSONManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PersistenceLayer/EditionManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionCSVManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionJSONManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PersistenceLayer/TrialsJSONManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PersistenceLayer/TrialsManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/Trials.csv" beforeDir="false" afterPath="$PROJECT_DIR$/files/Trials.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DPO_ProjectS1_Phase4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DPO_ProjectS1_Phase4.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ConductorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ConductorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Views/ConductorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Views/ConductorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/TrialManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/TrialManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/EditionFileManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionFileManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/TrialsFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/TrialsCSVManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +32,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -40,16 +52,24 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2BJ2QA96ToDeRB0CBBRPhndktVs" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="PersistenceLayer" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -90,6 +110,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
