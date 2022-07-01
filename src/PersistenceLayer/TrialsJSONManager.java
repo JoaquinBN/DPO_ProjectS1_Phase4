@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TrialsJSONManager implements TrialsManager {
 
-    private static final String filename = "files/Execution.json";
+    private static final String filename = "files/Trials.json";
     private final Gson gson;
     private final List<Trials> trials;
 

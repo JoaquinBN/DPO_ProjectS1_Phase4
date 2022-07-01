@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditionJSONManager implements EditionManager {
-    private static final String filename = "files/Execution.json";
+    private static final String filename = "files/Editions.json";
     private final Gson gson;
     private final List<Edition> editions;
 
     public EditionJSONManager(Gson gson, List<Edition> editions) throws FileNotFoundException {
         this.editions = gson.fromJson(gson.newJsonReader(new FileReader(filename)), List.class);
-        this.gson = new GsonBuilder().setPrettyPrinting().create();;
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
 
