@@ -5,6 +5,21 @@ import java.util.Scanner;
 public class MainMenuView {
 
     /**
+     * Displays menu for user to choose file format
+     * @return String representing user choice
+     */
+    public String selectFormatDisplay() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("""
+                The IEEE needs to know where your allegiance lies.
+                
+                    I)  People’s Front of Engineering (CSV)
+                    II) Engineering People’s Front (JSON)
+                """);
+        System.out.print("Pick a faction:  ");
+        return scanner.next();
+    }
+    /**
      * Display main menu
      * @return The menu choice.
      */
@@ -35,5 +50,13 @@ public class MainMenuView {
      */
     public void showError(String error) {
         System.out.println(error);
+    }
+
+    /**
+     * Display message.
+     * @param message The message.
+     */
+    public void showMessage(String message) {
+        System.out.println(message);
     }
 }

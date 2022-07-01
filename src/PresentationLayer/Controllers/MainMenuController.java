@@ -19,6 +19,23 @@ public class MainMenuController {
         this.conductorController = conductorController;
     }
 
+    public void selectFormatDisplay() {
+        String format = mainMenuView.selectFormatDisplay();
+        switch (format) {
+            case "I" -> {
+                mainMenuView.showMessage("\nLoading data from CSV files...\n");
+                mainMenuDisplay();
+            }
+            case "II" -> {
+                mainMenuView.showMessage("\nLoading data from JSON files...\n");
+                mainMenuDisplay();
+            }
+            default -> {
+                mainMenuView.showError("\nInvalid selection. Please choose again.\n");
+                selectFormatDisplay();
+            }
+        }
+    }
     /**
      * Starts the main menu.
      */
