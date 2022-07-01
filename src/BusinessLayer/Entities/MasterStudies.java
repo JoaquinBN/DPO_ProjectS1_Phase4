@@ -27,7 +27,7 @@ public class MasterStudies extends Trials{
 
     @Override
     public int getPenalizationIP() {
-        return 3;
+        return -3;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class MasterStudies extends Trials{
     @Override
     public String printTrialOutput(String playerName) {
         int creditsPassed = getNumberOfCreditsPassed();
-        String output = playerName + " passed " + getNumberOfCreditsPassed() + "/" + numberOfCredits + " ECTS. ";
+        String output = "\n" + playerName + " passed " + getNumberOfCreditsPassed() + "/" + numberOfCredits + " ECTS. ";
         if(creditsPassed > numberOfCredits - creditsPassed){
             output += "Congrats!";
             setPassed(true);

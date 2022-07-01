@@ -17,7 +17,7 @@ public class DoctoralThesis extends Trials{
 
     @Override
     public int getPenalizationIP() {
-        return 5;
+        return -5;
     }
 
     @Override
@@ -38,24 +38,23 @@ public class DoctoralThesis extends Trials{
 
     @Override
     public String printTrialOutput(String playerName) {
-        int investigationPoints = 5;
-        String output = playerName + " was successful ";
-        if(isPassed(investigationPoints)){
-            output += "Congrats!";
+        String output;
+        if(isPassed()){
+            output = "\n" + playerName + " was successful. Congrats!";
             setPassed(true);
         }
         else{
-            output += "Sorry...";
+            output = "\n" + playerName + " failed. Sorry...";
             setPassed(false);
         }
         return output;
     }
 
-    private boolean isPassed(int investigationPoints){
+    private boolean isPassed(){
         int valueToPass = 0;
         for(int i = 1; i <= defenseDifficulty; i++){
             valueToPass += 2*i - 1;
         }
-        return investigationPoints > (Math.sqrt(valueToPass));
+        return getDataNeeded() > (Math.sqrt(valueToPass));
     }
 }

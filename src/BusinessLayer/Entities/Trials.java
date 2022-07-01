@@ -4,6 +4,7 @@ public abstract class Trials{
     private final String trialName;
     private final String typeOfTrial;
     private boolean passed;
+    private int dataNeeded;
 
     /**
      * Constructor for Trials
@@ -12,6 +13,7 @@ public abstract class Trials{
     public Trials(String trialName, String typeOfTrial) {
         this.trialName = trialName;
         this.typeOfTrial = typeOfTrial;
+        this.dataNeeded = 0;
     }
 
     /**
@@ -70,11 +72,13 @@ public abstract class Trials{
         return passed;
     }
 
-    /**
-     * Calculate if the trial has been won
-     * @return true if the trial has been won, false otherwise
-     */
+    public int getDataNeeded() {
+        return dataNeeded;
+    }
 
+    public void setDataNeeded(int dataNeeded) {
+        this.dataNeeded = dataNeeded;
+    }
 
     public abstract String printTrialOutput(String playerName);
 

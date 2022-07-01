@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrialsJSONManager implements TrialsManager {
+public class TrialsJSONManager implements TrialsFileManager {
 
     private static final String filename = "files/Trials.json";
     private final Gson gson;

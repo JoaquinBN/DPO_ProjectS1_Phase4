@@ -2,9 +2,7 @@ package BusinessLayer;
 
 import BusinessLayer.Entities.Edition;
 import BusinessLayer.Entities.Trials;
-import PersistenceLayer.EditionCSVManager;
-import PersistenceLayer.ExecutionCSVManager;
-import PersistenceLayer.TrialsCSVManager;
+import PersistenceLayer.*;
 import com.opencsv.exceptions.CsvException;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -15,22 +13,16 @@ public class ConductorManager {
     private Edition currentEdition;
     private Trials[] trials;
     private final TrialManager trialManager;
-    private final EditionCSVManager editionFileManager;
-    private final TrialsCSVManager trialsFileManager;
-    private final ExecutionCSVManager executionFileManager;
+    private EditionsFileManager editionFileManager;
+    private TrialsFileManager trialsFileManager;
+    private ExecutionFileManager executionFileManager;
 
     /**
      * Constructor for ConductorManager
      * @param trialManager the trial manager
-     * @param editionFileManager the edition file manager
-     * @param trialsFileManager the trials file manager
-     * @param executionFileManager the execution file manager
      */
-    public ConductorManager(TrialManager trialManager, EditionCSVManager editionFileManager, TrialsCSVManager trialsFileManager, ExecutionCSVManager executionFileManager) {
+    public ConductorManager(TrialManager trialManager) {
         this.trialManager = trialManager;
-        this.editionFileManager = editionFileManager;
-        this.trialsFileManager = trialsFileManager;
-        this.executionFileManager = executionFileManager;
     }
 
     /**
@@ -40,9 +32,9 @@ public class ConductorManager {
      */
     public int incrementInvestigationPoints(int indexTrial){
         if(trials[indexTrial].getPassed())
-            return trials[indexTrial].getPenalizationIP();
-        else
             return trials[indexTrial].getRewardIP();
+        else
+            return trials[indexTrial].getPenalizationIP();
     }
 
     public Trials getTrialByIndex(int index){
@@ -78,11 +70,8 @@ public class ConductorManager {
      * @throws CsvException if the file is not valid
      */
     public void loadDataForTrials() throws IOException, CsvException {
-        List<String[]> allTrials = trialsFileManager. readTrials();
+        List<String[]> allTrials = trialsFileManager.readTrials();
         for(String[] trial : allTrials){
-            switch(trial[1]){
-                case "Paper publication" -> trial[1] = "1";
-            }
             trialManager.addTrial(trial);
         }
     }
@@ -168,5 +157,11 @@ public class ConductorManager {
      */
     public void eraseInformationExecutionFile() throws IOException {
         executionFileManager.deleteFile();
+    }
+
+    public void setFileManagers(EditionsFileManager editionFileManager, TrialsFileManager trialsFileManager, ExecutionFileManager executionFileManager) {
+        this.editionFileManager = editionFileManager;
+        this.trialsFileManager = trialsFileManager;
+        this.executionFileManager = executionFileManager;
     }
 }

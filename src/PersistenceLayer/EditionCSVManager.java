@@ -10,16 +10,21 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class EditionCSVManager implements EditionManager {
+public class EditionCSVManager implements EditionsFileManager {
     private static final String filename = "files/Editions.csv";
-    private final CSVWriter writer;
-    private final CSVReader reader;
+    private CSVWriter writer;
+    private CSVReader reader;
 
-    public EditionCSVManager() throws IOException {
-        this.reader = new CSVReader(new FileReader(filename));
-        this.writer = new CSVWriter(new FileWriter(filename, false),
-                CSVWriter.DEFAULT_SEPARATOR,
-                CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");;
+    public EditionCSVManager(){
+        try {
+            this.reader = new CSVReader(new FileReader(filename));
+            this.writer = new CSVWriter(new FileWriter(filename, true),
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
+        } catch (IOException e) {
+            // handle exception
+        }
+        ;
     }
 
     /**

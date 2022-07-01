@@ -4,7 +4,7 @@ import BusinessLayer.Entities.Doctor;
 import BusinessLayer.Entities.Engineer;
 import BusinessLayer.Entities.Master;
 import BusinessLayer.Entities.Player;
-import PersistenceLayer.ExecutionCSVManager;
+import PersistenceLayer.ExecutionFileManager;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
@@ -13,15 +13,14 @@ import java.util.List;
 
 public class PlayerManager {
     private ArrayList<Player> players;
-    private final ExecutionCSVManager executionFileManager;
+    private ExecutionFileManager executionFileManager;
 
     /**
      * Constructor for PlayerManager
      * @param executionFileManager the execution file manager
      */
-    public PlayerManager(ExecutionCSVManager executionFileManager) {
+    public PlayerManager() {
         players = new ArrayList<>();
-        this.executionFileManager = executionFileManager;
     }
 
     /**
@@ -71,20 +70,38 @@ public class PlayerManager {
     public ArrayList<String> formEvolution() {
         ArrayList<String> playersToEvolve = new ArrayList<>();
         for(Player player : players) {
-            if(player.getInvestigationPoints() >= 10) {
+            if(player.getHasEvolved()){
+                player.setHasEvolved(false);
                 playersToEvolve.add(player.getName());
-                if (player.getForm().equals("master")) {
-                    players.set(players.indexOf(player), new Doctor(player.getName()));
-                }else if (player.getForm().equals("engineer")) {
-                    players.set(players.indexOf(player), new Master(player.getName()));
-                }
             }
         }
         return playersToEvolve;
     }
 
+    public void evolveIfNecessary(Player player, boolean hasPassed, String trialType){
+        if(player.getForm().equals("master") && trialType.equals("Doctoral thesis defense") && hasPassed){
+            players.set(players.indexOf(player), new Doctor(player.getName()));
+        }else if(player.getForm().equals("master") && player.getInvestigationPoints() >= 10) {
+            players.set(players.indexOf(player), new Doctor(player.getName()));
+        }
+
+        if(player.getForm().equals("engineer") && trialType.equals("Master studies") && hasPassed){
+            players.set(players.indexOf(player), new Master(player.getName()));
+        }else if(player.getForm().equals("engineer") && player.getInvestigationPoints() >= 10){
+            players.set(players.indexOf(player), new Master(player.getName()));
+        }
+    }
+
     public void changeForm(Player player){
 
+    }
+
+    public int getSumIPs() {
+        int sum = 0;
+        for (Player player : players) {
+            sum += player.getInvestigationPoints();
+        }
+        return sum;
     }
 
     /**
@@ -141,5 +158,9 @@ public class PlayerManager {
         }
         executionFileManager.writePlayersData(playersData);
 
+    }
+
+    public void setExecutionFileManager(ExecutionFileManager executionFileManager) {
+        this.executionFileManager = executionFileManager;
     }
 }

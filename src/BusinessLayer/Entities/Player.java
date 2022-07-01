@@ -6,6 +6,7 @@ public abstract class Player {
     private String form;
     private String printByForm;
     private boolean isDead;
+    private boolean hasEvolved;
 
     /**
      * Constructor for Player
@@ -96,5 +97,13 @@ public abstract class Player {
 
     public String getPrintByForm() {
         return printByForm;
+    }
+
+    public void setHasEvolved(boolean hasEvolved) {
+        this.hasEvolved = hasEvolved;
+    }
+
+    public boolean getHasEvolved() {
+        return hasEvolved;
     }
 }

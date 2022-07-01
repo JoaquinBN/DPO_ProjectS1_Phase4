@@ -4,22 +4,25 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class ExecutionCSVManager implements ExecutionManager {
+public class ExecutionCSVManager implements ExecutionFileManager {
     private static final String filename = "files/Execution.csv";
-    private final CSVWriter writer;
-    private final CSVReader reader;
+    private CSVWriter writer;
+    private CSVReader reader;
     
-    public ExecutionCSVManager() throws IOException {
-        this.reader = new CSVReader(new FileReader(filename));
-        this.writer = new CSVWriter(new FileWriter(filename, false),
-                CSVWriter.DEFAULT_SEPARATOR,
-                CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
+    public ExecutionCSVManager() {
+        try{
+            this.reader = new CSVReader(new FileReader(filename));
+            this.writer = new CSVWriter(new FileWriter(filename, false),
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
+        } catch (IOException e) {
+            // handle exception
+        }
     }
 
     /**

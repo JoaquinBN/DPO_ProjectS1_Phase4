@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExecutionJSONManager implements ExecutionManager {
+public class ExecutionJSONManager implements ExecutionFileManager {
     private static final String filename = "files/Execution.json";
     private final Gson gson;
     private final List<String[]> executions;

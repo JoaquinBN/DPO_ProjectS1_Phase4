@@ -1,2 +1,6 @@
 try...catch within persistence or business layers
 managing prints of trials
+Joaquin
+Pau
+Albert
+Pol

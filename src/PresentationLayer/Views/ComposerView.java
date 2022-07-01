@@ -220,16 +220,18 @@ public class ComposerView {
      * @return The type of the trial.
      */
     public int getTrialTypeInput() {
-        return checkForExceptions("Enter the trial's type: ", "\nThe trial's type must be an integer. Please try again:\n");
+        return checkForExceptions("\nEnter the trial's type: ", "\nThe trial's type must be an integer.\n");
     }
 
     /**
      * Display all trial types.
      */
     public void showTrialTypes() {
-        System.out.println("\n\t--- Trial types ---");
-        System.out.println("\n\t1) Paper publication\n");
-        System.out.println("\n\t2) Master studies\n");
+        System.out.println("\n\t--- Trial types ---\n");
+        System.out.print("\t1) Paper publication\n");
+        System.out.print("\t2) Master studies\n");
+        System.out.print("\t3) Doctoral thesis defense\n");
+        System.out.print("\t4) Budget request\n");
     }
 
     /**

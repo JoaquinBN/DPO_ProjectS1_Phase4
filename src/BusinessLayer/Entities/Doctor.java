@@ -6,12 +6,14 @@ public class Doctor extends Master{
         super(name);
         setForm("doctor");
         setPrintByForm(name + ", PhD");
+        setHasEvolved(true);
     }
 
     public Doctor(String name, int investigationPoints) {
         super(name, investigationPoints);
         setForm("doctor");
         setPrintByForm(name + ", PhD");
+        setHasEvolved(false);
     }
 
     public void addInvestigationPoints(int investigationPoints) {

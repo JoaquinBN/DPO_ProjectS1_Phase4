@@ -1,7 +1,6 @@
 package PersistenceLayer;
 
 import BusinessLayer.Entities.Edition;
-import BusinessLayer.Entities.Trials;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -12,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EditionJSONManager implements EditionManager {
+public class EditionJSONManager implements EditionsFileManager {
     private static final String filename = "files/Editions.json";
     private final Gson gson;
     private final List<Edition> editions;

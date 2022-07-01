@@ -6,12 +6,14 @@ public class Master extends Engineer{
         super(name);
         setForm("master");
         setPrintByForm("Master " + name);
+        setHasEvolved(true);
     }
 
     public Master(String name, int investigationPoints) {
         super(name, investigationPoints);
         setForm("master");
         setPrintByForm("Master " + name);
+        setHasEvolved(false);
     }
 
     public void addInvestigationPoints(int investigationPoints) {

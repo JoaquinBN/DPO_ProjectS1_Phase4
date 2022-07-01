@@ -3,7 +3,7 @@ package BusinessLayer;
 import BusinessLayer.Entities.*;
 import BusinessLayer.Entities.PaperSubmission;
 import BusinessLayer.Entities.Trials;
-import PersistenceLayer.TrialsCSVManager;
+import PersistenceLayer.TrialsFileManager;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
@@ -12,15 +12,13 @@ import java.util.List;
 
 public class TrialManager {
     private ArrayList<Trials> trials;
-    private TrialsCSVManager trialsFileManager;
+    private TrialsFileManager trialsFileManager;
 
     /**
      * Constructor for TrialManager
-     * @param trialsFileManager the trials file manager
      */
-    public TrialManager(TrialsCSVManager trialsFileManager) {
+    public TrialManager() {
         this.trials = new ArrayList<>();
-        this.trialsFileManager = trialsFileManager;
     }
 
     /**
@@ -29,10 +27,10 @@ public class TrialManager {
      */
     public void addTrial(String[] trialInfo){
         switch(trialInfo[1]) {
-            case "1" -> trials.add(new PaperSubmission(trialInfo[0], trialInfo[2], trialInfo[3], Integer.parseInt(trialInfo[4]), Integer.parseInt(trialInfo[5]), Integer.parseInt(trialInfo[6])));
-            case "2" -> trials.add(new MasterStudies(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3]), Integer.parseInt(trialInfo[4])));
-            case "3" -> trials.add(new DoctoralThesis(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3])));
-            case "4" -> trials.add(new BudgetRequest(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3])));
+            case "1", "Paper publication" -> trials.add(new PaperSubmission(trialInfo[0], trialInfo[2], trialInfo[3], Integer.parseInt(trialInfo[4]), Integer.parseInt(trialInfo[5]), Integer.parseInt(trialInfo[6])));
+            case "2", "Master studies" -> trials.add(new MasterStudies(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3]), Integer.parseInt(trialInfo[4])));
+            case "3", "Doctoral thesis defense" -> trials.add(new DoctoralThesis(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3])));
+            case "4", "Budget request" -> trials.add(new BudgetRequest(trialInfo[0], trialInfo[2], Long.parseLong(trialInfo[3])));
         }
     }
 
@@ -157,7 +155,7 @@ public class TrialManager {
     }
 
     public boolean checkBudgetAmount(String budgetAmount) {
-        return !(1000 <= Integer.parseInt(budgetAmount) && Integer.parseInt(budgetAmount) <= 2000000000);
+        return !(1000 <= Long.parseLong(budgetAmount) && Long.parseLong(budgetAmount) <= 2000000000);
     }
     /**
      * Write the trials to the file
@@ -173,12 +171,13 @@ public class TrialManager {
      * @throws CsvException if the file is not in the correct format
      */
     public void readTrials() throws IOException, CsvException {
-        List<String[]> allTrials = trialsFileManager. readTrials();
+        List<String[]> allTrials = trialsFileManager.readTrials();
         for(String[] trial : allTrials){
-            switch(trial[1]){
-                case "Paper publication" -> trial[1] = "1";
-            }
             addTrial(trial);
         }
+    }
+
+    public void setTrialsFileManager(TrialsFileManager trialsFileManager) {
+        this.trialsFileManager = trialsFileManager;
     }
 }

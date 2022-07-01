@@ -1,6 +1,7 @@
 package PresentationLayer.Controllers;
 
 import BusinessLayer.ConductorManager;
+import BusinessLayer.Entities.BudgetRequest;
 import BusinessLayer.PlayerManager;
 import PresentationLayer.Views.ConductorView;
 import com.opencsv.exceptions.CsvException;
@@ -65,10 +66,22 @@ public class ConductorController {
         int i;
         for (i = 0; i < conductorManager.getNumTrials(); i++) {
             conductorView.showMessage("\nTrial #" + (startIndex + 1) + " - " + conductorManager.getCurrentEdition().getTrials()[i] + "\n");
+
+            if(conductorManager.getTrialByIndex(i).getTypeOfTrial().equals("Budget request")){
+                conductorManager.getTrialByIndex(i).setDataNeeded(playerManager.getSumIPs());
+                if(((BudgetRequest)conductorManager.getTrialByIndex(i)).budgetAcquired())
+                    conductorView.showMessage("\nThe research group got the budget!");
+                else
+                    conductorView.showMessage("\nThe research group did not get the budget...");
+            }
+
             for (int j = 0; j < playerManager.getTotalPlayers(); j++) {
                 if (!playerManager.playerIsDead(j)) {
-                    conductorView.showMessage(conductorManager.getTrialByIndex(i).printTrialOutput(playerManager.getPlayerByIndex(j).getName()));
-                    playerManager.getPlayerByIndex(j).addInvestigationPoints(i);
+                    conductorManager.getTrialByIndex(i).setDataNeeded(playerManager.getPlayerByIndex(j).getInvestigationPoints());
+                    conductorView.showMessage(conductorManager.getTrialByIndex(i).printTrialOutput(playerManager.getPlayerByIndex(j).getPrintByForm()));
+                    playerManager.getPlayerByIndex(j).addInvestigationPoints(conductorManager.incrementInvestigationPoints(i));
+                    conductorView.displayIPCount(playerManager.getPlayerByIndex(j).getInvestigationPoints());
+                    playerManager.evolveIfNecessary(playerManager.getPlayerByIndex(j), conductorManager.getTrialByIndex(i).getPassed(), conductorManager.getTrialByIndex(i).getTypeOfTrial());
                 }
             }
             conductorView.showMessage("\n\n");
@@ -85,14 +98,14 @@ public class ConductorController {
             }
         }
         if (playerManager.allPlayersAreDead()) {
-            conductorView.showMessage("\n\nTHE TRIALS " + conductorManager.getCurrentEdition().getYear() + " HAVE ENDED - PLAYERS LOST \n\n");
+            conductorView.showMessage("\nTHE TRIALS " + conductorManager.getCurrentEdition().getYear() + " HAVE ENDED - PLAYERS LOST \n\n");
             try{
                 conductorManager.eraseInformationExecutionFile();
             } catch (IOException e) {
                 conductorView.showError("\nError erasing data.\n");
             }
         } else if (i == conductorManager.getNumTrials()){
-            conductorView.showMessage("\n\nTHE TRIALS " + conductorManager.getCurrentEdition().getYear() + " HAVE ENDED - PLAYERS WON \n\n");
+            conductorView.showMessage("\nTHE TRIALS " + conductorManager.getCurrentEdition().getYear() + " HAVE ENDED - PLAYERS WON \n\n");
             try{
                 conductorManager.eraseInformationExecutionFile();
             } catch (IOException e) {

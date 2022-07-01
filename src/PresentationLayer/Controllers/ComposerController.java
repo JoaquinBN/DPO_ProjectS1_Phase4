@@ -86,7 +86,7 @@ public class ComposerController {
         switch(trialType){
             case 1 -> { return 7; }
             case 2 -> { return 5; }
-            case 3, 4 -> { return 3;}
+            case 3, 4 -> { return 4;}
             default -> { return -1; }
         }
     }
@@ -200,8 +200,8 @@ public class ComposerController {
                 }
             }
             case 3 -> {
-                attribute = String.valueOf(composerView.readIntegerValue("budget amount"));
-                if (trialManager.checkPhDDifficulty(attribute)) {
+                attribute = composerView.readName("budget amount");
+                if (trialManager.checkBudgetAmount(attribute)) {
                     composerView.showError("\nThe budget amount must be an integer between 1000 and 2000000000.");
                     attribute = "";
                 }
@@ -214,7 +214,7 @@ public class ComposerController {
      * Creates a trial.
      */
     private void createTrial() {
-        String[] attributes;
+        String[] attributes = new String[0];
         boolean errorInput = false;
         int trialType;
         composerView.showTrialTypes();
@@ -223,8 +223,8 @@ public class ComposerController {
             composerView.showError("\nThe index entered must be between 1 and 4.");
             errorInput = true;
         }
-        attributes = new String[getNumberOfAttributes(trialType)];
         if(!errorInput) {
+            attributes = new String[getNumberOfAttributes(trialType)];
             attributes[0] = getTrialName();
             attributes[1] = String.valueOf(trialType);
             for (int i = 2; i < attributes.length; i++) {
@@ -249,7 +249,6 @@ public class ComposerController {
             }
         }
         if (!errorInput) {
-            Collections.swap(Arrays.asList(attributes), 0, 1);
             trialManager.addTrial(attributes);
             composerView.createSuccess("Trial");
         }

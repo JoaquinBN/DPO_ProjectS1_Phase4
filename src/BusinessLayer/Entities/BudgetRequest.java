@@ -2,9 +2,9 @@ package BusinessLayer.Entities;
 
 public class BudgetRequest extends Trials{
     private final String entityName;
-    private final int budgetAmount;
+    private final long budgetAmount;
 
-    public BudgetRequest(String name, String entityName, int budgetAmount) {
+    public BudgetRequest(String name, String entityName, long budgetAmount) {
         super(name, "Budget request");
         this.entityName = entityName;
         this.budgetAmount = budgetAmount;
@@ -12,12 +12,12 @@ public class BudgetRequest extends Trials{
 
     @Override
     public int getRewardIP() {
-        return 0;
+        return (int) Math.ceil(getDataNeeded()/2);
     }
 
     @Override
     public int getPenalizationIP() {
-        return 2;
+        return -2;
     }
 
     @Override
@@ -32,23 +32,17 @@ public class BudgetRequest extends Trials{
         dataToWrite[0] = getTrialName();
         dataToWrite[1] = getTypeOfTrial();
         dataToWrite[2] = entityName;
-        dataToWrite[3] = Integer.toString(budgetAmount);
+        dataToWrite[3] = Long.toString(budgetAmount);
         return dataToWrite;
     }
 
     @Override
     public String printTrialOutput(String playerName) {
-        if (budgetAcquired(10)){
-            setPassed(true);
-            return "The research group got the budget";
-        }else {
-            setPassed(false);
-            return "The research group did not get the budget";
-        }
+        return "\n" + playerName + ".";
     }
 
-    public boolean budgetAcquired(int sumIPs){
-        return sumIPs > Math.log(budgetAmount) / Math.log(2);
+    public boolean budgetAcquired(){
+        return getDataNeeded() > Math.log(budgetAmount) / Math.log(2);
 
 
     }

@@ -12,16 +12,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrialsCSVManager implements TrialsManager {
+public class TrialsCSVManager implements TrialsFileManager {
     private static final String filename = "files/Trials.csv";
-    private final CSVWriter writer;
-    private final CSVReader reader;
+    private CSVWriter writer;
+    private CSVReader reader;
 
-    public TrialsCSVManager() throws IOException {
-        this.reader = new CSVReader(new FileReader(filename));
-        this.writer = new CSVWriter(new FileWriter(filename, false),
-                CSVWriter.DEFAULT_SEPARATOR,
-                CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");;
+    public TrialsCSVManager(){
+        try {
+            this.reader = new CSVReader(new FileReader(filename));
+            this.writer = new CSVWriter(new FileWriter(filename, true),
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");;
+        } catch (IOException e) {
+            // handle exception
+        }
     }
 
     /**

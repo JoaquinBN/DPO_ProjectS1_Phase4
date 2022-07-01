@@ -2,7 +2,7 @@ package PersistenceLayer;
 
 import java.util.List;
 
-public interface ExecutionManager {
+public interface ExecutionFileManager {
     void writePlayersData(List<String[]> playersData);
     void writeTrials(String[] allTrials);
     List<String[]> readPlayersData();

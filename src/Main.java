@@ -2,8 +2,7 @@ import BusinessLayer.ConductorManager;
 import BusinessLayer.EditionManager;
 import BusinessLayer.PlayerManager;
 import BusinessLayer.TrialManager;
-import PersistenceLayer.EditionCSVManager;
-import PersistenceLayer.ExecutionCSVManager;
+import PersistenceLayer.ExecutionFileManager;
 import PersistenceLayer.TrialsCSVManager;
 import PresentationLayer.Controllers.ComposerController;
 import PresentationLayer.Controllers.ConductorController;
@@ -20,19 +19,16 @@ public class Main {
      * @param args command line arguments
      */
     public static void main(String[] args) throws IOException {
-        ExecutionCSVManager executionFileManager = new ExecutionCSVManager();
-        EditionCSVManager editionFileManager = new EditionCSVManager();
-        TrialsCSVManager trialsFileManager = new TrialsCSVManager();
-        PlayerManager playerManager = new PlayerManager(executionFileManager);
-        TrialManager trialManager = new TrialManager(trialsFileManager);
-        EditionManager editionManager = new EditionManager(editionFileManager, executionFileManager);
+        PlayerManager playerManager = new PlayerManager();
+        TrialManager trialManager = new TrialManager();
+        EditionManager editionManager = new EditionManager();
         ConductorView conductorView = new ConductorView();
-        ConductorManager conductorManager = new ConductorManager(trialManager, editionFileManager, trialsFileManager, executionFileManager);
+        ConductorManager conductorManager = new ConductorManager(trialManager);
         ConductorController conductorController = new ConductorController(conductorManager, conductorView, playerManager);
         ComposerView composerView = new ComposerView();
         ComposerController composerController = new ComposerController(editionManager, trialManager, composerView);
         MainMenuView mainMenuView = new MainMenuView();
-        MainMenuController mainMenuController = new MainMenuController(mainMenuView, composerController, conductorController);
+        MainMenuController mainMenuController = new MainMenuController(mainMenuView, composerController, conductorController, playerManager, editionManager, trialManager, conductorManager);
         mainMenuController.selectFormatDisplay();
     }
 }
