@@ -2,9 +2,9 @@ package BusinessLayer;
 
 import BusinessLayer.Entities.Edition;
 import BusinessLayer.Entities.Trials;
-import PersistenceLayer.EditionFileManager;
-import PersistenceLayer.ExecutionFileManager;
-import PersistenceLayer.TrialsFileManager;
+import PersistenceLayer.EditionCSVManager;
+import PersistenceLayer.ExecutionCSVManager;
+import PersistenceLayer.TrialsCSVManager;
 import com.opencsv.exceptions.CsvException;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -15,9 +15,9 @@ public class ConductorManager {
     private Edition currentEdition;
     private Trials[] trials;
     private final TrialManager trialManager;
-    private final EditionFileManager editionFileManager;
-    private final TrialsFileManager trialsFileManager;
-    private final ExecutionFileManager executionFileManager;
+    private final EditionCSVManager editionFileManager;
+    private final TrialsCSVManager trialsFileManager;
+    private final ExecutionCSVManager executionFileManager;
 
     /**
      * Constructor for ConductorManager
@@ -26,7 +26,7 @@ public class ConductorManager {
      * @param trialsFileManager the trials file manager
      * @param executionFileManager the execution file manager
      */
-    public ConductorManager(TrialManager trialManager, EditionFileManager editionFileManager, TrialsFileManager trialsFileManager, ExecutionFileManager executionFileManager) {
+    public ConductorManager(TrialManager trialManager, EditionCSVManager editionFileManager, TrialsCSVManager trialsFileManager, ExecutionCSVManager executionFileManager) {
         this.trialManager = trialManager;
         this.editionFileManager = editionFileManager;
         this.trialsFileManager = trialsFileManager;

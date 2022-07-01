@@ -1,7 +1,9 @@
 package BusinessLayer;
 
 import BusinessLayer.Entities.*;
-import PersistenceLayer.TrialsFileManager;
+import BusinessLayer.Entities.PaperSubmission;
+import BusinessLayer.Entities.Trials;
+import PersistenceLayer.TrialsCSVManager;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
@@ -10,13 +12,13 @@ import java.util.List;
 
 public class TrialManager {
     private ArrayList<Trials> trials;
-    private TrialsFileManager trialsFileManager;
+    private TrialsCSVManager trialsFileManager;
 
     /**
      * Constructor for TrialManager
      * @param trialsFileManager the trials file manager
      */
-    public TrialManager(TrialsFileManager trialsFileManager) {
+    public TrialManager(TrialsCSVManager trialsFileManager) {
         this.trials = new ArrayList<>();
         this.trialsFileManager = trialsFileManager;
     }
