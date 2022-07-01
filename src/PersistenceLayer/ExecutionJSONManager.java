@@ -17,7 +17,7 @@ public class ExecutionJSONManager implements ExecutionFileManager {
 
     public ExecutionJSONManager() throws FileNotFoundException {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
-        this.executions = gson.fromJson(gson.newJsonReader(new FileReader(filename)), List.class);
+        this.executions = gson.fromJson(new FileReader(filename), List.class);
     }
 
     @Override
