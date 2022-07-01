@@ -34,10 +34,8 @@ public class TrialsJSONManager implements TrialsManager {
     @Override
     public List<String[]> readTrials() {
             List<String[]> convertedTrials = new ArrayList<>();
-            int i = 0;
             for (Trials trial : trials) {
-                System.arraycopy(trial.getDataToWrite(),0,convertedTrials.get(i),0,trial.getDataToWrite().length);
-                i++;
+                convertedTrials.add(trial.getDataToWrite());
             }
             return convertedTrials;
     }

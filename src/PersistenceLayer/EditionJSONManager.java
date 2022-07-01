@@ -17,9 +17,9 @@ public class EditionJSONManager implements EditionManager {
     private final Gson gson;
     private final List<Edition> editions;
 
-    public EditionJSONManager(Gson gson, List<Edition> editions) throws FileNotFoundException {
-        this.editions = gson.fromJson(gson.newJsonReader(new FileReader(filename)), List.class);
+    public EditionJSONManager() throws FileNotFoundException {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
+        this.editions = gson.fromJson(gson.newJsonReader(new FileReader(filename)), List.class);
     }
 
 
@@ -27,7 +27,6 @@ public class EditionJSONManager implements EditionManager {
     public void writeEditions(ArrayList<Edition> Editions) {
         try {
             List<String[]> convertedEditions = new ArrayList<>();
-            int k = 0;
             FileWriter writer = new FileWriter(filename);
             for (Edition edition : Editions) {
                 String[] line = new String[edition.getNumberOfTrials()];
@@ -40,8 +39,7 @@ public class EditionJSONManager implements EditionManager {
                 String[] all = new String[data.length + line.length];
                 System.arraycopy(data, 0, all, 0, data.length);
                 System.arraycopy(line, 0, all, data.length, line.length);
-                System.arraycopy(all, 0, convertedEditions.get(k), 0, all.length);
-                k++;
+                convertedEditions.add(all);
             }
             gson.toJson(convertedEditions, writer);
             writer.close();

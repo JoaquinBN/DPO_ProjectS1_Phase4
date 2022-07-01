@@ -5,6 +5,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,9 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrialsCSVManager implements TrialsManager {
+    private static final String filename = "files/Trials.csv";
+    private final CSVWriter writer;
+    private final CSVReader reader;
 
-
-    public TrialsCSVManager() {
+    public TrialsCSVManager() throws IOException {
+        this.reader = new CSVReader(new FileReader(filename));
+        this.writer = new CSVWriter(new FileWriter(filename, false),
+                CSVWriter.DEFAULT_SEPARATOR,
+                CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");;
     }
 
     /**
@@ -25,10 +32,6 @@ public class TrialsCSVManager implements TrialsManager {
     @Override
     public void writeTrials(ArrayList<Trials> trials){
         try {
-            CSVWriter writer = new CSVWriter(new FileWriter("files/Trials.csv", false),
-                    CSVWriter.DEFAULT_SEPARATOR,
-                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
-
             for (Trials trial : trials){
                 writer.writeNext(trial.getDataToWrite());
             }
@@ -46,7 +49,6 @@ public class TrialsCSVManager implements TrialsManager {
     @Override
     public List<String[]> readTrials(){
         try {
-            CSVReader reader = new CSVReader(new FileReader("files/Trials.csv"));
             List<String[]> trials = reader.readAll();
             reader.close();
             return trials;

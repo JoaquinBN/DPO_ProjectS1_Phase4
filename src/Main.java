@@ -19,7 +19,7 @@ public class Main {
      */
     public static void main(String[] args) {
         ExecutionCSVManager executionFileManager = new ExecutionCSVManager();
-        EditionCSVManager editionFileManager = new EditionCSVManager();
+        EditionCSVManager editionFileManager = new EditionCSVManager(writer, editions);
         TrialsCSVManager trialsFileManager = new TrialsCSVManager();
         PlayerManager playerManager = new PlayerManager(executionFileManager);
         TrialManager trialManager = new TrialManager(trialsFileManager);

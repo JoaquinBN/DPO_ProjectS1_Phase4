@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExecutionJSONManager implements ExecutionManager {
@@ -14,9 +15,9 @@ public class ExecutionJSONManager implements ExecutionManager {
     private final Gson gson;
     private final List<String[]> executions;
 
-    public ExecutionJSONManager(Gson gson, List<String[]> executions) throws FileNotFoundException {
-        this.executions = gson.fromJson(gson.newJsonReader(new FileReader(filename)), List.class);
+    public ExecutionJSONManager() throws FileNotFoundException {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
+        this.executions = gson.fromJson(gson.newJsonReader(new FileReader(filename)), List.class);
     }
 
     @Override
@@ -35,7 +36,11 @@ public class ExecutionJSONManager implements ExecutionManager {
 
     @Override
     public List<String[]> readPlayersData() {
-        return executions;
+        List<String[]> playersData = new ArrayList<>();
+        for (int i = 1; i < executions.size(); i++) {
+            playersData.add(executions.get(i));
+        }
+        return playersData;
     }
 
     @Override
