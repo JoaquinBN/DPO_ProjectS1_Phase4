@@ -22,7 +22,7 @@ public class TrialsCSVManager implements TrialsFileManager {
             this.reader = new CSVReader(new FileReader(filename));
             this.writer = new CSVWriter(new FileWriter(filename, true),
                     CSVWriter.DEFAULT_SEPARATOR,
-                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");;
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
         } catch (IOException e) {
             // handle exception
         }

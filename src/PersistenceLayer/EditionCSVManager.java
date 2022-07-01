@@ -12,20 +12,8 @@ import java.util.*;
 
 public class EditionCSVManager implements EditionsFileManager {
     private static final String filename = "files/Editions.csv";
-    private CSVWriter writer;
-    private CSVReader reader;
 
-    public EditionCSVManager(){
-        try {
-            this.reader = new CSVReader(new FileReader(filename));
-            this.writer = new CSVWriter(new FileWriter(filename, true),
-                    CSVWriter.DEFAULT_SEPARATOR,
-                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
-        } catch (IOException e) {
-            // handle exception
-        }
-        ;
-    }
+    public EditionCSVManager(){}
 
     /**
      * Writes the editions to the csv file.
@@ -35,6 +23,9 @@ public class EditionCSVManager implements EditionsFileManager {
     @Override
     public void writeEditions(ArrayList<Edition> Editions){
         try {
+            CSVWriter writer = new CSVWriter(new FileWriter(filename, false),
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
             for (Edition edition : Editions) {
                 String[] line = new String[edition.getNumberOfTrials()];
                 int i = 0;
@@ -62,6 +53,7 @@ public class EditionCSVManager implements EditionsFileManager {
     @Override
     public List<String[]> readEditions(){
         try {
+            CSVReader reader = new CSVReader(new FileReader(filename));
             List<String[]> editions = reader.readAll();
             reader.close();
             return editions;

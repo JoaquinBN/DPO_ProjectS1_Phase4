@@ -18,7 +18,7 @@ public class EditionJSONManager implements EditionsFileManager {
 
     public EditionJSONManager() throws FileNotFoundException {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
-        this.editions = gson.fromJson(gson.newJsonReader(new FileReader(filename)), List.class);
+        this.editions = gson.fromJson(new FileReader(filename), List.class);
     }
 
 
