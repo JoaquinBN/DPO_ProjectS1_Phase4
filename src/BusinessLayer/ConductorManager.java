@@ -105,8 +105,8 @@ public class ConductorManager {
     /**
      * Load data for the edition
      * @return true if the edition exists, false otherwise
-     * @throws IOException
-     * @throws CsvException
+     * @throws IOException if the file is not found
+     * @throws CsvException if the file is not valid
      */
     public boolean loadDataForCurrentEdition() throws IOException, CsvException{
         boolean currentEditionExists = false;

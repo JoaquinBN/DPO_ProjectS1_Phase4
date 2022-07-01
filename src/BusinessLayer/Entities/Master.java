@@ -12,7 +12,10 @@ public class Master extends Engineer{
         return "master";
     }
 
-
+    @Override
+    public String getTypeDisplay() {
+        return "Master " + getName();
+    }
 
     public Master(String name, int investigationPoints) {
         super(name, investigationPoints);

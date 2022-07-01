@@ -22,4 +22,9 @@ public class Doctor extends Master{
     public String getType() {
         return "doctor";
     }
+
+    @Override
+    public String getTypeDisplay() {
+        return getName() + ", PhD";
+    }
 }

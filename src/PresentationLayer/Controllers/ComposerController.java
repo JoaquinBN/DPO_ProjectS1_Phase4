@@ -128,6 +128,16 @@ public class ComposerController {
         }
     }
 
+    private String getTrialTypeFromInput(int trialType){
+        switch(trialType){
+            case 1 -> { return "Paper publication"; }
+            case 2 -> { return "Master studies"; }
+            case 3 -> { return "Doctoral thesis defense"; }
+            case 4 -> { return "Budget request"; }
+            default -> { return ""; }
+        }
+    }
+
     private String getPaperPublicationAttributes(int attributeType){
         String probability, attribute;
 
@@ -251,7 +261,7 @@ public class ComposerController {
         if(!errorInput) {
             attributes = new String[getNumberOfAttributes(trialType)];
             attributes[0] = getTrialName();
-            attributes[1] = String.valueOf(trialType);
+            attributes[1] = getTrialTypeFromInput(trialType);
             if(attributes[0].equals("")){
                 errorInput = true;
             }

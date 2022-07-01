@@ -27,10 +27,10 @@ public class TrialManager {
      */
     public void addTrial(String[] trialInfo){
         switch(trialInfo[1]) {
-            case "1", "Paper publication" -> trials.add(new PaperSubmission(trialInfo[0], trialInfo[2], trialInfo[3], Integer.parseInt(trialInfo[4]), Integer.parseInt(trialInfo[5]), Integer.parseInt(trialInfo[6])));
-            case "2", "Master studies" -> trials.add(new MasterStudies(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3]), Integer.parseInt(trialInfo[4])));
-            case "3", "Doctoral thesis defense" -> trials.add(new DoctoralThesis(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3])));
-            case "4", "Budget request" -> trials.add(new BudgetRequest(trialInfo[0], trialInfo[2], Long.parseLong(trialInfo[3])));
+            case "Paper publication" -> trials.add(new PaperSubmission(trialInfo[0], trialInfo[2], trialInfo[3], Integer.parseInt(trialInfo[4]), Integer.parseInt(trialInfo[5]), Integer.parseInt(trialInfo[6])));
+            case "Master studies" -> trials.add(new MasterStudies(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3]), Integer.parseInt(trialInfo[4])));
+            case "Doctoral thesis defense" -> trials.add(new DoctoralThesis(trialInfo[0], trialInfo[2], Integer.parseInt(trialInfo[3])));
+            case "Budget request" -> trials.add(new BudgetRequest(trialInfo[0], trialInfo[2], Long.parseLong(trialInfo[3])));
         }
     }
 

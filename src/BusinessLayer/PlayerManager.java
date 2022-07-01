@@ -108,7 +108,7 @@ public class PlayerManager {
      * @return true if the player is dead, false otherwise
      */
     public boolean playerIsDead(int index){
-        return players.get(index).getStatus();
+        return players.get(index).isDead();
     }
 
     /**
@@ -117,7 +117,7 @@ public class PlayerManager {
      */
     public boolean allPlayersAreDead(){
         for(Player player: players){
-            if(!player.getStatus()){
+            if(!player.isDead()){
                 return false;
             }
         }
@@ -141,7 +141,7 @@ public class PlayerManager {
      * @throws IOException if there is an error writing to the file
      */
     public void saveData() throws IOException {
-        players.removeIf(Player::getStatus);
+        players.removeIf(Player::isDead);
         List<String[]> playersData = new ArrayList<>();
         for(Player player: players){
             playersData.add(player.getInfo());

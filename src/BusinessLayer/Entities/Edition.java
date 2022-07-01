@@ -50,22 +50,6 @@ public class Edition {
     }
 
     /**
-     * Set the year of the edition
-     * @param year the year of the edition
-     */
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    /**
-     * Set the number of players in the edition
-     * @param numberOfPlayers the number of players in the edition
-     */
-    public void setNumberOfPlayers(int numberOfPlayers) {
-        this.numberOfPlayers = numberOfPlayers;
-    }
-
-    /**
      * Set the trials in the edition
      * @param trialName the trial name
      * @param position the trial number

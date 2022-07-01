@@ -35,6 +35,8 @@ public abstract class Player {
     }
 
     public abstract String getType();
+
+    public abstract String getTypeDisplay();
     /**
      * Get the number of investigation points
      * @return the number of investigation points
@@ -59,7 +61,7 @@ public abstract class Player {
      * Check if the player is dead
      * @return true if the player is dead, false otherwise
      */
-    public boolean getStatus(){
+    public boolean isDead(){
         return isDead;
     }
 
@@ -74,14 +76,6 @@ public abstract class Player {
         info[1] = Integer.toString(investigationPoints);
         info[2] = getType();
         return info;
-    }
-
-    public String getPrintByForm() {
-        if(this instanceof Doctor)
-            return name + ", PhD";
-        if(this instanceof Master)
-            return "Master " + name;
-        return name;
     }
 
 }

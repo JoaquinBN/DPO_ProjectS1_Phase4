@@ -28,46 +28,6 @@ public class PaperSubmission extends Trials {
     }
 
     /**
-     * Get the name of the publication
-     * @return the name of the publication
-     */
-    public String getPublicationName() {
-        return publicationName;
-    }
-
-    /**
-     * Get the quartile of the publication
-     * @return the quartile of the publication
-     */
-    public String getQuartile() {
-        return quartile;
-    }
-
-    /**
-     * Get the probability of acceptance
-     * @return the probability of acceptance
-     */
-    public int getAcceptProbability() {
-        return acceptProbability;
-    }
-
-    /**
-     * Get the probability of revision
-     * @return the probability of revision
-     */
-    public int getRejectProbability() {
-        return rejectProbability;
-    }
-
-    /**
-     * Get the probability of rejection
-     * @return the probability of rejection
-     */
-    public int getRevisionProbability() {
-        return revisionProbability;
-    }
-
-    /**
      * Calculate the reward IP
      * @return the reward IP
      */

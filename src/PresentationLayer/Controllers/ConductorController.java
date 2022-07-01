@@ -1,7 +1,6 @@
 package PresentationLayer.Controllers;
 
 import BusinessLayer.ConductorManager;
-import BusinessLayer.Entities.BudgetRequest;
 import BusinessLayer.Entities.Player;
 import BusinessLayer.PlayerManager;
 import PresentationLayer.Views.ConductorView;
@@ -75,9 +74,9 @@ public class ConductorController {
             }
 
             for (Player player: playerManager.getPlayers()) {
-                if (!player.getStatus()) {
+                if (!player.isDead()) {
                     conductorManager.setTrialExtraData(i, player.getInvestigationPoints());
-                    conductorView.showMessage(conductorManager.getTrialPrintOutput(i, player.getPrintByForm()));
+                    conductorView.showMessage(conductorManager.getTrialPrintOutput(i, player.getTypeDisplay()));
                     player.addInvestigationPoints(conductorManager.incrementInvestigationPoints(i));
                     conductorView.displayIPCount(player.getInvestigationPoints());
                     playersEvolved.add(playerManager.evolvePlayer(player, conductorManager.isPassed(i), conductorManager.getTypeOfTrial(i)));

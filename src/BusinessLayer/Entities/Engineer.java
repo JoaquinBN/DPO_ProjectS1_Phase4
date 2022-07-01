@@ -21,4 +21,8 @@ public class Engineer extends Player {
         super.addInvestigationPoints(investigationPoints);
     }
 
+    @Override
+    public String getTypeDisplay() {
+        return getName();
+    }
 }
