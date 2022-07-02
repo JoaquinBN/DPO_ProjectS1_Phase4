@@ -1,0 +1,13 @@
+[
+  {
+    "publicationName": "pa",
+    "quartile": "Q1",
+    "acceptProbability": 100,
+    "revisionProbability": 0,
+    "rejectProbability": 0,
+    "trialName": "papa",
+    "typeOfTrial": "Paper publication",
+    "passed": false,
+    "dataNeeded": 0
+  }
+]
