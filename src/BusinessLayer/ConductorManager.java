@@ -88,15 +88,21 @@ public class ConductorManager {
     public boolean isPassed(int index){
         return trials[index].getPassed();
     }
+
     /**
      * Load data for the trials
-     * @throws IOException if the file is not found
-     * @throws CsvException if the file is not valid
      */
-    public void loadDataForTrials() throws IOException, CsvException {
-        List<String[]> allTrials = trialsFileManager.readTrials();
-        for(String[] trial : allTrials){
-            trialManager.addTrial(trial);
+    public boolean loadDataForTrials(){
+        List<String[]> allTrials = null;
+        try {
+            allTrials = trialsFileManager.readTrials();
+            for(String[] trial : allTrials){
+                trialManager.addTrial(trial);
+            }
+            return true;
+        } catch (IOException | CsvException e) {
+            errorMessage = "Error loading data trials";
+            return false;
         }
     }
 

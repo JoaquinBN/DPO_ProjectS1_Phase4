@@ -16,6 +16,7 @@ public class EditionManager {
     private ExecutionFileManager executionFileManager;
     private String errorMessage;
 
+
     /**
      * Constructor for EditionManager
      */
@@ -44,6 +45,10 @@ public class EditionManager {
      */
     public Edition getEditionByIndex(int index) {
         return editions.get(index);
+    }
+
+    public int getEditionYear(int index){
+        return editions.get(index).getYear();
     }
 
     /**

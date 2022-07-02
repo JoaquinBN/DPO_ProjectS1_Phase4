@@ -43,7 +43,7 @@ public class ComposerView {
      * @return The name of the trial.
      */
     public String readName(String message) {
-        System.out.print("\nEnter the " + message + ": ");
+        System.out.print("Enter the " + message + ": ");
         return sc.nextLine();
     }
 
@@ -98,7 +98,7 @@ public class ComposerView {
      * @return The year of the edition.
      */
     public int readIntegerValue(String dataType) {
-        return checkForExceptions("\nEnter the " + dataType + ":", "\nThe " + dataType + " must be an integer.\n");
+        return checkForExceptions("Enter the " + dataType + ": ", "\nThe " + dataType + " must be an integer.\n");
     }
 
     /**

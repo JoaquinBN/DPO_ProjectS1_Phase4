@@ -3,11 +3,6 @@ package PresentationLayer.Controllers;
 import BusinessLayer.EditionManager;
 import BusinessLayer.TrialManager;
 import PresentationLayer.Views.ComposerView;
-import com.opencsv.exceptions.CsvException;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class ComposerController {
     private final EditionManager editionManager;
@@ -30,15 +25,20 @@ public class ComposerController {
      * Starts the composer view.
      */
     public void start(){
-        try {
-            editionManager.readEditions();
-            trialManager.readTrials();
-        } catch (IOException | CsvException e) {
-            composerView.showError("Error reading trials file");
-        }
-        managementMode();
+        boolean shutDown = printExceptionMessage(editionManager.readEditions(), true);
+        if(printExceptionMessage(trialManager.readTrials(), false))
+            shutDown = true;
+        if(!shutDown)
+            managementMode();
     }
 
+    public boolean printExceptionMessage(boolean isException, boolean isEditionManager){
+        if(!isException){
+            composerView.showError("\n" + (isEditionManager?editionManager.getErrorMessage():trialManager.getErrorMessage()) + "\n");
+            return true;
+        }
+        return false;
+    }
     /**
      * Starts the management mode of the composer view.
      */
@@ -58,7 +58,7 @@ public class ComposerController {
     }
 
     /**
-     * Starts the trials management mode of the composer view.
+     * Starts the trials' management mode of the composer view.
      */
     private void manageTrials(){
         String option;
@@ -77,7 +77,7 @@ public class ComposerController {
 
 
     /**
-     * Starts the editions management mode of the composer view.
+     * Starts the editions' management mode of the composer view.
      */
     private void manageEditions(){
         if (trialManager.getNumberOfTrials() == 0) {
@@ -260,6 +260,7 @@ public class ComposerController {
         }
         if(!errorInput) {
             attributes = new String[getNumberOfAttributes(trialType)];
+            composerView.showMessage("\n");
             attributes[0] = getTrialName();
             attributes[1] = getTrialTypeFromInput(trialType);
             if(attributes[0].equals("")){
@@ -440,7 +441,7 @@ public class ComposerController {
                 errorDisplay = true;
             }
             if(editionIndex != editionManager.getNumberOfEditions() && !errorDisplay) {
-                composerView.showEdition(editionManager.getEditionByIndex(editionIndex).getYear(), editionManager.getEditionByIndex(editionIndex).getNumberOfPlayers());
+                composerView.showEdition(editionManager.getEditionYear(editionIndex), editionManager.getEditionByIndex(editionIndex).getNumberOfPlayers());
                 k = 1;
                 for(String trialName : editionManager.getEditionByIndex(editionIndex).getTrials()){
                     composerView.listEditionTrials(k, trialName, trialManager.getTrialTypeByName(trialName));
@@ -516,13 +517,9 @@ public class ComposerController {
             }
             if(editionIndex != editionManager.getNumberOfEditions() && !errorDisplay) {
                 deletionConfirmation = composerView.showDeletionConfirmation("edition's year");
-                if(String.valueOf(editionManager.getEditionByIndex(editionIndex).getYear()).equals(deletionConfirmation)) {
+                if(String.valueOf(editionManager.getEditionYear(editionIndex)).equals(deletionConfirmation)) {
                     editionManager.removeEdition(editionIndex);
-                    try {
-                        editionManager.deleteStoredState(editionIndex == 2022);
-                    } catch (IOException e) {
-                        composerView.showError("\nError deleting the stored state of the selected edition.\n");
-                    }
+                    printExceptionMessage(editionManager.deleteStoredState(editionManager.getEditionYear(editionIndex) == 2022), true);
                     composerView.deleteSuccess("edition");
                 }else if(deletionConfirmation.equals("cancel"))
                     composerView.showMessage("\nOperation cancelled.\n");
@@ -540,7 +537,7 @@ public class ComposerController {
      */
     private int showAllEditions(){
         for(int i = 0; i < editionManager.getNumberOfEditions(); i++){
-            composerView.listEditions(i + 1, editionManager.getEditionByIndex(i).getYear());
+            composerView.listEditions(i + 1, editionManager.getEditionYear(i));
         }
         composerView.showBack(editionManager.getNumberOfEditions() + 1);
         return composerView.getIndexInput();
@@ -550,12 +547,8 @@ public class ComposerController {
      * Shows the main menu.
      */
     private void exitProgram(){
-        try {
-            trialManager.writeTrials();
-            editionManager.writeEditions();
-        }catch(IOException e){
-            composerView.showError("\nError writing data to file.");
-        }
+        printExceptionMessage(trialManager.writeTrials(), false);
+        printExceptionMessage(editionManager.writeEditions(), true);
         composerView.exitProgram();
     }
 }

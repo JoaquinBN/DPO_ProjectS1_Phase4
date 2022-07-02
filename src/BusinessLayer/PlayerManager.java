@@ -147,6 +147,10 @@ public class PlayerManager {
         this.executionFileManager = executionFileManager;
     }
 
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
     public ArrayList<Player> getPlayers() {
         return players;
     }
