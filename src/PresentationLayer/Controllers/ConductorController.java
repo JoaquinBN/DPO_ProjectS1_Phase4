@@ -34,7 +34,7 @@ public class ConductorController {
     public void start() {
         boolean shutDown = false;
         conductorView.showMessage("\nEntering execution mode...\n");
-        if(printExceptionMessage(conductorManager.loadDataForTrials(), true));
+        if(printExceptionMessage(conductorManager.loadDataForTrials(), true))
             shutDown = true;
         if(conductorManager.fileIsEmpty() == 1){
             if(conductorManager.loadDataForCurrentEdition()){

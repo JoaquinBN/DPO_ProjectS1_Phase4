@@ -3,28 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="008d7068-8fd0-4a5a-91f1-c0138b574c8a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/ConductorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/ConductorManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/EditionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/EditionManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/PlayerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/PlayerManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/TrialManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/TrialManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionCSVManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionCSVManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionJSONManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionJSONManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionsFileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionsFileManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionCSVManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionCSVManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionFileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionFileManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionJSONManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionJSONManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Editions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/files/Editions.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Execution.csv" beforeDir="false" afterPath="$PROJECT_DIR$/files/Execution.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/Trials.csv" beforeDir="false" afterPath="$PROJECT_DIR$/files/Trials.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsCSVManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsCSVManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsFileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsFileManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsJSONManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsJSONManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ComposerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ComposerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ConductorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ConductorController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/ComposerView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/ComposerView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/ConductorView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/ConductorView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ComposerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ComposerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ConductorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ConductorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Views/ComposerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Views/ComposerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Views/ConductorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Views/ConductorView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

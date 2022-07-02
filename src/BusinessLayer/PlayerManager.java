@@ -38,9 +38,9 @@ public class PlayerManager {
      */
     public void retrievePlayer(String playerName, int investigationPoints, String playerType) {
         switch (playerType) {
-            case "Engineer" -> players.add(new Engineer(playerName, investigationPoints));
-            case "Master" -> players.add(new Master(playerName, investigationPoints));
-            case "Doctor" -> players.add(new Doctor(playerName, investigationPoints));
+            case "engineer" -> players.add(new Engineer(playerName, investigationPoints));
+            case "master" -> players.add(new Master(playerName, investigationPoints));
+            case "doctor" -> players.add(new Doctor(playerName, investigationPoints));
         }
     }
 
