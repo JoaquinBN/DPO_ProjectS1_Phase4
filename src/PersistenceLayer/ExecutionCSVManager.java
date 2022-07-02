@@ -22,7 +22,7 @@ public class ExecutionCSVManager implements ExecutionFileManager {
     @Override
     public void writePlayersData(List<String[]> playersData){
         try {
-            CSVWriter writer= new CSVWriter(new FileWriter(filename, false),
+            CSVWriter writer= new CSVWriter(new FileWriter(filename, true),
                     CSVWriter.DEFAULT_SEPARATOR,
                     CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
             for (String[] player : playersData) {

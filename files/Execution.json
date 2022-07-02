@@ -1,23 +1,17 @@
 [
   {
-    "trial": "papa"
+    "name": "pa",
+    "investigationPoints": "9",
+    "playerStatus": "engineer"
   },
   {
-    "trial": "papa"
+    "name": "pe",
+    "investigationPoints": "9",
+    "playerStatus": "engineer"
   },
   {
-    "trial": "1"
+    "name": "po",
+    "investigationPoints": "9",
+    "playerStatus": "engineer"
   }
-]{
-  "name": "pa",
-  "investigationPoints": "9",
-  "playerStatus": "engineer"
-}{
-  "name": "po",
-  "investigationPoints": "9",
-  "playerStatus": "engineer"
-}{
-  "name": "pe",
-  "investigationPoints": "9",
-  "playerStatus": "engineer"
-}
+]
