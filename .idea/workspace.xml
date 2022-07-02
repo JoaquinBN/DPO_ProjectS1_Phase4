@@ -6,16 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="008d7068-8fd0-4a5a-91f1-c0138b574c8a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Engineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Engineer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/BudgetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/BudgetRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/DoctoralThesis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/DoctoralThesis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/MasterStudies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/MasterStudies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/Trials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/Trials.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/TrialManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/TrialManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Master.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Master.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/EditionFileDAO/EditionsFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/EditionFileDAO/EditionsFileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionFileDAO/ExecutionFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionFileDAO/ExecutionFileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/TrialsFileDAO/TrialsFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/TrialsFileDAO/TrialsFileManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
