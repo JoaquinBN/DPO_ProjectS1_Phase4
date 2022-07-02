@@ -53,7 +53,7 @@ public class ConductorView {
             }else if(answer.equals("no")){
                 return false;
             }else{
-                System.out.print("\nInvalid answer. Please try again:");
+                System.out.println("\nInvalid answer. Please try again:");
             }
         }
     }

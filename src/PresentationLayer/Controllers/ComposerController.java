@@ -511,15 +511,15 @@ public class ComposerController {
         } else {
             composerView.showDelete("edition");
             editionIndex = showAllEditions();
-            if(editionIndex < 0 || editionIndex > editionManager.getNumberOfEditions() ){
+            if(editionIndex < 0 || editionIndex > editionManager.getNumberOfEditions()){
                 composerView.showError("\nThe edition index selected must be between 1 and " + (editionManager.getNumberOfEditions() + 1) + ".");
                 errorDisplay = true;
             }
             if(editionIndex != editionManager.getNumberOfEditions() && !errorDisplay) {
                 deletionConfirmation = composerView.showDeletionConfirmation("edition's year");
                 if(String.valueOf(editionManager.getEditionYear(editionIndex)).equals(deletionConfirmation)) {
-                    editionManager.removeEdition(editionIndex);
                     printExceptionMessage(editionManager.deleteStoredState(editionManager.getEditionYear(editionIndex) == 2022), true);
+                    editionManager.removeEdition(editionIndex);
                     composerView.deleteSuccess("edition");
                 }else if(deletionConfirmation.equals("cancel"))
                     composerView.showMessage("\nOperation cancelled.\n");
