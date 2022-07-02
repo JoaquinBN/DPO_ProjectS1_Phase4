@@ -1,0 +1,66 @@
+[
+  {
+    "publicationName": "Observatory of Programming Developments",
+    "quartile": "Q2",
+    "acceptProbability": 30,
+    "revisionProbability": 50,
+    "rejectProbability": 20,
+    "trialName": "Submitting for OOPD",
+    "typeOfTrial": "Paper publication",
+    "passed": false,
+    "dataNeeded": 0
+  },
+  {
+    "masterName": "Master in High Performance Web Programming",
+    "numberOfCredits": 60,
+    "probabilityOfPassing": 52,
+    "trialName": "Studying the MPWAR",
+    "typeOfTrial": "Master studies",
+    "passed": false,
+    "dataNeeded": 0
+  },
+  {
+    "entityName": "LSGrants",
+    "budgetAmount": 3333,
+    "trialName": "Requesting the LSGrant for Excellence",
+    "typeOfTrial": "Budget request",
+    "passed": false,
+    "dataNeeded": 0
+  },
+  {
+    "fieldOfStudy": "Data Science",
+    "defenseDifficulty": 4,
+    "trialName": "Advances in Probably Dense Superstructures",
+    "typeOfTrial": "Doctoral thesis defense",
+    "passed": false,
+    "dataNeeded": 0
+  },
+  {
+    "publicationName": "journal",
+    "quartile": "Q2",
+    "acceptProbability": 40,
+    "revisionProbability": 40,
+    "rejectProbability": 20,
+    "trialName": "paper pub",
+    "typeOfTrial": "Paper publication",
+    "passed": false,
+    "dataNeeded": 0
+  },
+  {
+    "masterName": "MASTER",
+    "numberOfCredits": 100,
+    "probabilityOfPassing": 55,
+    "trialName": "master stud",
+    "typeOfTrial": "Master studies",
+    "passed": false,
+    "dataNeeded": 0
+  },
+  {
+    "fieldOfStudy": "DOCTOR",
+    "defenseDifficulty": 9,
+    "trialName": "doctoral the",
+    "typeOfTrial": "Doctoral thesis defense",
+    "passed": false,
+    "dataNeeded": 0
+  }
+]

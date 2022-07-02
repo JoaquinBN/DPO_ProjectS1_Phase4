@@ -1,9 +1,11 @@
 package BusinessLayer;
 
-import BusinessLayer.Entities.BudgetRequest;
+import BusinessLayer.Entities.Trials.BudgetRequest;
 import BusinessLayer.Entities.Edition;
-import BusinessLayer.Entities.Trials;
-import PersistenceLayer.*;
+import BusinessLayer.Entities.Trials.Trials;
+import PersistenceLayer.EditionFileDAO.EditionsFileManager;
+import PersistenceLayer.ExecutionFileDAO.ExecutionFileManager;
+import PersistenceLayer.TrialsFileDAO.TrialsFileManager;
 import com.opencsv.exceptions.CsvException;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -85,7 +87,7 @@ public class ConductorManager {
      * Load data for the trials
      */
     public boolean loadDataForTrials(){
-        List<String[]> allTrials = null;
+        List<String[]> allTrials;
         try {
             allTrials = trialsFileManager.readTrials();
             for(String[] trial : allTrials){

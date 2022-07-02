@@ -1,8 +1,8 @@
 package BusinessLayer;
 
 import BusinessLayer.Entities.Edition;
-import PersistenceLayer.EditionsFileManager;
-import PersistenceLayer.ExecutionFileManager;
+import PersistenceLayer.EditionFileDAO.EditionsFileManager;
+import PersistenceLayer.ExecutionFileDAO.ExecutionFileManager;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;

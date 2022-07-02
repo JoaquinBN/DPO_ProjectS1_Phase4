@@ -235,8 +235,8 @@ public class ComposerController {
                 }
             }
             case 3 -> {
-                attribute = composerView.readName("budget amount");
-                if (trialManager.checkBudgetAmount(attribute)) {
+                attribute = String.valueOf(composerView.readLong("budget amount"));
+                if (!attribute.equals("-1") && trialManager.checkBudgetAmount(attribute)) {
                     composerView.showError("\nThe budget amount must be an integer between 1000 and 2000000000.");
                     attribute = "";
                 }
@@ -249,7 +249,7 @@ public class ComposerController {
      * Creates a trial.
      */
     private void createTrial() {
-        String[] attributes = new String[0];
+        String[] attributes;
         boolean errorInput = false;
         int trialType;
         composerView.showTrialTypes();
@@ -271,10 +271,10 @@ public class ComposerController {
                     switch (trialType) {
                         case 1 -> {
                             attributes[i] = getPaperPublicationAttributes(i);
-                            if (i == 5 && trialManager.checkLimitProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]))) {
+                            if (i == 5 && !attributes[i].equals("") && trialManager.checkLimitProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]))) {
                                 composerView.showError("\nThe acceptance and revision probabilities sum cannot be greater than 100.");
                                 errorInput = true;
-                            } else if (i == 6 && !trialManager.checkSumProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]) + Integer.parseInt(attributes[6]))) {
+                            } else if (i == 6 && !attributes[i].equals("") && !trialManager.checkSumProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]) + Integer.parseInt(attributes[6]))&& !attributes[i].equals("")) {
                                 composerView.showError("\nThe acceptance, revision and rejection probabilities sum cannot be greater than 100.");
                                 errorInput = true;
                             }
@@ -285,14 +285,15 @@ public class ComposerController {
                     }
 
                     if (attributes[i].equals("") || attributes[i].equals("-1") || errorInput) {
+                        errorInput = true;
                         break;
                     }
                 }
+                if (!errorInput) {
+                    trialManager.addTrial(attributes);
+                    composerView.createSuccess("Trial");
+                }
             }
-        }
-        if (!errorInput) {
-            trialManager.addTrial(attributes);
-            composerView.createSuccess("Trial");
         }
         composerView.showMessage("\nRedirecting to previous menu...\n");
         manageTrials();

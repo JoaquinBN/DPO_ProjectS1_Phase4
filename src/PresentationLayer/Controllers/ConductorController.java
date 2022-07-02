@@ -1,7 +1,7 @@
 package PresentationLayer.Controllers;
 
 import BusinessLayer.ConductorManager;
-import BusinessLayer.Entities.Player;
+import BusinessLayer.Entities.Players.Player;
 import BusinessLayer.PlayerManager;
 import PresentationLayer.Views.ConductorView;
 

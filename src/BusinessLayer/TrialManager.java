@@ -1,7 +1,7 @@
 package BusinessLayer;
 
-import BusinessLayer.Entities.*;
-import PersistenceLayer.TrialsFileManager;
+import BusinessLayer.Entities.Trials.*;
+import PersistenceLayer.TrialsFileDAO.TrialsFileManager;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;

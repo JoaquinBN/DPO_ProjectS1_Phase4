@@ -1,10 +1,10 @@
 package BusinessLayer;
 
-import BusinessLayer.Entities.Doctor;
-import BusinessLayer.Entities.Engineer;
-import BusinessLayer.Entities.Master;
-import BusinessLayer.Entities.Player;
-import PersistenceLayer.ExecutionFileManager;
+import BusinessLayer.Entities.Players.Doctor;
+import BusinessLayer.Entities.Players.Engineer;
+import BusinessLayer.Entities.Players.Master;
+import BusinessLayer.Entities.Players.Player;
+import PersistenceLayer.ExecutionFileDAO.ExecutionFileManager;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.IOException;
@@ -117,7 +117,7 @@ public class PlayerManager {
     public boolean loadPlayersData(){
         List<String[]> playersData;
         try {
-            playersData = executionFileManager.readPlayersData().subList(1, executionFileManager.readPlayersData().size());
+            playersData = executionFileManager.readPlayersData();
             for (String[] playerData : playersData) {
                 retrievePlayer(playerData[0], Integer.parseInt(playerData[1]), playerData[2]);
             }

@@ -47,6 +47,16 @@ public class ComposerView {
         return sc.nextLine();
     }
 
+    public Long readLong(String message) {
+        System.out.print("Enter the " + message + ": ");
+        try {
+            return sc.nextLong();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input.");
+            return (long) -1;
+        }
+
+    }
     /**
      * Reads the probability desired for the trial.
      * @param probability The probability of the trial.
