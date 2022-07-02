@@ -21,12 +21,11 @@ public class EditionCSVManager implements EditionsFileManager {
      * @param Editions the editions to write.
      */
     @Override
-    public void writeEditions(ArrayList<Edition> Editions){
-        try {
-            CSVWriter writer = new CSVWriter(new FileWriter(filename, false),
+    public void writeEditions(ArrayList<Edition> Editions) throws IOException {
+        CSVWriter writer = new CSVWriter(new FileWriter(filename, false),
                     CSVWriter.DEFAULT_SEPARATOR,
                     CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
-            for (Edition edition : Editions) {
+        for (Edition edition : Editions) {
                 String[] line = new String[edition.getNumberOfTrials()];
                 int i = 0;
                 for(String trialName : edition.getTrials()) {
@@ -40,9 +39,6 @@ public class EditionCSVManager implements EditionsFileManager {
                 writer.writeNext(all);
             }
             writer.close();
-        } catch (IOException e) {
-            // handle exception
-        }
     }
 
     /**
@@ -51,15 +47,10 @@ public class EditionCSVManager implements EditionsFileManager {
      * @return the editions read.
      */
     @Override
-    public List<String[]> readEditions(){
-        try {
+    public List<String[]> readEditions() throws IOException, CsvException {
             CSVReader reader = new CSVReader(new FileReader(filename));
             List<String[]> editions = reader.readAll();
             reader.close();
             return editions;
-        } catch (IOException | CsvException e) {
-            // handle exception
-        }
-        return null;
     }
 }

@@ -3,6 +3,7 @@ package PersistenceLayer;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -55,16 +56,11 @@ public class ExecutionCSVManager implements ExecutionFileManager {
      * @return playersData the data read.
      */
     @Override
-    public List<String[]> readPlayersData(){
-        try {
+    public List<String[]> readPlayersData() throws IOException, CsvException {
             CSVReader reader = new CSVReader(new FileReader(filename));
             List<String[]> playersData = reader.readAll();
             reader.close();
             return playersData;
-        } catch (IOException | CsvException e) {
-            //handle exception
-        }
-        return null;
     }
 
     /**
@@ -72,16 +68,11 @@ public class ExecutionCSVManager implements ExecutionFileManager {
      * @return the trials read.
      */
     @Override
-    public String[] readTrials(){
-        try {
+    public String[] readTrials() throws IOException, CsvValidationException {
             CSVReader reader = new CSVReader(new FileReader(filename));
             String[] allTrials = reader.readNext();
             reader.close();
             return allTrials;
-        } catch (IOException | CsvException e) {
-            //handle exception
-        }
-        return null;
     }
 
     /**
@@ -89,30 +80,20 @@ public class ExecutionCSVManager implements ExecutionFileManager {
      * @return if the file is empty or not.
      */
     @Override
-    public boolean fileIsEmpty(){
-        try {
+    public boolean fileIsEmpty() throws CsvValidationException, IOException {
             CSVReader reader = new CSVReader(new FileReader(filename));
             String[] allTrials = reader.readNext();
             return allTrials == null;
-        } catch (IOException | CsvException e) {
-            //handle exception
-        }
-        return false;
     }
 
     /**
      * Clears the file.
      */
     @Override
-    public void deleteFile(){
-        try {
+    public void deleteFile() throws IOException {
             CSVWriter writer = new CSVWriter(new FileWriter(filename, false),
                     CSVWriter.DEFAULT_SEPARATOR,
                     CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.NO_ESCAPE_CHARACTER, "\n");
-            CSVReader reader = new CSVReader(new FileReader(filename));
             writer.close();
-        } catch (IOException e) {
-            //handle exception
-        }
     }
 }

@@ -3,6 +3,8 @@ package PersistenceLayer;
 import BusinessLayer.Entities.Edition;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,38 +25,32 @@ public class EditionJSONManager implements EditionsFileManager {
 
 
     @Override
-    public void writeEditions(ArrayList<Edition> Editions) {
-        try {
-            List<String[]> convertedEditions = new ArrayList<>();
+    public void writeEditions(ArrayList<Edition> Editions) throws IOException {
             FileWriter writer = new FileWriter(filename);
-            for (Edition edition : Editions) {
-                String[] line = new String[edition.getNumberOfTrials()];
-                int i = 0;
-                for(String trialName : edition.getTrials()) {
-                    line[i] = trialName;
-                    i++;
-                }
-                String[] data = {String.valueOf(edition.getYear()), String.valueOf(edition.getNumberOfPlayers())};
-                String[] all = new String[data.length + line.length];
-                System.arraycopy(data, 0, all, 0, data.length);
-                System.arraycopy(line, 0, all, data.length, line.length);
-                convertedEditions.add(all);
-            }
-            gson.toJson(convertedEditions, writer);
+            writer.write(gson.toJson(Editions));
             writer.close();
-        } catch (IOException e) {
-            // handle exception
-        }
     }
 
     @Override
-    public List<String[]> readEditions() {
-        List<String[]> convertedEditions = new ArrayList<>();
-        int i = 0;
-        for (Edition edition : editions) {
-            //System.arraycopy(edition.getDataToWrite(),0,convertedEditions.get(i),0,edition.getDataToWrite().length);
-            i++;
-        }
-        return convertedEditions;
+    public List<String[]> readEditions() throws FileNotFoundException {
+            FileReader reader = new FileReader(filename);
+            JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
+            List<String[]> editions = new ArrayList<>();
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JsonObject object = jsonArray.get(i).getAsJsonObject();
+                List<String> aux = new ArrayList<>();
+                aux.add(object.get("year").getAsString());
+                aux.add(object.get("numberOfPlayers").getAsString());
+                for (int j = 0; j < object.get("trials").getAsJsonArray().size(); j++) {
+                    aux.add(object.get("trials").getAsJsonArray().get(j).getAsString());
+                }
+               // convert aux to new String[] and add to editions
+                String[] aux2 = new String[aux.size()];
+                for (int j = 0; j < aux.size(); j++) {
+                    aux2[j] = aux.get(j);
+                }
+                editions.add(aux2);
+            }
+            return editions;
     }
 }

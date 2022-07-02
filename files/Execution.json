@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "trial": "papa"
+  },
+  {
+    "trial": "papa"
+  },
+  {
+    "trial": "1"
+  }
+]{
+  "name": "pa",
+  "investigationPoints": "9",
+  "playerStatus": "engineer"
+}{
+  "name": "po",
+  "investigationPoints": "9",
+  "playerStatus": "engineer"
+}{
+  "name": "pe",
+  "investigationPoints": "9",
+  "playerStatus": "engineer"
+}
