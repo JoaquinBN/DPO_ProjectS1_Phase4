@@ -1,16 +1,25 @@
 [
   {
+    "trial": "papa"
+  },
+  {
+    "trial": "papa"
+  },
+  {
+    "trial": "1"
+  },
+  {
     "name": "pa",
     "investigationPoints": "9",
     "playerStatus": "engineer"
   },
   {
-    "name": "pe",
+    "name": "asd",
     "investigationPoints": "9",
     "playerStatus": "engineer"
   },
   {
-    "name": "po",
+    "name": "",
     "investigationPoints": "9",
     "playerStatus": "engineer"
   }

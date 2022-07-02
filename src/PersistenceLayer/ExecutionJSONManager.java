@@ -15,6 +15,7 @@ import java.util.List;
 public class ExecutionJSONManager implements ExecutionFileManager {
     private static final String filename = "files/Execution.json";
     private final Gson gson;
+    private String[] executionData;
 
     public ExecutionJSONManager() throws FileNotFoundException {
         this.gson = new GsonBuilder().setPrettyPrinting().create();
@@ -22,47 +23,39 @@ public class ExecutionJSONManager implements ExecutionFileManager {
 
     @Override
     public void writePlayersData(List<String[]> playersData) throws IOException {
-            FileWriter writer = new FileWriter(filename, false);
+        FileWriter writer = new FileWriter(filename, false);
 
-            JsonArray data = new JsonArray();
-            String[] aux = readTrials();
-            for (int i = 0; i < aux.length; i++) {
-                JsonObject object = new JsonObject();
-                object.addProperty("trial", aux[i]);
-                data.add(object);
-            }
+        JsonArray data = new JsonArray();
+        for (String executionDatum : executionData) {
+            JsonObject object = new JsonObject();
+            object.addProperty("trial", executionDatum);
+            data.add(object);
+        }
 
-            for (String[] playerData : playersData) {
-                JsonObject object = new JsonObject();
-                object.addProperty("name", playerData[0]);
-                object.addProperty("investigationPoints", playerData[1]);
-                object.addProperty("playerStatus", playerData[2]);
-                data.add(object);
-            }
-            writer.write(gson.toJson(data));
-            writer.close();
+        for (String[] playerData : playersData) {
+            JsonObject object = new JsonObject();
+            object.addProperty("name", playerData[0]);
+            object.addProperty("investigationPoints", playerData[1]);
+            object.addProperty("playerStatus", playerData[2]);
+            data.add(object);
+        }
+
+        writer.write(gson.toJson(data));
+        writer.close();
     }
 
     @Override
     public void writeTrials(String[] allTrials) throws IOException {
-            FileWriter writer = new FileWriter(filename, false);
-            JsonArray jsonArray = new JsonArray();
-            for (String trial : allTrials) {
-                JsonObject object = new JsonObject();
-                object.addProperty("trial", trial);
-                jsonArray.add(object);
-            }
-            writer.write(gson.toJson(jsonArray));
-            writer.close();
+            this.executionData = allTrials;
     }
 
     @Override
     public List<String[]> readPlayersData() throws FileNotFoundException {
             JsonArray jsonArray = gson.fromJson(new FileReader(filename), JsonArray.class);
             List<String[]> playersData = new ArrayList<>();
-            for (int i = 1; i < jsonArray.size(); i++) {
+            for (int i = 0; i < jsonArray.size(); i++) {
                 JsonObject object = jsonArray.get(i).getAsJsonObject();
-                if (!object.get("trial").getAsBoolean()) {
+                if (!object.has("trial")) {
                     String[] aux = new String[3];
                     aux[0] = object.get("name").getAsString();
                     aux[1] = object.get("investigationPoints").getAsString();
@@ -71,34 +64,37 @@ public class ExecutionJSONManager implements ExecutionFileManager {
                 }
 
             }
+
             return playersData;
     }
 
     @Override
     public String[] readTrials() throws FileNotFoundException {
-           FileReader reader = new FileReader(filename);
-           JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
+        FileReader reader = new FileReader(filename);
+        JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
         List<String[]> trials = new ArrayList<>();
         for (int i = 0; i < jsonArray.size(); i++) {
             JsonObject object = jsonArray.get(i).getAsJsonObject();
-            if (object.get("trial").getAsBoolean()){
+            if (object.has("trial")) {
                 String[] aux = new String[1];
                 aux[0] = object.get("trial").getAsString();
                 trials.add(aux);
             }
+
         }
         String[] aux = new String[trials.size()];
         for (int i = 0; i < trials.size(); i++) {
             aux[i] = trials.get(i)[0];
         }
+
         return aux;
     }
 
     @Override
-    public boolean fileIsEmpty() throws FileNotFoundException {
+    public boolean fileIsEmpty() throws IOException {
             FileReader reader = new FileReader(filename);
-            return true;
-
+            JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
+            return jsonArray == null || jsonArray.size() == 0;
     }
 
     @Override
