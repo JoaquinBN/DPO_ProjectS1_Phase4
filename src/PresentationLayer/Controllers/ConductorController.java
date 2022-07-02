@@ -4,9 +4,7 @@ import BusinessLayer.ConductorManager;
 import BusinessLayer.Entities.Player;
 import BusinessLayer.PlayerManager;
 import PresentationLayer.Views.ConductorView;
-import com.opencsv.exceptions.CsvException;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class ConductorController {

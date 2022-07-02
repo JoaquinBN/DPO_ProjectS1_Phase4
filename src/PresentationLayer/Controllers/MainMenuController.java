@@ -1,9 +1,5 @@
 package PresentationLayer.Controllers;
 
-import BusinessLayer.ConductorManager;
-import BusinessLayer.EditionManager;
-import BusinessLayer.PlayerManager;
-import BusinessLayer.TrialManager;
 import PresentationLayer.Views.MainMenuView;
 
 

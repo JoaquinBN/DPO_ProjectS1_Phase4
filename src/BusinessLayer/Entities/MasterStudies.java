@@ -50,7 +50,7 @@ public class MasterStudies extends Trials{
     @Override
     public String printTrialOutput(String playerName) {
         int creditsPassed = getNumberOfCreditsPassed();
-        String output = "\n" + playerName + " passed " + getNumberOfCreditsPassed() + "/" + numberOfCredits + " ECTS. ";
+        String output = "\n" + playerName + " passed " + creditsPassed + "/" + numberOfCredits + " ECTS. ";
         if(creditsPassed > numberOfCredits - creditsPassed){
             output += "Congrats!";
             setPassed(true);

@@ -41,14 +41,6 @@ public class ConductorManager {
     }
 
     /**
-     * Get the current edition
-     * @return the current edition
-     */
-    public int getNumberOfPlayers(){
-        return currentEdition.getNumberOfPlayers();
-    }
-
-    /**
      * Get the number of trials in the current edition
      * @return the number of trials in the current edition
      */
