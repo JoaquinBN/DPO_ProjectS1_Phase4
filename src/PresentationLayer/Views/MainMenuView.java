@@ -6,13 +6,20 @@ import java.util.Scanner;
  * MainMenuView is a class that displays messages to the user interface.
  */
 public class MainMenuView {
+    private final Scanner input;
+
+    /**
+     * Constructor for the MainMenuView class.
+     */
+    public MainMenuView() {
+        input = new Scanner(System.in);
+    }
 
     /**
      * Displays menu for user to choose file format
      * @return String representing user choice
      */
     public String selectFormatDisplay() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("""
                 The IEEE needs to know where your allegiance lies.
                 
@@ -20,14 +27,13 @@ public class MainMenuView {
                     II) Engineering People’s Front (JSON)
                 """);
         System.out.print("Pick a faction:  ");
-        return scanner.next();
+        return input.next();
     }
     /**
      * Display main menu
      * @return The menu choice.
      */
     public char mainMenuDisplay(){
-        Scanner input = new Scanner(System.in);
         char option;
         System.out.println("""
                  _____ _            _____      _       _
