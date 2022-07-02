@@ -41,6 +41,10 @@ public class BudgetRequest extends Trials{
         return "\n" + playerName + ".";
     }
 
+    /**
+     * Get the corresponding message if the budget has been acquireed.
+     * @return the message.
+     */
     public String budgetAcquired(){
         if (getDataNeeded() > Math.log(budgetAmount) / Math.log(2))
             return "\nThe research group got the budget!";

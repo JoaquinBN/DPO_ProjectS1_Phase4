@@ -58,6 +58,13 @@ public class PlayerManager {
         return null;
     }
 
+    /**
+     * Evolve player attributes
+     * @param player the player to evolve
+     * @param hasPassed the boolean that indicates if the player has passed the turn
+     * @param trialType the type of the trial
+     * @return the player with the evolved attributes
+     */
     public Player evolvePlayer(Player player, boolean hasPassed, String trialType){
         int indexPlayer = players.indexOf(player);
         if(player.getType().equals("master") && trialType.equals("Doctoral thesis defense") && hasPassed){
@@ -113,6 +120,7 @@ public class PlayerManager {
 
     /**
      * Load data from the player system
+     * @return true if the data was loaded, false otherwise
      */
     public boolean loadPlayersData(){
         List<String[]> playersData;
@@ -130,6 +138,7 @@ public class PlayerManager {
 
     /**
      * Save data to the player system
+     * @return true if the data was saved, false otherwise
      */
     public boolean saveData(){
         players.removeIf(Player::isDead);
@@ -147,14 +156,26 @@ public class PlayerManager {
 
     }
 
+    /**
+     * Set the execution file manager
+     * @param executionFileManager the execution file manager
+     */
     public void setExecutionFileManager(ExecutionFileManager executionFileManager) {
         this.executionFileManager = executionFileManager;
     }
 
+    /**
+     * Get the error message
+     * @return the error message
+     */
     public String getErrorMessage() {
         return errorMessage;
     }
 
+    /**
+     * Get all the players
+     * @return the list of players
+     */
     public ArrayList<Player> getPlayers() {
         return players;
     }

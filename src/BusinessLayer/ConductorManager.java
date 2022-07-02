@@ -58,33 +58,66 @@ public class ConductorManager {
         return currentEdition.getNumberOfPlayers();
     }
 
+    /**
+     * Get the tyope of the trial at the specified index
+     * @param index the index of the trial
+     * @return the type of the trial
+     */
     public String getTypeOfTrial(int index){
         return trials[index].getTypeOfTrial();
     }
 
+    /**
+     * Set data needed to the trial
+     * @param index the index of the trial
+     * @param dataNeeded the data needed for the trial
+     */
     public void setTrialExtraData(int index, int dataNeeded){
         this.trials[index].setDataNeeded(dataNeeded);
     }
 
+    /**
+     * Print the tril name at the specified index
+     * @param index the index of the trial
+     * @param playerName the name of the player
+     * @return the corresponding print output information
+     */
     public String getTrialPrintOutput(int index, String playerName){
         return this.trials[index].printTrialOutput(playerName);
     }
 
+    /**
+     * Get the budget aquire corresponding message
+     * @param index the index of the trial
+     * @param sumIPs the sum of investigation points of the player
+     * @return the corresponding budget aquire message
+     */
     public String isBudgetAcquired(int index, int sumIPs){
         trials[index].setDataNeeded(sumIPs);
         return ((BudgetRequest) trials[index]).budgetAcquired();
     }
 
+    /**
+     * Check if the budgget has been requested
+     * @param index the index of the trial
+     * @return true if the budget has been requested, false otherwise
+     */
     public boolean isBudgetRequested(int index){
         return trials[index] instanceof BudgetRequest;
     }
 
+    /**
+     * CHeck if the trial has been passed
+     * @param index the index of the trial
+     * @return true if the trial has been passed, false otherwise
+     */
     public boolean isPassed(int index){
         return trials[index].getPassed();
     }
 
     /**
      * Load data for the trials
+     * @return true if the data was loaded successfully, false otherwise
      */
     public boolean loadDataForTrials(){
         List<String[]> allTrials;
@@ -193,6 +226,7 @@ public class ConductorManager {
 
     /**
      * Delete information for the execution files
+     * @return true if the files were deleted successfully, false otherwise
      */
     public boolean eraseInformationExecutionFile() {
         try {
@@ -212,10 +246,20 @@ public class ConductorManager {
         return errorMessage;
     }
 
+    /**
+     * Get the start index for trials when loading the execution file
+     * @return the start index
+     */
     public int getStartIndex() {
         return startIndex;
     }
 
+    /**
+     * Set the file managers
+     * @param editionFileManager the edition file manager
+     * @param trialsFileManager the trials file manager
+     * @param executionFileManager the execution file manager
+     */
     public void setFileManagers(EditionsFileManager editionFileManager, TrialsFileManager trialsFileManager, ExecutionFileManager executionFileManager) {
         this.editionFileManager = editionFileManager;
         this.trialsFileManager = trialsFileManager;

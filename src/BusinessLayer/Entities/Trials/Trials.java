@@ -64,18 +64,34 @@ public abstract class Trials{
      */
     public abstract String[] getDataToWrite();
 
+    /**
+     * Set trial as passed
+     * @param passed true if the trial is passed, false otherwise
+     */
     public void setPassed(boolean passed) {
         this.passed = passed;
     }
 
+    /**
+     * Check if the trial is passed
+     * @return true if the trial is passed, false otherwise
+     */
     public boolean getPassed() {
         return passed;
     }
 
+    /**
+     * Get the data needed for the trial
+     * @return the data needed for the trial
+     */
     public int getDataNeeded() {
         return dataNeeded;
     }
 
+    /**
+     * Set the data needed for the trial
+     * @param dataNeeded the data needed for the trial
+     */
     public void setDataNeeded(int dataNeeded) {
         this.dataNeeded = dataNeeded;
     }

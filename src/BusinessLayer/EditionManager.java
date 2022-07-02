@@ -47,6 +47,11 @@ public class EditionManager {
         return editions.get(index);
     }
 
+    /**
+     * Get the edition year at the specified index
+     * @param index the index of the edition
+     * @return the year of the edition
+     */
     public int getEditionYear(int index){
         return editions.get(index).getYear();
     }
@@ -196,6 +201,11 @@ public class EditionManager {
         return errorMessage;
     }
 
+    /**
+     * Set the file managers for editions
+     * @param editionsManager edition file manager
+     * @param executionManager execution file manager
+     */
     public void setFileManagers(EditionsFileManager editionsManager, ExecutionFileManager executionManager) {
         editionFileManager = editionsManager;
         executionFileManager = executionManager;

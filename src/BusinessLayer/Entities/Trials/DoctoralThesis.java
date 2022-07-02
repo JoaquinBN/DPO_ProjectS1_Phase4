@@ -4,6 +4,12 @@ public class DoctoralThesis extends Trials{
     private final String fieldOfStudy;
     private final int defenseDifficulty;
 
+    /**
+     * Constructor for DoctoralThesis
+     * @param name the name of the trial
+     * @param fieldOfStudy the field of study of the trial
+     * @param defenseDifficulty the defense difficulty of the trial
+     */
     public DoctoralThesis(String name, String fieldOfStudy, int defenseDifficulty) {
         super(name, "Doctoral thesis defense");
         this.fieldOfStudy = fieldOfStudy;
@@ -50,6 +56,10 @@ public class DoctoralThesis extends Trials{
         return output;
     }
 
+    /**
+     * Check if the player passed the trial
+     * @return true if the player passed the trial, false otherwise
+     */
     private boolean isPassed(){
         int valueToPass = 0;
         for(int i = 1; i <= defenseDifficulty; i++){

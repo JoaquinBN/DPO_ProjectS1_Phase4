@@ -145,14 +145,29 @@ public class TrialManager {
         return limitProbabilities > 100;
     }
 
+    /**
+     * Chech if master studies ECTS is valid
+     * @param masterECTS the ECTS of the master studies
+     * @return true if the ECTS is valid, false otherwise
+     */
     public boolean checkMasterECTS(String masterECTS) {
         return !(60 <= Integer.parseInt(masterECTS) && Integer.parseInt(masterECTS) <= 120);
     }
 
+    /**
+     * Check if the doctoral thesis defense difficulty is valid
+     * @param PhDifficulty the difficulty of the doctoral thesis defense
+     * @return true if the difficulty is valid, false otherwise
+     */
     public boolean checkPhDDifficulty(String PhDifficulty) {
         return !(1 <= Integer.parseInt(PhDifficulty) && Integer.parseInt(PhDifficulty) <= 10);
     }
 
+    /**
+     * Check if the budget request amount is valid
+     * @param budgetAmount the amount of the budget request
+     * @return true if the amount is valid, false otherwise
+     */
     public boolean checkBudgetAmount(String budgetAmount) {
         return !(1000 <= Long.parseLong(budgetAmount) && Long.parseLong(budgetAmount) <= 2000000000);
     }
@@ -195,6 +210,10 @@ public class TrialManager {
         return errorMessage;
     }
 
+    /**
+     * Set trials file manager
+     * @param trialsFileManager the trials file manager
+     */
     public void setTrialsFileManager(TrialsFileManager trialsFileManager) {
         this.trialsFileManager = trialsFileManager;
     }

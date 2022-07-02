@@ -62,6 +62,10 @@ public class MasterStudies extends Trials{
         return output;
     }
 
+    /**
+     * Get the number of credits passed.
+     * @return the number of credits passed.
+     */
     private int getNumberOfCreditsPassed() {
         int creditsPassed = 0;
         for(int i = 0; i < numberOfCredits; i++){

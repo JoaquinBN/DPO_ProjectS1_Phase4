@@ -2,11 +2,20 @@ package BusinessLayer.Entities.Players;
 
 public class Engineer extends Player {
 
+    /**
+     * Constructor for Engineer
+     * @param name the name of the player
+     */
     public Engineer(String name){
         super(name);
 
     }
 
+    /**
+     * Constructor for Engineer with investigation points
+     * @param name the name of the player
+     * @param investigationPoints the number of investigation points
+     */
     public Engineer(String name, int investigationPoints) {
         super(name, investigationPoints);
     }
