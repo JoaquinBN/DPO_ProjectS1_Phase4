@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrialManager {
-    private ArrayList<Trials> trials;
+    private final ArrayList<Trials> trials;
     private TrialsFileManager trialsFileManager;
 
     /**

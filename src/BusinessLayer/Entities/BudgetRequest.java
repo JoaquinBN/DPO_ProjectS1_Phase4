@@ -12,7 +12,7 @@ public class BudgetRequest extends Trials{
 
     @Override
     public int getRewardIP() {
-        return (int) Math.ceil(getDataNeeded()/2);
+        return (int) Math.ceil((float)getDataNeeded()/2);
     }
 
     @Override
@@ -34,6 +34,16 @@ public class BudgetRequest extends Trials{
         dataToWrite[2] = entityName;
         dataToWrite[3] = Long.toString(budgetAmount);
         return dataToWrite;
+    }
+
+    @Override
+    public String[] getDataNameToWrite() {
+        String[] dataNameToWrite = new String[5];
+        dataNameToWrite[0] = "Trial name";
+        dataNameToWrite[1] = "Type of trial";
+        dataNameToWrite[2] = "Entity";
+        dataNameToWrite[3] = "Budget";
+        return dataNameToWrite;
     }
 
     @Override

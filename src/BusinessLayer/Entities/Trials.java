@@ -64,6 +64,8 @@ public abstract class Trials{
      */
     public abstract String[] getDataToWrite();
 
+    public abstract String[] getDataNameToWrite();
+
     public void setPassed(boolean passed) {
         this.passed = passed;
     }

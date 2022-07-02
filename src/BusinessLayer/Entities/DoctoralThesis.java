@@ -37,6 +37,16 @@ public class DoctoralThesis extends Trials{
     }
 
     @Override
+    public String[] getDataNameToWrite() {
+        String[] dataNameToWrite = new String[5];
+        dataNameToWrite[0] = "Trial name";
+        dataNameToWrite[1] = "Type of trial";
+        dataNameToWrite[2] = "Field of study";
+        dataNameToWrite[3] = "Difficulty";
+        return dataNameToWrite;
+    }
+
+    @Override
     public String printTrialOutput(String playerName) {
         String output;
         if(isPassed()){

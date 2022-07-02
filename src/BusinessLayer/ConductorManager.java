@@ -38,10 +38,6 @@ public class ConductorManager {
             return trials[indexTrial].getPenalizationIP();
     }
 
-    public Trials getTrialByIndex(int index){
-        return trials[index];
-    }
-
     /**
      * Get the current edition
      * @return the current edition

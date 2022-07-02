@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerManager {
-    private ArrayList<Player> players;
+    private final ArrayList<Player> players;
     private ExecutionFileManager executionFileManager;
 
     /**
@@ -41,15 +41,6 @@ public class PlayerManager {
             case "Master" -> players.add(new Master(playerName, investigationPoints));
             case "Doctor" -> players.add(new Doctor(playerName, investigationPoints));
         }
-    }
-
-    /**
-     * Get index of player in the list of players
-     * @param index the index of the player
-     * @return the player at the given index
-     */
-    public Player getPlayerByIndex(int index) {
-        return players.get(index);
     }
 
     /**
@@ -100,15 +91,6 @@ public class PlayerManager {
      */
     public int getTotalPlayers() {
         return players.size();
-    }
-
-    /**
-     * Check if player is dead
-     * @param index the index of the player
-     * @return true if the player is dead, false otherwise
-     */
-    public boolean playerIsDead(int index){
-        return players.get(index).isDead();
     }
 
     /**

@@ -85,6 +85,19 @@ public class PaperSubmission extends Trials {
         return dataToWrite;
     }
 
+    @Override
+    public String[] getDataNameToWrite() {
+        String[] dataNameToWrite = new String[7];
+        dataNameToWrite[0] = "Trial name";
+        dataNameToWrite[1] = "Type of trial";
+        dataNameToWrite[2] = "Publication name";
+        dataNameToWrite[3] = "Quartile";
+        dataNameToWrite[4] = "Acceptance probability";
+        dataNameToWrite[5] = "Revision probability";
+        dataNameToWrite[6] = "Rejection probability";
+        return dataNameToWrite;
+    }
+
     /**
      * Calculate if the trial has been won
      * @return 2 if the trial is in revision, 1 if the trial has been accepted, 0 if the trial has been rejected
@@ -104,18 +117,18 @@ public class PaperSubmission extends Trials {
     @Override
     public String printTrialOutput(String playerName) {
         int result = checkIfPassed();
-        String output = ("\n\t" + playerName + " is submitting... ");
+        StringBuilder output = new StringBuilder(("\n\t" + playerName + " is submitting... "));
         while(result == 2) {
-            output += "Revisions... ";
+            output.append("Revisions... ");
             result = checkIfPassed();
         }
         if(result == 0){
-            output += "Rejected.";
+            output.append("Rejected.");
             setPassed(false);
         }else{
-            output += "Accepted!";
+            output.append("Accepted!");
             setPassed(true);
         }
-        return output;
+        return output.toString();
     }
 }

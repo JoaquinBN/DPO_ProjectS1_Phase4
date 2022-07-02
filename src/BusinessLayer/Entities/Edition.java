@@ -1,9 +1,9 @@
 package BusinessLayer.Entities;
 
 public class Edition {
-    private int year;
-    private int numberOfPlayers;
-    private String[] trials;
+    private final int year;
+    private final int numberOfPlayers;
+    private final String[] trials;
 
     /**
      * Constructor for Edition
