@@ -78,6 +78,10 @@ public class PlayerManager {
         return null;
     }
 
+    /**
+     * Get the sum of all the players' IPs
+     * @return the sum of all the investigation points (players that lost have 0 IP)
+     */
     public int getSumIPs() {
         int sum = 0;
         for (Player player : players) {

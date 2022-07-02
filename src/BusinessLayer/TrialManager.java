@@ -1,8 +1,6 @@
 package BusinessLayer;
 
 import BusinessLayer.Entities.*;
-import BusinessLayer.Entities.PaperSubmission;
-import BusinessLayer.Entities.Trials;
 import PersistenceLayer.TrialsFileManager;
 import com.opencsv.exceptions.CsvException;
 
