@@ -28,7 +28,7 @@ public class DoctoralThesis extends Trials{
 
     @Override
     public String[] getDataToWrite() {
-        String[] dataToWrite = new String[5];
+        String[] dataToWrite = new String[4];
         dataToWrite[0] = getTrialName();
         dataToWrite[1] = getTypeOfTrial();
         dataToWrite[2] = fieldOfStudy;

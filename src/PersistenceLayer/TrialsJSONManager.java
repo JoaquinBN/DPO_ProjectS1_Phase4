@@ -45,24 +45,42 @@ public class TrialsJSONManager implements TrialsFileManager {
             for (int i = 0; i < jsonArray.size(); i++) {
                 JsonObject object = jsonArray.get(i).getAsJsonObject();
                 if (object.get("typeOfTrial").getAsString().equals("Paper publication")) {
-                    String[] aux = new String[6];
+                    String[] aux = new String[7];
                     aux[0] = object.get("trialName").getAsString();
                     aux[1] = object.get("typeOfTrial").getAsString();
-                    aux[2] = object.get("trialDate").getAsString();
-                    aux[3] = object.get("trialLocation").getAsString();
-                    aux[4] = object.get("trialDescription").getAsString();
-                    aux[5] = object.get("trialId").getAsString();
+                    aux[2] = object.get("publicationName").getAsString();
+                    aux[3] = object.get("quartile").getAsString();
+                    aux[4] = object.get("acceptProbability").getAsString();
+                    aux[5] = object.get("revisionProbability").getAsString();
+                    aux[6] = object.get("rejectProbability").getAsString();
                     trials.add(aux);
-
+                } else if (object.get("typeOfTrial").getAsString().equals("Master studies")) {
+                    String[] aux = new String[5];
+                    aux[0] = object.get("trialName").getAsString();
+                    aux[1] = object.get("typeOfTrial").getAsString();
+                    aux[2] = object.get("masterName").getAsString();
+                    aux[3] = object.get("numberOfCredits").getAsString();
+                    aux[4] = object.get("probabilityOfPassing").getAsString();
+                    trials.add(aux);
+                } else if (object.get("typeOfTrial").getAsString().equals("Doctoral thesis defense")) {
+                    String[] aux = new String[4];
+                    aux[0] = object.get("trialName").getAsString();
+                    aux[1] = object.get("typeOfTrial").getAsString();
+                    aux[2] = object.get("fieldOfStudy").getAsString();
+                    aux[3] = object.get("defenseDifficulty").getAsString();
+                    trials.add(aux);
+                } else if (object.get("typeOfTrial").getAsString().equals("Budget request")) {
+                    String[] aux = new String[4];
+                    aux[0] = object.get("trialName").getAsString();
+                    aux[1] = object.get("typeOfTrial").getAsString();
+                    aux[2] = object.get("entityName").getAsString();
+                    aux[3] = object.get("budgetAmount").getAsString();
+                    trials.add(aux);
                 }
-                if
             }
             reader.close();
-
-            return data;
-        } catch (FileNotFoundException e) {
-            // handle exception
-        } catch (IOException e) {
+            return trials;
+        } catch ( IOException e) {
             // handle exception
         }
         return null;
