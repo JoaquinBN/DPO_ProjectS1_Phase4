@@ -6,7 +6,11 @@ import com.opencsv.exceptions.CsvValidationException;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * ExecutionFileManager is a public interface to facilitate the managing of the execution file, in both CSV and JSON format
+ */
 public interface ExecutionFileManager {
+
     /**
      * Write players data into the file.
      * @param playersData List of String arrays with players data.

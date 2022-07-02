@@ -1,9 +1,20 @@
 package BusinessLayer.Entities.Trials;
 
+/**
+ * BudgetRequest is a trial that represents a budget request.
+ */
 public class BudgetRequest extends Trials{
+    //name of the entity to request the budget from
     private final String entityName;
+    //amount of the budget request
     private final long budgetAmount;
 
+    /**
+     * Constructor for BudgetRequest
+     * @param name the name of the trial
+     * @param entityName the name of the entity to request the budget from
+     * @param budgetAmount the amount of the budget request
+     */
     public BudgetRequest(String name, String entityName, long budgetAmount) {
         super(name, "Budget request");
         this.entityName = entityName;
@@ -42,7 +53,7 @@ public class BudgetRequest extends Trials{
     }
 
     /**
-     * Get the corresponding message if the budget has been acquireed.
+     * Get the corresponding message if the budget has been acquired.
      * @return the message.
      */
     public String budgetAcquired(){

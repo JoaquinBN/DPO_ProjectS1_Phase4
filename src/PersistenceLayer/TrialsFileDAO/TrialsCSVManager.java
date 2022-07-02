@@ -11,9 +11,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TrialsCSVManager is a class that manages the trials file to be able to read and write the trials in a csv file
+ * so the data can be stored and used again.
+ */
 public class TrialsCSVManager implements TrialsFileManager {
     private static final String filename = "files/Trials.csv";
 
+    /**
+     * Constructor for TrialsCSVManager
+     */
     public TrialsCSVManager(){
     }
 

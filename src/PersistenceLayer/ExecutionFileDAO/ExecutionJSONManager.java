@@ -12,11 +12,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ExecutionJSONManager is a class that manages the execution file to be able to keep track of the execution in json format
+ */
 public class ExecutionJSONManager implements ExecutionFileManager {
     private static final String filename = "files/Execution.json";
     private final Gson gson;
     private String[] executionData;
 
+    /**
+     * Constructor for ExecutionJSONManager
+     */
     public ExecutionJSONManager(){
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }

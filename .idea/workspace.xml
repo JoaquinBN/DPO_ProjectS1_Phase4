@@ -5,12 +5,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="008d7068-8fd0-4a5a-91f1-c0138b574c8a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/ConductorManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/ConductorManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/EditionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/EditionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Edition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Edition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/PlayerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/PlayerManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/TrialManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/TrialManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionFileDAO/EditionCSVManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionFileDAO/EditionCSVManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionFileDAO/EditionJSONManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/EditionFileDAO/EditionJSONManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionFileDAO/ExecutionCSVManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionFileDAO/ExecutionCSVManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionFileDAO/ExecutionJSONManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/ExecutionFileDAO/ExecutionJSONManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/FileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/FileManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsFileDAO/TrialsCSVManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsFileDAO/TrialsCSVManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsFileDAO/TrialsJSONManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsFileDAO/TrialsJSONManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ComposerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ComposerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ConductorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ConductorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/MainMenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/ComposerView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/ComposerView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/ConductorView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/ConductorView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/MainMenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Views/MainMenuView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Edition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Edition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Doctor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Engineer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Engineer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Master.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Master.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Players/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/BudgetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/BudgetRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/DoctoralThesis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/DoctoralThesis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/MasterStudies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/MasterStudies.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/PaperSubmission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/PaperSubmission.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/Trials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials/Trials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/TrialManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/TrialManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/EditionFileDAO/EditionCSVManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/EditionFileDAO/EditionCSVManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/EditionFileDAO/EditionJSONManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/EditionFileDAO/EditionJSONManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/EditionFileDAO/EditionsFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/EditionFileDAO/EditionsFileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionFileDAO/ExecutionCSVManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionFileDAO/ExecutionCSVManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionFileDAO/ExecutionFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionFileDAO/ExecutionFileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionFileDAO/ExecutionJSONManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/ExecutionFileDAO/ExecutionJSONManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/TrialsFileDAO/TrialsCSVManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/TrialsFileDAO/TrialsCSVManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/TrialsFileDAO/TrialsFileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/TrialsFileDAO/TrialsFileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PersistenceLayer/TrialsFileDAO/TrialsJSONManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PersistenceLayer/TrialsFileDAO/TrialsJSONManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ComposerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ComposerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ConductorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Controllers/ConductorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Controllers/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Views/ComposerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Views/ComposerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Views/ConductorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Views/ConductorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Views/MainMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Views/MainMenuView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +100,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ObjectOriented Programming/DPO_ProjectS1_JoaquinBressan_AlbertMartinez" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Phase4CODE/Phase2" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
@@ -97,6 +143,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

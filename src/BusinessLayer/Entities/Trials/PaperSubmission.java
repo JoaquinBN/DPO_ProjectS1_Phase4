@@ -2,11 +2,19 @@ package BusinessLayer.Entities.Trials;
 
 import java.util.Random;
 
+/**
+ * PaperSubmission is a class that represents a paper submission trial.
+ */
 public class PaperSubmission extends Trials {
+    //name of the journal
     private final String publicationName;
+    //quartile of the journal
     private final String quartile;
+    //probability of acceptance
     private final int acceptProbability;
+    //probability of revision
     private final int revisionProbability;
+    //probability of rejection
     private final int rejectProbability;
 
     /**
@@ -14,9 +22,9 @@ public class PaperSubmission extends Trials {
      * @param trialName Name of the trial, which can’t be empty and must be unique across all trials
      * @param paperName the name of the paper
      * @param quartile the quartile of the paper
-     * @param acceptProbability the probability of acceptance
-     * @param revisionProbability the probability of revision
-     * @param rejectProbability the probability of rejection
+     * @param acceptProbability the probability of acceptance, an integer between [0, 100]
+     * @param revisionProbability the probability of revision, an integer between [0, 100]
+     * @param rejectProbability the probability of rejection, an integer between [0, 100]
      */
     public PaperSubmission(String trialName, String paperName, String quartile, int acceptProbability, int revisionProbability, int rejectProbability) {
         super(trialName, "Paper publication");
@@ -27,10 +35,6 @@ public class PaperSubmission extends Trials {
         this.rejectProbability = rejectProbability;
     }
 
-    /**
-     * Calculate the reward IP
-     * @return the reward IP
-     */
     @Override
     public int getRewardIP() {
         return switch (quartile) {
@@ -43,10 +47,6 @@ public class PaperSubmission extends Trials {
 
     }
 
-    /**
-     * Calculate the penalization IP
-     * @return the penalization IP
-     */
     @Override
     public int getPenalizationIP() {
         return switch (quartile) {
@@ -58,20 +58,12 @@ public class PaperSubmission extends Trials {
         };
     }
 
-    /**
-     * Get trial information
-     * @return the trial information
-     */
     @Override
     public String getTrialInfo() {
         return  "Journal: " + publicationName + " (" + quartile + ")\n" +
                 "Chances: " + acceptProbability + "% acceptance, " + revisionProbability + "% revision, " + rejectProbability + "% rejection\n\n";
     }
 
-    /**
-     * Get the data to write to the file
-     * @return the data to write to the file
-     */
     @Override
     public String[] getDataToWrite() {
         String[] dataToWrite = new String[7];
@@ -86,7 +78,7 @@ public class PaperSubmission extends Trials {
     }
 
     /**
-     * Calculate if the trial has been won
+     * Calculate if the trial has been passed
      * @return 2 if the trial is in revision, 1 if the trial has been accepted, 0 if the trial has been rejected
      */
     private int checkIfPassed() {

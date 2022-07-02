@@ -1,10 +1,16 @@
 package BusinessLayer.Entities.Trials;
 
+/**
+ * MasterStudies is a trial that represents a master studies.
+ */
 public class MasterStudies extends Trials{
-
+    //name of the master studies
     private final String masterName;
+    //amount of credits of the master studies
     private final int numberOfCredits;
+    //probability of passing each credit
     private final int probabilityOfPassing;
+
     /**
      * Constructor for Trials
      *

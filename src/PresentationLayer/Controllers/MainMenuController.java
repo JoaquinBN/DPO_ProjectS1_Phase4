@@ -2,7 +2,9 @@ package PresentationLayer.Controllers;
 
 import PresentationLayer.Views.MainMenuView;
 
-
+/**
+ * MainMenuController is a class that manages the connection between the business layer and the user interface.
+ */
 public class MainMenuController {
     private final MainMenuView mainMenuView;
     private final ComposerController composerController;
@@ -32,9 +34,6 @@ public class MainMenuController {
                 mainMenuDisplay();
             }
         }
-
-
     }
-
 
 }

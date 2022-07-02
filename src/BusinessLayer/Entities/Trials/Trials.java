@@ -1,15 +1,23 @@
 package BusinessLayer.Entities.Trials;
 
+/**
+ * Abstract class that represents a trial.
+ */
 public abstract class Trials{
+    //name of the trial
     private final String trialName;
+    //type of the trial
     private final String typeOfTrial;
+    //whether the trial has been passed or not
     private boolean passed;
+    //extra information for the trial
     private int dataNeeded;
 
     /**
      * Constructor for Trials
      * @param trialName Name of the trial, which can’t be empty and must be unique across all trials
-     * @param typeOfTrial the type of the trial     */
+     * @param typeOfTrial the type of the trial
+     */
     public Trials(String trialName, String typeOfTrial) {
         this.trialName = trialName;
         this.typeOfTrial = typeOfTrial;
@@ -45,16 +53,16 @@ public abstract class Trials{
     public abstract int getPenalizationIP();
 
     /**
-     * Display the trial information
-     * @return the trial information
+     * create a string to display the trial's information
+     * @return the trial's information
      */
     public String displayTrialInfo(){
         return "\nTrial: " + getTrialName() + " (" + getTypeOfTrial() + ")\n" + getTrialInfo();
     }
 
     /**
-     * Get the trial information
-     * @return the trial information
+     * Get the trial's information, specific to its type
+     * @return the trial information, specific to its type
      */
     public abstract String getTrialInfo();
 
@@ -96,6 +104,11 @@ public abstract class Trials{
         this.dataNeeded = dataNeeded;
     }
 
+    /**
+     * Get the trial's print, adapted to its type, for the execution
+     * @param playerName the name of the player
+     * @return the trial's print, adapted to its type, for the execution
+     */
     public abstract String printTrialOutput(String playerName);
 
 

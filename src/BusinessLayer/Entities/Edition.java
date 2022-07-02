@@ -1,5 +1,8 @@
 package BusinessLayer.Entities;
 
+/**
+ * Edition is a class that represents a set of trials, passed by a number of players, in a given year.
+ */
 public class Edition {
     private final int year;
     private final int numberOfPlayers;
@@ -52,7 +55,7 @@ public class Edition {
     /**
      * Set the trials in the edition
      * @param trialName the trial name
-     * @param position the trial number
+     * @param position the array's position to be added
      */
     public void addTrial(String trialName, int position) {
         this.trials[position] = trialName;

@@ -1,8 +1,15 @@
 package BusinessLayer.Entities.Players;
 
+
+/**
+ * Abstract class for the player
+ */
 public abstract class Player {
+    //unique name of the player
     private final String name;
+    //number of investigation points, initially set to 5
     private int investigationPoints;
+    //boolean determining if the player lost or not
     private boolean isDead;
 
     /**
@@ -16,7 +23,7 @@ public abstract class Player {
     }
 
     /**
-     * Constructor for Player with investigation points
+     * Constructor for Player with investigation points, used when loading data from the execution file
      * @param name the name of the player
      * @param investigationPoints the number of investigation points
      */
@@ -34,9 +41,18 @@ public abstract class Player {
         return name;
     }
 
+    /**
+     * Get the type of the player
+     * @return the type of the player
+     */
     public abstract String getType();
 
+    /**
+     * Get the print for a specific type of player
+     * @return the print type of the player as a string
+     */
     public abstract String getTypeDisplay();
+
     /**
      * Get the number of investigation points
      * @return the number of investigation points

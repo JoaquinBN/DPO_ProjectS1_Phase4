@@ -12,6 +12,9 @@ import com.opencsv.exceptions.CsvValidationException;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * ConductorManager is a class used to manage the necessary logic for the execution of the conductor.
+ */
 public class ConductorManager {
     private Edition currentEdition;
     private Trials[] trials;
@@ -19,7 +22,7 @@ public class ConductorManager {
     private EditionsFileManager editionFileManager;
     private TrialsFileManager trialsFileManager;
     private ExecutionFileManager executionFileManager;
-    private String errorMessage;
+    private String errorMessage; //the error message to be displayed to the user in case of a file error
     private int startIndex; //the index of the first trial in the current edition
 
     /**
@@ -59,7 +62,7 @@ public class ConductorManager {
     }
 
     /**
-     * Get the tyope of the trial at the specified index
+     * Get the type of the trial at the specified index
      * @param index the index of the trial
      * @return the type of the trial
      */
@@ -77,7 +80,7 @@ public class ConductorManager {
     }
 
     /**
-     * Print the tril name at the specified index
+     * Print the trial name at the specified index
      * @param index the index of the trial
      * @param playerName the name of the player
      * @return the corresponding print output information
@@ -208,6 +211,7 @@ public class ConductorManager {
      * Save the current edition data
      * @param trialIndex the index of the trial
      * @param startIndex the index of the start player
+     * @return true if the data was saved successfully, false otherwise
      */
     public boolean saveData(int trialIndex, int startIndex){
         String[] allTrialNames = new String[trials.length - trialIndex + 1];

@@ -4,6 +4,9 @@ import BusinessLayer.EditionManager;
 import BusinessLayer.TrialManager;
 import PresentationLayer.Views.ComposerView;
 
+/**
+ * ComposerController is a class that manages the connection between the business layer and the user interface.
+ */
 public class ComposerController {
     private final EditionManager editionManager;
     private final TrialManager trialManager;
@@ -32,6 +35,12 @@ public class ComposerController {
             managementMode();
     }
 
+    /**
+     * Prints the error message given by the conductor or the player managers
+     * @param isException true if an exception has been caught by the manager, false otherwise
+     * @param isEditionManager true if the error is from the edition, false otherwise
+     * @return true if the program should shut down, false otherwise
+     */
     public boolean printExceptionMessage(boolean isException, boolean isEditionManager){
         if(!isException){
             composerView.showError("\n" + (isEditionManager?editionManager.getErrorMessage():trialManager.getErrorMessage()) + "\n");
@@ -39,6 +48,7 @@ public class ComposerController {
         }
         return false;
     }
+
     /**
      * Starts the management mode of the composer view.
      */
@@ -101,9 +111,9 @@ public class ComposerController {
     }
 
     /**
-     * Get the trials attributes depending on the type.
+     * Get the trial's name.
      *
-     * @return the attribute type.
+     * @return the trial's name.
      */
 
     private String getTrialName(){
@@ -119,6 +129,11 @@ public class ComposerController {
         return attribute;
     }
 
+    /**
+     * get the number of attributes depending on the trial type.
+     * @param trialType - the trial type
+     * @return the number of attributes
+     */
     private int getNumberOfAttributes(int trialType){
         switch(trialType){
             case 1 -> { return 7; }
@@ -128,6 +143,12 @@ public class ComposerController {
         }
     }
 
+
+    /**
+     * Get the trial's type name, with respect to the user's input
+     * @param trialType - the trial type index entered by the user
+     * @return the trial's type name
+     */
     private String getTrialTypeFromInput(int trialType){
         switch(trialType){
             case 1 -> { return "Paper publication"; }
@@ -138,6 +159,11 @@ public class ComposerController {
         }
     }
 
+    /**
+     * get the trial's attribute if it is a paper publication
+     * @param attributeType the index attribute to return
+     * @return the attribute
+     */
     private String getPaperPublicationAttributes(int attributeType){
         String probability, attribute;
 
@@ -175,6 +201,11 @@ public class ComposerController {
         return attribute;
     }
 
+    /**
+     * get the trial's attribute if it is a master studies
+     * @param attributeType the index attribute to return
+     * @return the attribute
+     */
     private String getMasterStudiesAttributes(int attributeType){
         String attribute = "";
         switch (attributeType) {
@@ -203,6 +234,11 @@ public class ComposerController {
         return attribute;
     }
 
+    /**
+     * get the trial's attribute if it is a doctoral thesis defense
+     * @param attributeType the index attribute to return
+     * @return the attribute
+     */
     private String getPhDAttributes(int attributeType){
         String attribute = "";
         switch (attributeType) {
@@ -224,6 +260,11 @@ public class ComposerController {
         return attribute;
     }
 
+    /**
+     * get the trial's attribute if it is a budget request
+     * @param attributeType the index attribute to return
+     * @return  the attribute
+     */
     private String getBudgetRequestAttributes(int attributeType){
         String attribute = "";
         switch (attributeType) {
@@ -274,7 +315,7 @@ public class ComposerController {
                             if (i == 5 && !attributes[i].equals("") && trialManager.checkLimitProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]))) {
                                 composerView.showError("\nThe acceptance and revision probabilities sum cannot be greater than 100.");
                                 errorInput = true;
-                            } else if (i == 6 && !attributes[i].equals("") && !trialManager.checkSumProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]) + Integer.parseInt(attributes[6]))&& !attributes[i].equals("")) {
+                            } else if (i == 6 && !attributes[i].equals("") && !trialManager.checkSumProbabilities(Integer.parseInt(attributes[4]) + Integer.parseInt(attributes[5]) + Integer.parseInt(attributes[6]))) {
                                 composerView.showError("\nThe acceptance, revision and rejection probabilities sum cannot be greater than 100.");
                                 errorInput = true;
                             }
@@ -456,7 +497,7 @@ public class ComposerController {
     }
 
     /**
-     * Duplicates an edition by copyings its trials into a new edition.
+     * Duplicates an edition by copying its trials into a new edition.
      */
     private void duplicateEdition(){
         int editionIndex = -1, year = -1, numberOfPlayers = -1;
@@ -545,7 +586,7 @@ public class ComposerController {
     }
 
     /**
-     * Shows the main menu.
+     * Exits the program
      */
     private void exitProgram(){
         printExceptionMessage(trialManager.writeTrials(), false);

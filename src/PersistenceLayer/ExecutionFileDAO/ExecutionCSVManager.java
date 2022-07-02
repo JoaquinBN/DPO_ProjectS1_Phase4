@@ -10,9 +10,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * ExecutionCSVManager is a class that manages the execution file to be able to keep track of the execution in csv format
+ */
 public class ExecutionCSVManager implements ExecutionFileManager {
     private static final String filename = "files/Execution.csv";
-    
+
+    /**
+     * Constructor for ExecutionCSVManager
+     */
     public ExecutionCSVManager() {}
 
     /**

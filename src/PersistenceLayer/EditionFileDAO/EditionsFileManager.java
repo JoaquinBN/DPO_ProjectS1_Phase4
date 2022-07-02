@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * EditionsFileManager is a public interface to facilitate the managing of the editions file, in both CSV and JSON format
+ */
 public interface EditionsFileManager {
 
     /**

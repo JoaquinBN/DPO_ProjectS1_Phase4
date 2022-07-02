@@ -21,6 +21,9 @@ import PresentationLayer.Views.MainMenuView;
 
 import java.io.IOException;
 
+/**
+ * The main class of the application.
+ */
 public class Main {
     /**
      * Main function of the program

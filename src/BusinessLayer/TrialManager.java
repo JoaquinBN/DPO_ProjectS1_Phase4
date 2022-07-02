@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TrialManager is a class that takes care of the trial management .
+ */
 public class TrialManager {
     private final ArrayList<Trials> trials;
     private TrialsFileManager trialsFileManager;
@@ -75,7 +78,7 @@ public class TrialManager {
     /**
      * Get the trial type by the name of the trial
      * @param name the name of the trial
-     * @return the trial type with the given name
+     * @return the trial type of the given name's trial
      */
     public String getTrialTypeByName(String name){
         for(Trials trial: trials){
@@ -137,16 +140,16 @@ public class TrialManager {
     }
 
     /**
-     * Chrck if the probabilites is over 100.
-     * @param limitProbabilities probabilty inputed by user
-     * @return true if the probabilites is over 100, false otherwise
+     * Check if the probabilities is over 100.
+     * @param limitProbabilities probability inputted by user
+     * @return true if the probabilities is over 100, false otherwise
      */
     public boolean checkLimitProbabilities(int limitProbabilities) {
         return limitProbabilities > 100;
     }
 
     /**
-     * Chech if master studies ECTS is valid
+     * Check if master studies ECTS is valid
      * @param masterECTS the ECTS of the master studies
      * @return true if the ECTS is valid, false otherwise
      */
@@ -174,6 +177,7 @@ public class TrialManager {
 
     /**
      * Write the trials to the file
+     * @return true if the trials are written to the file, false otherwise
      */
     public boolean writeTrials(){
         try {
@@ -187,6 +191,7 @@ public class TrialManager {
 
     /**
      * Read the trials from the file
+     * @return true if the trials are read from the file, false otherwise
      */
     public boolean readTrials(){
         List<String[]> allTrials;

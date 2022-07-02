@@ -1,7 +1,12 @@
 package BusinessLayer.Entities.Trials;
 
+/**
+ * DoctoralThesis is a trial that represents a doctoral thesis defense.
+ */
 public class DoctoralThesis extends Trials{
+    //name of the field of study
     private final String fieldOfStudy;
+    //integer representing the difficulty of the defense
     private final int defenseDifficulty;
 
     /**

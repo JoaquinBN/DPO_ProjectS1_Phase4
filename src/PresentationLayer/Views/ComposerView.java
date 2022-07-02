@@ -3,6 +3,9 @@ package PresentationLayer.Views;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * ComposerView is a class that displays messages to the user interface.
+ */
 public class ComposerView {
     private final Scanner sc;
 
@@ -39,14 +42,20 @@ public class ComposerView {
     }
 
     /**
-     * Reads the name of the trial to be created.
-     * @return The name of the trial.
+     * Reads a string input by the user.
+     * @param message The message to be displayed.
+     * @return The string input by the user
      */
     public String readName(String message) {
         System.out.print("Enter the " + message + ": ");
         return sc.nextLine();
     }
 
+    /**
+     * reads a long variable from the user. Returns -1 if an exception was caught
+     * @param message The message to be displayed to the user.
+     * @return The long variable.
+     */
     public Long readLong(String message) {
         System.out.print("Enter the " + message + ": ");
         try {
@@ -104,8 +113,9 @@ public class ComposerView {
     }
 
     /**
-     * Reads the edition yar to be created.
-     * @return The year of the edition.
+     * Reads an integer depending on the user's input.
+     * @param dataType The data type to ask the user.
+     * @return The integer input by the user, -1 if an exception was caught
      */
     public int readIntegerValue(String dataType) {
         return checkForExceptions("Enter the " + dataType + ": ", "\nThe " + dataType + " must be an integer.\n");
@@ -246,6 +256,8 @@ public class ComposerView {
 
     /**
      * Display message for deletion confirmation.
+     * @param s edition or trial.
+     * @return the confirmation input.
      */
     public String showDeletionConfirmation(String s) {
         System.out.print("\nEnter the " + s + " for confirmation (type 'cancel' to avoid deletion): ");
@@ -261,8 +273,8 @@ public class ComposerView {
     }
 
     /**
-     * Display message to delete type selected.
-     * @param type The type.
+     * Display message to delete type of entity selected.
+     * @param type The type of entity.
      */
     public void showDelete(String type) {
         System.out.println("\nWhich " + type + " do you want to delete?\n\n");

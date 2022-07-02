@@ -1,5 +1,9 @@
 package BusinessLayer.Entities.Players;
 
+
+/**
+ * Class for the master player.
+ */
 public class Master extends Engineer{
 
     /**
@@ -11,7 +15,8 @@ public class Master extends Engineer{
     }
 
     /**
-     * Add the correspodgin investigation points to the player
+     * Add the corresponding investigation points to the player
+     * @param name the name of the player
      * @param investigationPoints the number of investigation points to add
      */
     public Master(String name, int investigationPoints) {
@@ -29,7 +34,7 @@ public class Master extends Engineer{
     }
 
     /**
-     * Add the correspodgin investigation points to the player
+     * Add the corresponding investigation points to the player
      * @param investigationPoints the number of investigation points to add
      */
     public void addInvestigationPoints(int investigationPoints) {

@@ -13,10 +13,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * EditionJSONManager is a class that manages the edition file to be able to read and write the editions in a json file
+ * so the data can be stored and used again.
+ */
 public class EditionJSONManager implements EditionsFileManager {
     private static final String filename = "files/Editions.json";
     private final Gson gson;
 
+    /**
+     * Constructor for EditionJSONManager
+     */
     public EditionJSONManager(){
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }

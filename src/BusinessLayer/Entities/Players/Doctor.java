@@ -1,5 +1,8 @@
 package BusinessLayer.Entities.Players;
 
+/**
+ * Class for the doctor player
+ */
 public class Doctor extends Master{
 
     /**

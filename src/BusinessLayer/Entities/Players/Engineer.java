@@ -1,5 +1,8 @@
 package BusinessLayer.Entities.Players;
 
+/**
+ * Class for the Engineer player.
+ */
 public class Engineer extends Player {
 
     /**

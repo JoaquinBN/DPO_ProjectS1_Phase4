@@ -7,6 +7,9 @@ import PresentationLayer.Views.ConductorView;
 
 import java.util.ArrayList;
 
+/**
+ * ConductorController is a class that manages the connection between the business layer and the user interface.
+ */
 public class ConductorController {
     private final ConductorManager  conductorManager;
     private final ConductorView conductorView;
@@ -60,6 +63,12 @@ public class ConductorController {
         conductorView.showMessage("Shutting down...\n");
     }
 
+    /**
+     * Prints the error message given by the conductor or the player managers
+     * @param isException true if an exception has been caught by the manager, false otherwise
+     * @param isConductorManager true if the error is from the conductor, false otherwise
+     * @return true if the program should shut down, false otherwise
+     */
     private boolean printExceptionMessage(boolean isException, boolean isConductorManager){
         if(!isException){
             conductorView.showError("\n" + (isConductorManager?conductorManager.getErrorMessage():playerManager.getErrorMessage()) + "\n");
@@ -78,12 +87,16 @@ public class ConductorController {
             playersEvolved = new ArrayList<>();
             conductorView.showMessage("\nTrial #" + (startIndex + 1) + " - " + conductorManager.getTypeOfTrial(i) + "\n");
 
+            //get a specific print in case it is a budget request. Budget requests need different attributes than the others
+            //to know if they were passed or failed (this depends on the players as a group, not individually)
             if(conductorManager.isBudgetRequested(i)){
                 conductorView.showMessage(conductorManager.isBudgetAcquired(i, playerManager.getSumIPs()));
             }
 
             for (Player player: playerManager.getPlayers()) {
                 if (!player.isDead()) {
+                    //set the dataNeeded attribute for the current trial, used only by the doctoral thesis defense and the budget request
+                    //as they need to know the player's IPs.
                     conductorManager.setTrialExtraData(i, player.getInvestigationPoints());
                     conductorView.showMessage(conductorManager.getTrialPrintOutput(i, player.getTypeDisplay()));
                     player.addInvestigationPoints(conductorManager.incrementInvestigationPoints(i));

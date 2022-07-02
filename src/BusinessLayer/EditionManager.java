@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * EditionManager is a class that manages the editions of the database.
+ */
 public class EditionManager {
     private final ArrayList<Edition> editions;
     private EditionsFileManager editionFileManager;
@@ -26,6 +29,9 @@ public class EditionManager {
 
     /**
      * Add a new edition to the list of editions
+     * @param year the edition year
+     * @param numberOfPlayers the number of players of the edition
+     * @param numberOfTrials the number of trials of the edition
      */
     public void addEdition(int year, int numberOfPlayers, int numberOfTrials) {
         editions.add(new Edition(year, numberOfPlayers, numberOfTrials));
@@ -33,6 +39,7 @@ public class EditionManager {
 
     /**
      * Remove edition from the list of editions
+     * @param indexEdition the index of the edition
      */
     public void removeEdition(int indexEdition) {
         editions.remove(indexEdition);
@@ -66,8 +73,8 @@ public class EditionManager {
 
     /**
      * Duplicate an edition by copying its trials
-     * @param year the year of the edition to duplicate
-     * @param numberOfPlayers the number of players in the edition to duplicate
+     * @param year the new year of the edition
+     * @param numberOfPlayers the new initial number of players in the edition
      * @param indexEdition the index of the edition to duplicate
      */
     public void duplicateEditions(int year, int numberOfPlayers, int indexEdition) {
@@ -145,6 +152,7 @@ public class EditionManager {
 
     /**
      * Write new editions to the file
+     * @return true if the editions were successfully written to the file, false otherwise
      */
     public boolean writeEditions(){
         try {
@@ -158,6 +166,7 @@ public class EditionManager {
 
     /**
      * Read editions from the file
+     * @return true if the editions were successfully read from the file, false otherwise
      */
     public boolean readEditions(){
         List<String[]> editionsString;
@@ -179,6 +188,7 @@ public class EditionManager {
     /**
      * Delete already in progress executions
      * @param isCurrentYear true if the current year is being deleted, false otherwise
+     * @return true if the execution data was successfully deleted, false otherwise
      */
     public boolean deleteStoredState(boolean isCurrentYear){
         if(isCurrentYear) {

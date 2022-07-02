@@ -4,7 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ * FileManager is a class user to manage the possibility of files or directory not existing
+ */
 public class FileManager {
+
+    /**
+     * Constructor for FileManager
+     */
     public FileManager() {
     }
 
@@ -18,7 +25,7 @@ public class FileManager {
     }
 
     /**
-     * Check if the execution csv file exists and creates it it doesn't.
+     * Check if the execution csv file exists and creates if it doesn't.
      * @throws IOException if the file could not be created.
      */
     public void createExecutionCSVFileIfNecessary() throws IOException {
@@ -28,7 +35,7 @@ public class FileManager {
     }
 
     /**
-     * Check if the trial csv file exists and creates it it doesn't.
+     * Check if the trial csv file exists and creates if it doesn't.
      * @throws IOException if the file could not be created.
      */
     public void createTrialsCSVFileIfNecessary() throws IOException {
@@ -38,7 +45,7 @@ public class FileManager {
     }
 
     /**
-     * Check if the edition csv file exists and creates it it doesn't.
+     * Check if the edition csv file exists and creates if it doesn't.
      * @throws IOException if the file could not be created.
      */
     public void createEditionsCSVFileIfNecessary() throws IOException {
@@ -48,7 +55,7 @@ public class FileManager {
     }
 
     /**
-     * Check if the execution json file exists and creates it it doesn't.
+     * Check if the execution json file exists and creates if it doesn't.
      * @throws IOException if the file could not be created.
      */
     public void createExecutionJSONFileIfNecessary() throws IOException {
@@ -58,7 +65,7 @@ public class FileManager {
     }
 
     /**
-     * Check if the trial json file exists and creates it it doesn't.
+     * Check if the trial json file exists and creates if it doesn't.
      * @throws IOException if the file could not be created.
      */
     public void createTrialsJSONFileIfNecessary() throws IOException {
@@ -69,7 +76,7 @@ public class FileManager {
     }
 
     /**
-     * Check if the edition json file exists and creates it it doesn't.
+     * Check if the edition json file exists and creates if it doesn't.
      * @throws IOException if the file could not be created.
      */
     public void createEditionsJSONFileIfNecessary() throws IOException {

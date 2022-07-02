@@ -2,6 +2,9 @@ package PresentationLayer.Views;
 
 import java.util.Scanner;
 
+/**
+ * MainMenuView is a class that displays messages to the user interface.
+ */
 public class MainMenuView {
 
     /**

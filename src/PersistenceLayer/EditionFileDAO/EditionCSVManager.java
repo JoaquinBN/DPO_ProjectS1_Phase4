@@ -10,9 +10,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * EditionCsvManager is a class that manages the edition file to be able to read and write the editions in a csv file
+ */
 public class EditionCSVManager implements EditionsFileManager {
     private static final String filename = "files/Editions.csv";
 
+    /**
+     * Constructor for EditionCsvManager
+     */
     public EditionCSVManager(){}
 
     /**

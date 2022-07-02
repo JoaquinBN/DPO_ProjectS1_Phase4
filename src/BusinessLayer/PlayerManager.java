@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PlayerManager is a class that manages the players of the game.
+ */
 public class PlayerManager {
     private final ArrayList<Player> players;
     private ExecutionFileManager executionFileManager;
@@ -35,6 +38,7 @@ public class PlayerManager {
      * Retrieve player from the list of players
      * @param playerName the name of the player
      * @param investigationPoints the amount of investigation points the player has
+     * @param playerType the type of the player
      */
     public void retrievePlayer(String playerName, int investigationPoints, String playerType) {
         switch (playerType) {

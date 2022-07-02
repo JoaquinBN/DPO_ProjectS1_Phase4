@@ -12,10 +12,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TrialsJSONManager is a class that manages the trials file to be able to read and write the trials in a json file
+ * so the data can be stored and used again.
+ */
 public class TrialsJSONManager implements TrialsFileManager {
     private final String filename = "files/Trials.json";
     private final Gson gson;
 
+    /**
+     * Constructor for TrialsJSONManager
+     */
     public TrialsJSONManager(){
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
