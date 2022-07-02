@@ -37,16 +37,6 @@ public class BudgetRequest extends Trials{
     }
 
     @Override
-    public String[] getDataNameToWrite() {
-        String[] dataNameToWrite = new String[5];
-        dataNameToWrite[0] = "Trial name";
-        dataNameToWrite[1] = "Type of trial";
-        dataNameToWrite[2] = "Entity";
-        dataNameToWrite[3] = "Budget";
-        return dataNameToWrite;
-    }
-
-    @Override
     public String printTrialOutput(String playerName) {
         return "\n" + playerName + ".";
     }

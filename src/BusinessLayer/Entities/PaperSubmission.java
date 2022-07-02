@@ -85,19 +85,6 @@ public class PaperSubmission extends Trials {
         return dataToWrite;
     }
 
-    @Override
-    public String[] getDataNameToWrite() {
-        String[] dataNameToWrite = new String[7];
-        dataNameToWrite[0] = "Trial name";
-        dataNameToWrite[1] = "Type of trial";
-        dataNameToWrite[2] = "Publication name";
-        dataNameToWrite[3] = "Quartile";
-        dataNameToWrite[4] = "Acceptance probability";
-        dataNameToWrite[5] = "Revision probability";
-        dataNameToWrite[6] = "Rejection probability";
-        return dataNameToWrite;
-    }
-
     /**
      * Calculate if the trial has been won
      * @return 2 if the trial is in revision, 1 if the trial has been accepted, 0 if the trial has been rejected

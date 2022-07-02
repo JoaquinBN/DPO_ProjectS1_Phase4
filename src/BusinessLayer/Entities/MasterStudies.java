@@ -48,17 +48,6 @@ public class MasterStudies extends Trials{
     }
 
     @Override
-    public String[] getDataNameToWrite() {
-        String[] dataNameToWrite = new String[5];
-        dataNameToWrite[0] = "Trial name";
-        dataNameToWrite[1] = "Type of trial";
-        dataNameToWrite[2] = "Master name";
-        dataNameToWrite[3] = "Number of credits";
-        dataNameToWrite[4] = "Probability of passing";
-        return dataNameToWrite;
-    }
-
-    @Override
     public String printTrialOutput(String playerName) {
         int creditsPassed = getNumberOfCreditsPassed();
         String output = "\n" + playerName + " passed " + getNumberOfCreditsPassed() + "/" + numberOfCredits + " ECTS. ";
