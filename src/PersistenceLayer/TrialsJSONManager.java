@@ -25,20 +25,15 @@ public class TrialsJSONManager implements TrialsFileManager {
     }
 
     @Override
-    public void writeTrials(ArrayList<Trials> t) {
-        try {
+    public void writeTrials(ArrayList<Trials> t) throws IOException {
             FileWriter writer = new FileWriter(filename);
             writer.write(gson.toJson(t));
             writer.close();
-        } catch (IOException e) {
-            // handle exception
-        }
 
     }
 
     @Override
-    public List<String[]> readTrials() {
-        try {
+    public List<String[]> readTrials() throws IOException {
             FileReader reader = new FileReader(filename);
             JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
             List<String[]> trials = new ArrayList<>();
@@ -80,9 +75,5 @@ public class TrialsJSONManager implements TrialsFileManager {
             }
             reader.close();
             return trials;
-        } catch ( IOException e) {
-            // handle exception
-        }
-        return null;
     }
 }

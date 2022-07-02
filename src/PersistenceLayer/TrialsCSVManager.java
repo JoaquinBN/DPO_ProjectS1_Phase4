@@ -34,15 +34,11 @@ public class TrialsCSVManager implements TrialsFileManager {
      * @param trials the trials to write.
      */
     @Override
-    public void writeTrials(ArrayList<Trials> trials){
-        try {
+    public void writeTrials(ArrayList<Trials> trials) throws IOException {
             for (Trials trial : trials){
                 writer.writeNext(trial.getDataToWrite());
             }
             writer.close();
-        } catch (IOException e) {
-            // handle exception
-        }
     }
 
     /**
@@ -51,14 +47,9 @@ public class TrialsCSVManager implements TrialsFileManager {
      * @return the trials read.
      */
     @Override
-    public List<String[]> readTrials(){
-        try {
+    public List<String[]> readTrials() throws IOException, CsvException {
             List<String[]> trials = reader.readAll();
             reader.close();
             return trials;
-        } catch (IOException | CsvException e) {
-            // handle exception
-        }
-        return null;
     }
 }

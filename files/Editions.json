@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "year": 2022,
+    "numberOfPlayers": 3,
+    "trials": [
+      "papa",
+      "papa",
+      "papa"
+    ]
+  }
+]
