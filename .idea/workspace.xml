@@ -3,29 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="008d7068-8fd0-4a5a-91f1-c0138b574c8a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Doctor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Doctor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Edition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Edition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Engineer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Engineer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Master.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Master.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/PaperSubmission.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/PaperSubmission.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/Entities/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/PlayerManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/PlayerManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/TrialManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/BusinessLayer/TrialManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsJSONManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PersistenceLayer/TrialsJSONManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ComposerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ComposerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ConductorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DPO_ProjectS1_Phase4/PresentationLayer/Controllers/ConductorController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/ConductorManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/BudgetRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/BudgetRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/DoctoralThesis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/DoctoralThesis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Edition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Edition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/MasterStudies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/MasterStudies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/PaperSubmission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/PaperSubmission.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/Entities/Trials.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/EditionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/PlayerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BusinessLayer/TrialManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BusinessLayer/TrialManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Controllers/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Controllers/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PresentationLayer/Views/ComposerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PresentationLayer/Views/ComposerView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

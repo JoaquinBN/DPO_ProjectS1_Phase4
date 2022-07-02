@@ -14,6 +14,7 @@ import java.util.List;
 public class PlayerManager {
     private final ArrayList<Player> players;
     private ExecutionFileManager executionFileManager;
+    private String errorMessage;
 
     /**
      * Constructor for PlayerManager
@@ -108,27 +109,37 @@ public class PlayerManager {
 
     /**
      * Load data from the player system
-     * @throws IOException if there is an error reading the file
-     * @throws CsvException if there is an error reading the file
      */
-    public void loadPlayersData() throws IOException, CsvException {
-        List<String[]> playersData = executionFileManager.readPlayersData().subList(1, executionFileManager.readPlayersData().size());
-        for (String[] playerData : playersData) {
-            retrievePlayer(playerData[0], Integer.parseInt(playerData[1]), playerData[2]);
+    public boolean loadPlayersData(){
+        List<String[]> playersData;
+        try {
+            playersData = executionFileManager.readPlayersData().subList(1, executionFileManager.readPlayersData().size());
+            for (String[] playerData : playersData) {
+                retrievePlayer(playerData[0], Integer.parseInt(playerData[1]), playerData[2]);
+            }
+            return true;
+        } catch (IOException | CsvException e) {
+            errorMessage = "Error loading data of players";
+            return false;
         }
     }
 
     /**
      * Save data to the player system
-     * @throws IOException if there is an error writing to the file
      */
-    public void saveData() throws IOException {
+    public boolean saveData(){
         players.removeIf(Player::isDead);
         List<String[]> playersData = new ArrayList<>();
         for(Player player: players){
             playersData.add(player.getInfo());
         }
-        executionFileManager.writePlayersData(playersData);
+        try {
+            executionFileManager.writePlayersData(playersData);
+            return true;
+        } catch (IOException e) {
+            errorMessage = "Error saving players' data inside the execution file";
+            return false;
+        }
 
     }
 

@@ -13,6 +13,7 @@ import java.util.List;
 public class TrialManager {
     private final ArrayList<Trials> trials;
     private TrialsFileManager trialsFileManager;
+    private String errorMessage;
 
     /**
      * Constructor for TrialManager
@@ -157,26 +158,43 @@ public class TrialManager {
     public boolean checkBudgetAmount(String budgetAmount) {
         return !(1000 <= Long.parseLong(budgetAmount) && Long.parseLong(budgetAmount) <= 2000000000);
     }
+
     /**
      * Write the trials to the file
-     * @throws IOException if the file cannot be written
      */
-    public void writeTrials() throws IOException {
-        trialsFileManager.writeTrials(trials);
+    public boolean writeTrials(){
+        try {
+            trialsFileManager.writeTrials(trials);
+            return true;
+        } catch (IOException e) {
+            errorMessage = "Error writing trials to file";
+            return false;
+        }
     }
 
     /**
      * Read the trials from the file
-     * @throws IOException if the file cannot be read
-     * @throws CsvException if the file is not in the correct format
      */
-    public void readTrials() throws IOException, CsvException {
-        List<String[]> allTrials = trialsFileManager.readTrials();
-        if (allTrials != null) {
-            for (String[] trial : allTrials) {
+    public boolean readTrials(){
+        List<String[]> allTrials;
+        try {
+            allTrials = trialsFileManager. readTrials();
+            for(String[] trial : allTrials){
                 addTrial(trial);
             }
+            return true;
+        } catch (IOException | CsvException e) {
+            errorMessage = "Error reading trials from file";
+            return false;
         }
+    }
+
+    /**
+     * Get the error message
+     * @return the error message
+     */
+    public String getErrorMessage() {
+        return errorMessage;
     }
 
     public void setTrialsFileManager(TrialsFileManager trialsFileManager) {
