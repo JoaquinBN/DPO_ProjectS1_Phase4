@@ -22,15 +22,24 @@ public class ExecutionJSONManager implements ExecutionFileManager {
 
     @Override
     public void writePlayersData(List<String[]> playersData) throws IOException {
-            FileWriter writer = new FileWriter(filename, true);
+            FileWriter writer = new FileWriter(filename, false);
+
+            JsonArray data = new JsonArray();
+            String[] aux = readTrials();
+            for (int i = 0; i < aux.length; i++) {
+                JsonObject object = new JsonObject();
+                object.addProperty("trial", aux[i]);
+                data.add(object);
+            }
 
             for (String[] playerData : playersData) {
                 JsonObject object = new JsonObject();
                 object.addProperty("name", playerData[0]);
                 object.addProperty("investigationPoints", playerData[1]);
                 object.addProperty("playerStatus", playerData[2]);
-                writer.write(gson.toJson(object));
+                data.add(object);
             }
+            writer.write(gson.toJson(data));
             writer.close();
     }
 
@@ -53,11 +62,14 @@ public class ExecutionJSONManager implements ExecutionFileManager {
             List<String[]> playersData = new ArrayList<>();
             for (int i = 1; i < jsonArray.size(); i++) {
                 JsonObject object = jsonArray.get(i).getAsJsonObject();
-                String[] aux = new String[3];
-                aux[0] = object.get("name").getAsString();
-                aux[1] = object.get("investigationPoints").getAsString();
-                aux[2] = object.get("playerStatus").getAsString();
-                playersData.add(aux);
+                if (!object.get("trial").getAsBoolean()) {
+                    String[] aux = new String[3];
+                    aux[0] = object.get("name").getAsString();
+                    aux[1] = object.get("investigationPoints").getAsString();
+                    aux[2] = object.get("playerStatus").getAsString();
+                    playersData.add(aux);
+                }
+
             }
             return playersData;
     }
@@ -66,19 +78,20 @@ public class ExecutionJSONManager implements ExecutionFileManager {
     public String[] readTrials() throws FileNotFoundException {
            FileReader reader = new FileReader(filename);
            JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
-           if (jsonArray != null) {
-               JsonArray jsonArray2 = jsonArray.get(0).getAsJsonArray();
-               List<String> trials = new ArrayList<>();
-               for (int i = 0; i < jsonArray2.size(); i++) {
-                   trials.add(jsonArray2.get(i).getAsJsonObject().get("trial").getAsString());
-               }
-               String[] allTrials = new String[trials.size()];
-               for (int i = 0; i < allTrials.length; i++) {
-                   allTrials[i] = trials.get(i);
-               }
-               return allTrials;
-           }
-           return null;
+        List<String[]> trials = new ArrayList<>();
+        for (int i = 0; i < jsonArray.size(); i++) {
+            JsonObject object = jsonArray.get(i).getAsJsonObject();
+            if (object.get("trial").getAsBoolean()){
+                String[] aux = new String[1];
+                aux[0] = object.get("trial").getAsString();
+                trials.add(aux);
+            }
+        }
+        String[] aux = new String[trials.size()];
+        for (int i = 0; i < trials.size(); i++) {
+            aux[i] = trials.get(i)[0];
+        }
+        return aux;
     }
 
     @Override
